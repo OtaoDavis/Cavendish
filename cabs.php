@@ -400,7 +400,7 @@ include 'includes/header.php';
 <!-- ============================================================
      9. ENROLLMENT FORM
      ============================================================ -->
-<section class="enroll-section">
+<section class="enroll-section" id="enroll">
   <div class="container enroll-grid">
     <div class="enroll-info">
       <p class="cabs-eyebrow" style="color:var(--aeh-blue);">Apply Now</p>
