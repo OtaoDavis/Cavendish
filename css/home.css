@@ -1,0 +1,1424 @@
+/* =============================================
+   CAVENDISH AFRICA — HOME PAGE STYLES
+   home.css  (loaded only on index.php)
+   ============================================= */
+
+/* =============================================
+   HERO — SPLIT LAYOUT
+   ============================================= */
+.hero-split {
+  display: flex;
+  height: calc(100vh - 72px);
+  width: 100%;
+  align-items: center;
+  background-color: var(--aeh-navy);
+  overflow: hidden;
+  position: relative;
+}
+
+/* --- Left: text panel --- */
+.hero-text-box {
+  flex: 1;
+  min-width: 0; /* allows flex to shrink below content size */
+  padding: 0 5% 0 5%;
+  z-index: 5;
+  position: relative;
+
+  transition:
+    flex 0.65s cubic-bezier(0.77, 0, 0.18, 1),
+    transform 0.65s cubic-bezier(0.77, 0, 0.18, 1),
+    opacity 0.45s ease,
+    padding 0.65s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.tagline {
+  color: var(--aeh-green);
+  letter-spacing: 5px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.hero-text-box h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(3rem, 4.5vw, 5rem);
+  line-height: 1.05;
+  margin-bottom: 30px;
+  color: var(--aeh-white);
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.hero-text-box h1 .italic {
+  font-style: italic;
+  display: block;
+  color: var(--aeh-blue);
+  font-weight: 400;
+  margin-top: 6px;
+}
+
+.hero-desc {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 42px;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 500px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+/* --- Right: video panel --- */
+.hero-video-box {
+  flex: 1.1;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  z-index: 1;
+  cursor: pointer;
+
+  transition: flex 0.65s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+/* Native <video> element */
+.hero-video-box video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  pointer-events: none; /* clicks go to the box wrapper */
+}
+
+/* Gradient blend left-edge */
+.hero-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    var(--aeh-navy) 0%,
+    rgba(10, 26, 41, 0.35) 40%,
+    transparent 60%
+  );
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 0.65s ease;
+}
+
+/* --- Play button hint --- */
+.video-play-hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.play-circle {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.play-circle svg {
+  width: 22px;
+  height: 22px;
+  fill: white;
+  margin-left: 4px; /* optical centering */
+}
+
+.play-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.hero-video-box:hover .play-circle {
+  background: rgba(57, 152, 189, 0.4);
+  transform: scale(1.08);
+}
+
+/* --- Hero close button (hidden by default) --- */
+.hero-close-btn {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.7) rotate(-90deg);
+  transition:
+    opacity 0.3s ease 0s,
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) 0s,
+    background 0.2s ease;
+}
+
+.hero-close-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: white;
+  stroke-width: 2;
+  fill: none;
+}
+
+.hero-close-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* =============================================
+   EXPANDED STATE
+   Add .video-expanded to .hero-split via JS
+   ============================================= */
+.hero-split.video-expanded .hero-text-box {
+  flex: 0;
+  padding: 0;
+  transform: translateX(-110%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-split.video-expanded .hero-video-box {
+  flex: 1;
+  cursor: default;
+}
+
+/* Let the video be clickable/controllable when expanded */
+.hero-split.video-expanded .hero-video-box video {
+  pointer-events: auto;
+}
+
+/* Fade out left gradient */
+.hero-split.video-expanded .hero-gradient-overlay {
+  opacity: 0;
+}
+
+/* Hide play hint */
+.hero-split.video-expanded .video-play-hint {
+  opacity: 0;
+}
+
+/* Reveal close button with delay so it appears after slide completes */
+.hero-split.video-expanded .hero-close-btn {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1) rotate(0deg);
+  transition:
+    opacity 0.35s ease 0.45s,
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 0.45s,
+    background 0.2s ease;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1024px) {
+  .hero-split {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+
+  .hero-text-box {
+    padding: 56px 5% 64px;
+    text-align: center;
+    transition:
+      flex 0.65s cubic-bezier(0.77, 0, 0.18, 1),
+      transform 0.65s cubic-bezier(0.77, 0, 0.18, 1),
+      opacity 0.45s ease;
+  }
+
+  .hero-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-video-box {
+    width: 100%;
+    height: 50vh;
+    flex: none;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-gradient-overlay {
+    background: linear-gradient(to bottom, var(--aeh-navy) 0%, transparent 50%);
+  }
+
+  /* On mobile, slide up instead of left */
+  .hero-split.video-expanded .hero-text-box {
+    transform: translateY(-110%);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-text-box h1 {
+    font-size: clamp(2.4rem, 9vw, 3.2rem);
+  }
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+/* --- THE VISION STRIP --- */
+
+.vision-strip {
+  padding: 20px 0;
+  background-color: var(--aeh-light-back);
+  /* #f5f9fb */
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+
+  /* 1. Ensure the whole section behaves as a centered flex box */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.vision-strip .container {
+  /* 2. Force the container to center its children regardless of its width */
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.vision-content {
+  /* 3. Restricted width for readability, but margin auto to keep it centered */
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+
+  /* 4. Align all items (tag, h2, attribution) to the center */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.institutional-quote {
+  /* clamp makes the font size fluid so it won't break on small screens */
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  line-height: 1.4;
+  color: var(--aeh-navy);
+  margin: 20px 0;
+  text-transform: none !important;
+}
+
+.institutional-quote em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-blue);
+}
+
+.green-tag {
+  /* Force centering of the tag */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.quote-attribution {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.7rem;
+  color: var(--aeh-green);
+  margin-top: 10px;
+}
+
+/* RESPONSIVE TWEAK */
+@media (max-width: 768px) {
+  .vision-strip {
+    padding: 60px 0;
+  }
+
+  .institutional-quote {
+    max-width: 100%;
+    /* Use full width on mobile */
+  }
+}
+
+/* VISION STRIP END */
+
+/* --- PROBLEM SECTION --- */
+.problem-section {
+  background-color: var(--aeh-white);
+  padding: 70px 5%; /* Reduced from 100px */
+  color: var(--aeh-navy);
+}
+
+.container {
+  max-width: 1200px; /* Tighter container */
+  margin: 0 auto;
+}
+
+.problem-header {
+  max-width: 700px;
+  margin-bottom: 45px; /* Reduced from 60px */
+}
+
+.problem-header h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 3vw, 2.8rem); /* Scaled down from 3.5rem */
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.problem-intro {
+  font-size: 1.1rem; /* Scaled down */
+  font-weight: 300;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+/* --- TIGHTER STATS GRID --- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr; /* Slimmer main column */
+  grid-template-rows: repeat(2, 210px); /* Reduced height from 280px */
+  gap: 15px; /* Tighter spacing */
+}
+
+.stat-card {
+  background-color: var(--aeh-light-back);
+  padding: 30px; /* Reduced from 40px */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.03); /* Subtle border for definition */
+}
+
+.stat-card .text-green {
+  color: var(--aeh-green);
+}
+
+/* Icons */
+.card-icon {
+  font-size: 1.2rem; /* Scaled down */
+  color: var(--aeh-blue);
+  margin-bottom: 12px;
+}
+
+.ghost-icon {
+  position: absolute;
+  top: 5%;
+  right: -5%;
+  font-size: 10rem; /* Scaled down from 15rem */
+  color: rgba(255, 255, 255, 0.05);
+}
+
+/* Main Card (70%) */
+.main-card {
+  grid-row: span 2;
+  background: var(--aeh-dark-blue);
+  color: white;
+  justify-content: center;
+}
+
+.stat-number {
+  font-family: "Playfair Display", serif;
+  font-size: 4.5rem; /* Scaled down from 6.5rem */
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-number-small {
+  font-family: "Playfair Display", serif;
+  font-size: 2.2rem; /* Scaled down from 3rem */
+  color: var(--aeh-navy);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.stat-label {
+  font-size: 0.9rem; /* Scaled down */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--aeh-green);
+}
+
+.stat-label-small {
+  font-size: 0.75rem; /* Scaled down */
+  font-weight: 600;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Accents */
+.accent-line.blue {
+  background-color: var(--aeh-blue);
+  width: 6px; /* Making it wider as requested */
+}
+
+.accent-line.green {
+  background-color: var(--aeh-green);
+  width: 6px; /* Making it wider as requested */
+}
+
+/* Update the base accent-line to ensure it's visible */
+.accent-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 5; /* Ensure it stays on top of the card background */
+}
+
+/* Mobile Adjustments */
+@media (max-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .main-card {
+    grid-column: span 2;
+    padding: 50px 30px;
+  }
+  .stat-card {
+    height: 180px;
+  }
+}
+
+/* PROBLEM SECTION END */
+
+/* section 2 */
+.hero-editorial {
+  padding: 20px 0 50px 0;
+  background: var(--aeh-white);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0% 5%;
+}
+
+.hero-text h1 {
+  font-size: clamp(3rem, 6vw, 6rem);
+  line-height: 1;
+  margin-bottom: 30px;
+}
+
+.hero-lead {
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  max-width: 550px;
+  margin-bottom: 40px;
+}
+
+.hero-image-stack {
+  position: relative;
+}
+
+.img-large img {
+  width: 100%;
+  height: 570px;
+  object-fit: cover;
+}
+
+.floating-stat {
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  background: var(--aeh-green);
+  color: white;
+  padding: 40px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+}
+
+.stat-num {
+  display: block;
+  font-family: "EB Garamond";
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.floating-stat p {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+/* section 2 end */
+
+/* --- Our solution section --- */
+.pillar-deep-dive {
+  padding: 20px 5%;
+  background-color: var(--aeh-light-back);
+}
+
+.section-header-center {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+}
+
+.section-header-center h2 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.section-intro-text {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.pillar-row {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 120px;
+  align-items: center;
+  margin-bottom: 140px;
+}
+
+.pillar-row.reverse {
+  direction: rtl;
+}
+
+.pillar-row.reverse .p-content {
+  direction: ltr;
+}
+
+/* Number & Text Styling */
+.p-num {
+  font-family: "EB Garamond", serif;
+  font-size: 2.5rem;
+  color: var(--aeh-blue);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.p-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.p-content h3 {
+  font-size: 3rem;
+  line-height: 1.1;
+  margin-bottom: 25px;
+}
+
+.p-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+  max-width: 95%;
+}
+
+.p-content p.pillar-body-sm {
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.pillar-link {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  color: var(--aeh-blue);
+  text-decoration: none;
+  transition: 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pillar-link i {
+  transition: transform 0.3s ease;
+}
+
+.pillar-link:hover {
+  color: var(--aeh-green);
+}
+
+.pillar-link:hover i {
+  transform: translateX(5px);
+}
+
+/* our solutions section end */
+
+/* --- AEH AT A GLANCE SECTION --- */
+
+.at-a-glance {
+  padding: 20px 0;
+  background-color: var(--aeh-white);
+}
+
+.at-a-glance .container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0% 5%;
+}
+
+.glance-header {
+  margin-bottom: 60px;
+}
+
+.eyebrow-wrap {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.accent-line {
+  width: 40px;
+  height: 2px;
+  background-color: var(--aeh-blue);
+}
+
+.glance-header h2 {
+  font-size: 3.5rem;
+  color: var(--aeh-dark-blue);
+}
+
+/* The Architectural Grid */
+.glance-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 200px);
+  gap: 20px;
+}
+
+.glance-card {
+  background-color: var(--aeh-light-back);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+  border-left: 1px solid var(--aeh-blue);
+  /* Subtle institutional line */
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+/* Variety: Green Borders */
+.glance-card.border-green {
+  border-left-color: var(--aeh-green);
+}
+
+/* High Impact Card: Spans 2 rows and 2 columns */
+.glance-card.high-impact {
+  grid-column: span 2;
+  grid-row: span 2;
+  background-color: var(--aeh-dark-blue);
+  border-left: none;
+}
+
+.glance-card.high-impact .stat-num {
+  font-size: 6rem;
+  color: var(--aeh-white);
+}
+
+.glance-card.high-impact .stat-label {
+  color: var(--aeh-green);
+  font-size: 1rem;
+}
+
+/* Number Styling */
+.stat-num {
+  font-family: "EB Garamond", serif;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--aeh-dark-blue);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.stat-label {
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* Hover Interaction */
+.glance-card:hover {
+  background-color: var(--aeh-dark-background);
+  transform: translateY(-5px);
+}
+
+.glance-card.high-impact:hover {
+  background-color: #2a475e;
+  /* Slightly lighter navy */
+}
+
+/* Subtle Background Icon for the large card */
+.card-bg-icon {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 12rem;
+  color: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .glance-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .glance-card.high-impact {
+    grid-column: span 2;
+    grid-row: span 1;
+    padding: 60px 40px;
+  }
+
+  .glance-card.high-impact .stat-num {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .glance-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .glance-card.high-impact {
+    grid-column: span 1;
+  }
+
+  .glance-header h2 {
+    font-size: 2.5rem;
+  }
+}
+
+/* AEH at a Glance section end */
+.aeh-impact {
+  padding: 50px 5%;
+  background-color: var(--aeh-dark-blue);
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  /* Asymmetrical grid favoring the image */
+  gap: 100px;
+  align-items: center;
+}
+
+/* Immersive Image Styling */
+.visual-wrapper {
+  position: relative;
+  width: 100%;
+  height: 650px;
+  /* Institutional height */
+  overflow: visible;
+}
+
+.impact-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 2;
+  filter: brightness(0.85);
+  /* Darkens image slightly to make white text pop */
+}
+
+/* Branded Offset Border */
+.visual-accent-border {
+  position: absolute;
+  top: 30px;
+  left: -30px;
+  width: 100%;
+  height: 100%;
+  border: 3px solid var(--aeh-green);
+  z-index: 1;
+}
+
+/* Reference Image Overlay Effect */
+.visual-overlay-content {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(13, 44, 79, 0.2);
+  /* AEH Navy tint */
+}
+
+.play-trigger {
+  width: 90px;
+  height: 90px;
+  background-color: var(--aeh-green);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.play-trigger:hover {
+  transform: scale(1.1);
+  background-color: var(--aeh-blue);
+}
+
+.overlay-text {
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  font-size: 4.5rem;
+  color: white;
+  line-height: 0.9;
+  letter-spacing: -3px;
+  text-align: center;
+}
+
+/* Text Area Alignment */
+.impact-heading {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin-bottom: 30px;
+  color: var(--aeh-white);
+}
+
+.impact-description p {
+  font-size: 1.2rem;
+  color: var(--aeh-white);
+  margin-bottom: 25px;
+  line-height: 1.8;
+}
+
+.impact-description strong {
+  color: var(--aeh-white);
+  font-weight: 600;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .impact-grid {
+    gap: 60px;
+  }
+
+  .overlay-text {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .impact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .visual-wrapper {
+    height: 450px;
+  }
+
+  .visual-accent-border {
+    left: 0;
+    top: 20px;
+  }
+
+  .impact-heading {
+    font-size: 2.8rem;
+  }
+}
+
+/* aeh impact section end */
+
+/* --- UNIVERSITY PORTFOLIO: INSTITUTIONAL REFINEMENT --- */
+
+#network {
+  padding: 20px 5%;
+  background-color: var(--aeh-light-back);
+}
+
+.section-header-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 30px;
+}
+
+.institutional-heading {
+  font-size: 2.8rem;
+  color: var(--aeh-navy);
+}
+
+/* Custom Swiper Navigation Alignment */
+.swiper-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding-bottom: 10px;
+}
+
+.uni-prev,
+.uni-next {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--aeh-navy);
+  transition: 0.3s;
+  opacity: 0.6;
+}
+
+.uni-prev:hover,
+.uni-next:hover {
+  opacity: 1;
+  color: var(--aeh-blue);
+}
+
+.uni-fraction {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  color: var(--aeh-navy);
+  min-width: 80px;
+  text-align: center;
+}
+
+.network-asset-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  /* CALCULATED HEIGHT: Viewport minus Nav height (assuming 80px) and Header height */
+  min-height: 600px;
+  /* Safety fallback for small screens */
+  border-top: 1px solid var(--aeh-dark-blue);
+}
+
+/* Image Side */
+.asset-visual {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.asset-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.asset-geo-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: var(--aeh-navy);
+  color: white;
+  padding: 15px 30px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  z-index: 10;
+}
+
+/* Content Side */
+.asset-details {
+  background-color: var(--aeh-white);
+  display: flex;
+  align-items: center;
+  padding: 40px 8%;
+}
+
+.details-inner {
+  max-width: 550px;
+}
+
+.asset-eyebrow {
+  color: var(--aeh-green);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.asset-title {
+  font-size: 3.2rem;
+  line-height: 1.1;
+  margin-bottom: 40px;
+  color: var(--aeh-navy);
+}
+
+/* Statistics Grid */
+.asset-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 40px;
+}
+
+.a-stat p {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+
+.a-stat span {
+  font-family: "EB Garamond", serif;
+  font-size: 2rem;
+  color: var(--aeh-navy);
+  font-weight: 500;
+}
+
+/* Faculty and Mission Detail */
+.faculties-wrap h4 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  color: var(--aeh-dark-blue);
+}
+
+.faculty-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 12px 20px;
+  margin-bottom: 40px;
+}
+
+.faculty-list li {
+  font-size: 0.95rem;
+  color: var(--text);
+  padding-left: 15px;
+  position: relative;
+}
+
+.faculty-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 1px;
+  background-color: var(--aeh-blue);
+}
+
+.asset-mission-box {
+  padding: 30px;
+  background-color: var(--aeh-light-back);
+  border-left: 4px solid var(--aeh-blue);
+  margin-bottom: 40px;
+}
+
+.asset-mission-box p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.btn-text-reveal {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--aeh-navy);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-text-reveal i {
+  margin-left: 10px;
+  transition: transform 0.3s;
+}
+
+.btn-text-reveal:hover {
+  color: var(--aeh-green);
+}
+
+.btn-text-reveal:hover i {
+  transform: translateX(5px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .asset-title {
+    font-size: 2.5rem;
+  }
+
+  .asset-details {
+    padding: 60px 5%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .network-asset-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .asset-visual {
+    height: 400px;
+  }
+
+  .faculty-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* our uni netwrok end */
+
+/* --- AEH NEWS ROOM --- */
+
+.aeh-news-room {
+  padding: 20px 5%;
+  border-top: 1px solid var(--border);
+  background: var(--aeh-dark-background);
+}
+
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 50px;
+}
+
+.news-header h2 {
+  font-size: 3.5rem;
+}
+
+.btn-outline-news {
+  padding: 12px 30px;
+  border: 1px solid var(--aeh-dark-blue);
+  text-decoration: none;
+  color: var(--aeh-dark-blue);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.btn-outline-news:hover {
+  background: var(--aeh-dark-blue);
+  color: white;
+}
+
+/* The Layout Grid */
+.news-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  /* Featured takes more width */
+  gap: 60px;
+}
+
+/* Category Tags */
+.category-tag {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 15px;
+}
+
+.category-tag.blue {
+  color: var(--aeh-blue);
+}
+
+.category-tag.green {
+  color: var(--aeh-green);
+}
+
+.category-tag.navy {
+  color: var(--aeh-dark-blue);
+}
+
+/* Featured Story */
+.news-featured .news-img-wrap {
+  height: 450px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.news-featured img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.news-featured:hover img {
+  transform: scale(1.03);
+}
+
+.news-featured h3 {
+  font-size: 2.4rem;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.news-featured h3 a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+}
+
+.news-featured h3 a:hover {
+  color: var(--aeh-blue);
+}
+
+.news-snippet {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  max-width: 90%;
+}
+
+.news-date {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #a0aec0;
+  letter-spacing: 1px;
+}
+
+/* Sidebar Items */
+.news-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.sidebar-item {
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-item:last-child {
+  border-bottom: none;
+}
+
+.sidebar-text {
+  flex: 1;
+}
+
+.sidebar-text h4 {
+  font-size: 1.35rem;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+.sidebar-text h4 a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+}
+
+.sidebar-text h4 a:hover {
+  color: var(--aeh-blue);
+}
+
+.sidebar-thumb {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+.sidebar-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb-icon {
+  font-size: 1.5rem;
+  color: var(--aeh-blue);
+  opacity: 0.3;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .news-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .news-featured .news-img-wrap {
+    height: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar-item {
+    flex-direction: column-reverse;
+  }
+
+  .sidebar-thumb {
+    width: 100%;
+    height: 200px;
+  }
+
+  .news-featured h3 {
+    font-size: 1.8rem;
+  }
+}
