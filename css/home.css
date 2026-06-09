@@ -1,0 +1,1570 @@
+/* =============================================
+   CAVENDISH AFRICA — HOME PAGE STYLES
+   home.css  (loaded only on index.php)
+   ============================================= */
+
+/* =============================================
+   CAVENDISH AFRICA — INSTITUTIONAL HERO
+   ============================================= */
+
+.container {
+  max-width: 1200px; /* Tighter container */
+  margin: 0 auto;
+}
+
+/* 1. THE SWIPER HEIGHT */
+.hero-swiper-main,
+.hero-swiper-main .swiper-wrapper,
+.hero-swiper-main .swiper-slide {
+  height: 100% !important;
+  position: relative;
+}
+
+.hero-main-carousel {
+  position: relative;
+  width: 100%;
+  /* Adjust 90px to match your actual sticky nav height */
+  height: calc(100vh - 90px);
+  min-height: 650px;
+  background-color: #000;
+  overflow: hidden;
+}
+
+/* --- Background Image & Ken Burns Zoom --- */
+.hero-slide-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  transition: transform 12s ease-out;
+  transform: scale(1);
+}
+
+.swiper-slide-active .hero-slide-bg {
+  transform: scale(1.12);
+}
+
+/* --- Neutral Scrim Overlay --- */
+.hero-full-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  /* Darker at bottom for maximum text legibility */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(13, 44, 79, 0.3) 50%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+}
+
+/* --- Layout Container (The Bottom-Left Anchor) --- */
+.hero-container-bottom {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 2rem 30px 2rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.hero-content-editorial {
+  max-width: 1200px;
+  opacity: 0;
+  transform: translateY(25px);
+  transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1) 0.5s;
+  text-align: left;
+}
+
+.swiper-slide-active .hero-content-editorial {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Typography: Headline --- */
+.hero-content-editorial h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 5.5vw, 4.8rem);
+  color: #ffffff;
+  line-height: 1.05;
+  margin-bottom: 12px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  /* Controls the break point for the 2-line look */
+  max-width: 1100px;
+}
+
+.hero-content-editorial h1 em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-blue);
+  font-weight: 400;
+}
+
+/* --- Typography: Subheadline --- */
+.hero-subheadline {
+  font-family: "Merriweather", serif;
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.4;
+  font-weight: 300;
+  margin-bottom: 30px;
+
+  /* Forces the one-line look on desktop */
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+/* --- Hero Actions (Buttons) --- */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-actions .pillar-link.white {
+  color: #ffffff;
+  border-bottom: 2px solid var(--aeh-green);
+  padding-bottom: 4px;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-actions .pillar-link.white:hover {
+  color: var(--aeh-green);
+}
+
+/* --- Navigation Controls --- */
+.hero-controls-editorial {
+  position: absolute;
+  bottom: 30px; /* Matches container padding for baseline alignment */
+  right: 5%;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 1px; /* Seamless look between arrows */
+}
+
+.hero-prev,
+.hero-next {
+  width: 55px;
+  height: 55px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-prev:hover,
+.hero-next:hover {
+  background: var(--aeh-blue);
+  border-color: var(--aeh-blue);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1200px) {
+  .hero-subheadline {
+    white-space: normal; /* Allow wrap on smaller screens */
+    max-width: 750px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-main-carousel {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .hero-container-bottom {
+    padding-bottom: 140px; /* Space for mobile controls */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-content-editorial {
+    text-align: center;
+  }
+
+  .hero-subheadline {
+    margin: 0 auto 30px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hero-controls-editorial {
+    right: 0;
+    left: 0;
+    justify-content: center;
+    bottom: 40px;
+  }
+}
+
+/* =============================================
+   WHO IS CAVENDISH SECTION (REFINED)
+   ============================================= */
+.umbrella-definition {
+  padding: 60px 0;
+  background-color: var(--aeh-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Sophisticated background watermark */
+.umbrella-definition::before {
+  content: "Identity";
+  position: absolute;
+  top: 20px;
+  right: -20px;
+  font-family: "Playfair Display", serif;
+  font-size: 15rem;
+  font-weight: 700;
+  color: rgba(13, 44, 79, 0.03);
+  line-height: 1;
+  pointer-events: none;
+  letter-spacing: -5px;
+}
+
+.umbrella-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 100px;
+  align-items: center; /* Center vertically for a balanced look */
+}
+
+/* Left Side: The Question */
+.eyebrow-accent {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 0.7rem;
+  color: var(--aeh-green);
+  margin-bottom: 24px;
+  display: block;
+}
+
+.umbrella-headline {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  line-height: 1.05;
+  color: var(--aeh-navy);
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+}
+
+.umbrella-headline em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-blue);
+  font-weight: 400;
+}
+
+.branded-line {
+  width: 60px;
+  height: 3px;
+  background-color: var(--aeh-blue);
+}
+
+/* Right Side: The Definition */
+.umbrella-description p {
+  font-family: "Merriweather", serif;
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: #4a5568;
+  margin-bottom: 25px;
+  font-weight: 300;
+}
+
+.mission-highlight {
+  padding-left: 30px;
+  border-left: 2px solid var(--aeh-green);
+  font-style: italic;
+  color: var(--aeh-navy) !important;
+}
+
+.umbrella-description strong {
+  color: var(--aeh-blue);
+  font-weight: 700;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .umbrella-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .umbrella-definition {
+    padding: 80px 5%;
+  }
+
+  .umbrella-definition::before {
+    display: none; /* Clean up mobile */
+  }
+}
+
+/* VISION STRIP END */
+
+/* =============================================
+   CHALLENGE & PARALLAX STATS
+   ============================================= */
+
+/* --- Challenge Narrative --- */
+.challenge-narrative {
+  padding: 40px 0;
+  background-color: var(--aeh-light-back);
+}
+
+.challenge-header {
+  max-width: 800px;
+  margin-bottom: 80px;
+}
+
+.section-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  color: var(--aeh-navy);
+  line-height: 1.1;
+  margin-bottom: 25px;
+}
+
+.section-title em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-blue);
+}
+
+.section-lead {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #555;
+  font-weight: 300;
+}
+
+/* --- Challenge Cards --- */
+.challenge-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.challenge-card {
+  background: var(--aeh-white);
+  padding: 50px 40px;
+  border: 1px solid #eee;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 300px;
+}
+
+.challenge-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  border-color: var(--aeh-blue);
+}
+
+.card-num {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  color: var(--aeh-green);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+}
+
+.challenge-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.6rem;
+  line-height: 1.3;
+  color: var(--aeh-navy);
+}
+
+.card-line {
+  width: 40px;
+  height: 2px;
+  background: var(--aeh-blue);
+  margin-top: 30px;
+  transition: width 0.4s ease;
+}
+
+.challenge-card:hover .card-line {
+  width: 100%;
+}
+
+/* --- Parallax Stats Section --- */
+.parallax-stats-section {
+  position: relative;
+  padding: 60px 0;
+  color: white;
+  overflow: hidden;
+}
+
+.parallax-bg {
+  position: absolute;
+  inset: 0;
+  /* Use a high-quality abstract pattern image */
+  background-image: url("../images/lib5.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.parallax-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 44, 79, 0.7); /* AEH Navy tint */
+  z-index: 2;
+}
+
+.stats-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+}
+
+.column-title {
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 0.8rem;
+  color: var(--aeh-green);
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+
+.stat-item {
+  margin-bottom: 40px;
+}
+
+.stat-big {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-size: 5rem;
+  line-height: 1;
+  margin-bottom: 10px;
+  color: var(--aeh-white);
+}
+
+.stat-item p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 350px;
+}
+
+.stat-desc {
+  font-style: italic;
+  font-family: "EB Garamond", serif;
+  font-size: 1.3rem !important;
+  border-left: 2px solid var(--aeh-blue);
+  padding-left: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .challenge-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .stats-split-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  .parallax-bg {
+    background-attachment: scroll;
+  } /* Disable parallax on mobile for performance */
+}
+
+/* PROBLEM SECTION END */
+
+/* =============================================
+   THE GUIDE (CREDIBILITY) SECTION
+   ============================================= */
+.guide-credibility {
+  padding: 40px 0;
+  background-color: var(--aeh-white);
+}
+
+.guide-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+
+/* Content Styling */
+.guide-headline {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  color: var(--aeh-navy);
+  margin-bottom: 30px;
+}
+
+.guide-headline em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-blue);
+  font-weight: 400;
+}
+
+.guide-lead {
+  font-family: "Merriweather", serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 50px;
+  font-weight: 300;
+}
+
+/* Credibility Stats Strip */
+.credibility-stats {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 50px;
+  padding: 30px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.cred-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.cred-num {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--aeh-navy);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.cred-label {
+  font-family: "Inter", sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--aeh-green);
+  font-weight: 700;
+}
+
+/* Visual Authority Styling */
+.guide-visual {
+  position: relative;
+}
+
+.image-stack {
+  position: relative;
+  z-index: 2;
+}
+
+.image-main {
+  position: relative;
+  z-index: 3;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+}
+
+.image-main img {
+  width: 100%;
+  /* 
+     Instead of a fixed height, use an aspect ratio. 
+     3/2 matches your 6016x4016 dimensions exactly.
+     If you want it to feel a bit taller/more 'institutional', try 4/3.
+  */
+  aspect-ratio: 4 / 3;
+
+  object-fit: cover;
+  object-position: center 20%;
+
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+/* The Branded Offset Box */
+.image-accent-box {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--aeh-blue);
+  z-index: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .guide-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .guide-visual {
+    order: -1; /* Image on top for mobile */
+  }
+
+  .credibility-stats {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .image-accent-box {
+    display: none;
+  }
+}
+
+/* =============================================
+   THE PLAN (REIMAGINING EDUCATION)
+   ============================================= */
+.reimagine-section {
+  padding: 60px 0;
+  background-color: var(
+    --aeh-light-back
+  ); /* Light gray to distinguish from white section above */
+  border-top: 1px solid rgba(13, 44, 79, 0.05);
+}
+
+.reimagine-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 120px;
+  align-items: center;
+}
+
+/* Narrative Styling */
+.reimagine-headline {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  color: var(--aeh-navy);
+  margin-bottom: 40px;
+}
+
+.reimagine-headline em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-blue);
+  font-weight: 400;
+}
+
+.reimagine-body p {
+  font-family: "Merriweather", serif;
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: #4a5568;
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+/* The Philosophy Card */
+.philosophy-card {
+  background-color: var(--aeh-navy);
+  padding: 60px;
+  position: relative;
+  box-shadow: 0 40px 80px rgba(13, 44, 79, 0.15);
+}
+
+.card-label {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.7rem;
+  color: var(--aeh-green);
+  display: block;
+  margin-bottom: 40px;
+}
+
+.outcome-list {
+  list-style: none;
+  padding: 0;
+}
+
+.outcome-list li {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: 2.2rem;
+  color: var(--aeh-white);
+  line-height: 1.4;
+  margin-bottom: 15px;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.outcome-list li:hover {
+  opacity: 1;
+  color: var(--aeh-blue);
+  transform: translateX(10px);
+}
+
+.card-accent-line {
+  width: 40px;
+  height: 2px;
+  background-color: var(--aeh-green);
+  margin-top: 40px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .reimagine-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .philosophy-card {
+    padding: 40px;
+  }
+
+  .outcome-list li {
+    font-size: 1.8rem;
+  }
+}
+
+/* =============================================
+   SECTION 1: DYNAMIC GLANCE (DARK BENTO)
+   ============================================= */
+.glance-bento.dark-version {
+  padding: 60px 0;
+  background-color: var(--aeh-light-back);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.dark-version .bento-header {
+  margin-bottom: 60px;
+}
+
+.dark-version .bento-benefit {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  color: var(--aeh-navy);
+}
+
+.dark-version .bento-benefit em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-blue);
+}
+
+/* THE BENTO GRID: 1 Large Anchor + 2x2 Small Grid */
+.bento-grid {
+  display: grid;
+  /* 1.5fr for the main card, then two equal columns for the 2x2 */
+  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-rows: 220px 220px;
+  gap: 20px;
+}
+
+.dark-version .bento-item {
+  background: var(--aeh-navy);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.dark-version .bento-item:hover {
+  transform: translateY(-5px);
+  background: rgba(13, 44, 79, 0.75); /* same navy, lighter feel */
+  border-color: var(--aeh-blue);
+}
+
+/* Main Anchor Card (Left Side) */
+.dark-version .graduands-box {
+  grid-column: 1;
+  grid-row: 1 / 3; /* Spans both rows */
+  color: white;
+  background: var(--aeh-navy);
+  padding: 50px;
+}
+
+/* Typography for Bento */
+.bento-num {
+  font-family: "Playfair Display", serif;
+  font-size: 3.5rem;
+  line-height: 1;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.graduands-box .bento-num {
+  font-size: 6rem;
+  color: var(--aeh-green);
+}
+
+.bento-num-sm {
+  font-family: "Playfair Display", serif;
+  font-size: 2.8rem;
+  line-height: 1;
+  margin-bottom: 5px;
+  display: block;
+  color: var(--aeh-green);
+}
+
+.bento-label {
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--aeh-green);
+}
+
+.graduands-box .bento-label {
+  color: white;
+  opacity: 0.9;
+}
+
+.bento-label-sm {
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.65rem;
+  color: white;
+}
+
+.bento-bg-icon {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 15rem;
+  color: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+}
+
+/* =============================================
+   SECTION 2: THE PORTFOLIO (FULL-WIDTH LIGHT)
+   ============================================= */
+.portfolio-section.light-version {
+  padding: 60px 0 0 0;
+  background-color: var(--aeh-navy);
+  color: var(--aeh-white);
+  position: relative;
+}
+
+.light-version .portfolio-headline {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: var(--aeh-white);
+}
+
+.light-version .portfolio-headline span {
+  display: block;
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-blue);
+  font-weight: 400;
+}
+
+.light-version .portfolio-subheadline {
+  font-size: 1.15rem;
+  max-width: 600px;
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+
+/* EDITORIAL PAGINATION: < 01 / 03 > 
+   Positioned relative to the container to align with site margins */
+.portfolio-controls {
+  position: absolute;
+  /* Adjust top value to sit perfectly above the institution name */
+  top: 280px;
+  right: 2rem; /* Matches the standard nav/container padding */
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  background: white;
+  padding: 10px 0;
+}
+
+.port-pagination {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  letter-spacing: 4px;
+  font-size: 1.1rem;
+  color: var(--aeh-navy);
+  min-width: 100px;
+  text-align: center;
+}
+
+.port-prev,
+.port-next {
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: #cbd5e1; /* Subtle gray arrows */
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.port-prev:hover,
+.port-next:hover {
+  color: var(--aeh-blue);
+  transform: scale(1.2);
+}
+
+.swiper-pagination-fraction {
+  color: var(--aeh-navy) !important;
+}
+
+/* FULL WIDTH SWIPER FIX */
+.portfolio-swiper {
+  width: 100%;
+  margin-top: 50px;
+}
+
+/* ASSET CARD (The Slides) - Now Full Width */
+.asset-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Symmetrical 50/50 split */
+  width: 100%;
+  min-height: 650px;
+  background: var(--aeh-light-back);
+}
+
+.asset-image-side {
+  position: relative;
+  overflow: hidden;
+}
+
+.flash-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 2s ease;
+}
+
+.swiper-slide-active .flash-img {
+  transform: scale(1.1);
+}
+
+.asset-tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--aeh-green);
+  color: white;
+  padding: 15px 30px;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.7rem;
+  z-index: 5;
+}
+
+.asset-info-side {
+  /* Padding adjusted to 10% to keep text elegant on wide screens */
+  padding: 80px 10%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.asset-name {
+  font-family: "Playfair Display", serif;
+  font-size: 3.2rem;
+  line-height: 1.1;
+  margin-bottom: 30px;
+  color: var(--aeh-navy);
+  /* Space for the pagination above */
+  margin-top: 20px;
+}
+
+.asset-stats-row {
+  display: flex;
+  gap: 50px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 30px;
+}
+
+.a-stat span {
+  font-family: "EB Garamond", serif;
+  font-size: 2.5rem;
+  color: var(--aeh-blue);
+  line-height: 1;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.a-stat p {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+.asset-desc {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 45px;
+  color: #475569;
+}
+
+.asset-actions {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+}
+
+/* CABS SPECIFIC STYLING */
+.cabs-card {
+  border-left: 12px solid var(--aeh-blue);
+  background: #f8fafc;
+}
+
+.cabs-card .asset-tag {
+  background: var(--aeh-blue);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .portfolio-controls {
+    top: 350px; /* Adjust for wrapping headlines */
+  }
+}
+
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .graduands-box {
+    grid-column: span 2;
+  }
+
+  .portfolio-controls {
+    position: static;
+    justify-content: center;
+    margin-bottom: 30px;
+    right: auto;
+  }
+
+  .asset-card {
+    grid-template-columns: 1fr;
+  }
+  .asset-image-side {
+    height: 400px;
+  }
+  .asset-info-side {
+    padding: 40px 5%;
+  }
+}
+
+/* =============================================
+   PATHWAYS & TESTIMONIAL THEATER
+   ============================================= */
+.pathways-section {
+  padding: 60px 0;
+  background-color: #f8fafc;
+  overflow: hidden;
+}
+
+.pathways-intro {
+  margin-bottom: 80px;
+}
+
+.pathways-headline {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  color: var(--aeh-navy);
+  margin-bottom: 40px;
+}
+
+.pathways-headline em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-blue);
+}
+
+.pathways-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+.pathways-lead,
+.pathways-sub-lead {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #475569;
+  font-weight: 300;
+}
+
+/* STORY CARD STYLING */
+.testimonial-swiper {
+  padding-bottom: 60px;
+}
+
+.story-card {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  background: white;
+  min-height: 500px;
+  box-shadow: 0 40px 100px rgba(13, 44, 79, 0.05);
+}
+
+.story-visual {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.story-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.story-card:hover .story-visual img {
+  transform: scale(1.05);
+}
+
+/* Play Button Overlay */
+.play-btn-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 44, 79, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  gap: 15px;
+  transition: 0.3s;
+}
+
+.play-circle-lg {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--aeh-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 10px 30px rgba(57, 152, 189, 0.4);
+}
+
+.play-btn-overlay span {
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+/* Content Area */
+.story-content {
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.quote-icon {
+  font-size: 3rem;
+  color: var(--aeh-green);
+  opacity: 0.2;
+  margin-bottom: 30px;
+}
+
+.story-content h3 {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: 2.2rem;
+  line-height: 1.3;
+  color: var(--aeh-navy);
+  margin-bottom: 40px;
+}
+
+.author-name {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--aeh-navy);
+  margin-bottom: 5px;
+}
+
+.author-role {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+/* Controls */
+/* --- TESTIMONIAL CONTROLS: CENTERED CLUSTER --- */
+.testimonial-controls {
+  display: flex;
+  justify-content: center; /* Centers the entire group */
+  align-items: center;
+  gap: 40px; /* Space between arrows and the dot cluster */
+  margin-top: 60px;
+  width: 100%;
+  position: relative;
+}
+
+/* The Dot Container */
+.test-pagination-dots {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 12px; /* Tight spacing between dots */
+  width: auto !important; /* Prevents swiper from stretching it */
+  position: static !important; /* Removes swiper's absolute positioning */
+}
+
+/* Individual Dots */
+.test-pagination-dots .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: var(--aeh-navy) !important;
+  opacity: 0.2;
+  margin: 0 !important; /* Removes default swiper margins */
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Active Dot */
+.test-pagination-dots .swiper-pagination-bullet-active {
+  background-color: var(--aeh-green) !important;
+  opacity: 1;
+  transform: scale(1.5);
+}
+
+/* Arrows */
+.test-prev,
+.test-next {
+  font-size: 1.1rem;
+  color: var(--aeh-navy);
+  cursor: pointer;
+  transition: 0.3s;
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+}
+
+.test-prev:hover,
+.test-next:hover {
+  opacity: 1;
+  color: var(--aeh-blue);
+  transform: translateX(-3px); /* Subtle nudge on hover */
+}
+
+.test-next:hover {
+  transform: translateX(3px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .pathways-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .story-card {
+    grid-template-columns: 1fr;
+  }
+  .story-visual {
+    height: 350px;
+  }
+  .story-content {
+    padding: 40px;
+  }
+}
+
+/* --- AEH NEWS ROOM --- */
+/* --- AEH NEWS ROOM (ORIGINAL TRANSPARENT STYLE) --- */
+.aeh-news-room {
+  padding: 80px 5%;
+  border-top: 1px solid var(--border);
+  background: var(--aeh-dark-background); /* #d6e9ec */
+}
+
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 30px; /* Reduced to make room for filters */
+}
+
+.news-header h2 {
+  font-size: 3.5rem;
+  color: var(--aeh-navy);
+}
+
+.news-header h2 em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-blue);
+}
+
+/* --- THE OUTLINED BUTTON --- */
+.btn-outline-news {
+  padding: 12px 30px;
+  border: 1px solid var(--aeh-navy);
+  text-decoration: none;
+  color: var(--aeh-navy);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.btn-outline-news:hover {
+  background: var(--aeh-navy);
+  color: white;
+}
+
+/* --- THE FILTER BAR (EDITORIAL STYLE) --- */
+.news-filter-wrapper {
+  border-bottom: 1px solid rgba(13, 44, 79, 0.1);
+  margin-bottom: 50px;
+}
+
+.news-category-nav {
+  display: flex;
+  gap: 40px;
+}
+
+.cat-btn {
+  background: none;
+  border: none;
+  padding: 15px 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.7rem;
+  color: rgba(13, 44, 79, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.cat-btn:hover,
+.cat-btn.active {
+  color: var(--aeh-navy);
+}
+
+.cat-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--aeh-green);
+}
+
+/* --- THE LAYOUT GRID --- */
+.news-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 60px;
+}
+
+/* Category Tags (Preserving original colors) */
+.category-tag {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 15px;
+  display: block;
+}
+.category-tag.blue {
+  color: var(--aeh-blue);
+}
+.category-tag.green {
+  color: var(--aeh-green);
+}
+.category-tag.navy {
+  color: var(--aeh-navy);
+}
+
+/* Featured Story (Transparent) */
+.news-featured .news-img-wrap {
+  height: 450px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.news-featured img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.news-featured:hover img {
+  transform: scale(1.03);
+}
+
+.news-featured h3 {
+  font-size: 2.4rem;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+.news-featured h3 a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+}
+.news-featured h3 a:hover {
+  color: var(--aeh-blue);
+}
+
+.news-snippet {
+  font-size: 1.1rem;
+  color: #4a5568;
+  margin-bottom: 20px;
+  max-width: 90%;
+  line-height: 1.7;
+}
+
+.news-date {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #718096;
+  letter-spacing: 1px;
+}
+
+/* Sidebar Items (Transparent) */
+.news-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.sidebar-item {
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(13, 44, 79, 0.1);
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-item:last-child {
+  border-bottom: none;
+}
+
+.sidebar-text {
+  flex: 1;
+}
+.sidebar-text h4 {
+  font-size: 1.35rem;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+.sidebar-text h4 a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+}
+.sidebar-text h4 a:hover {
+  color: var(--aeh-blue);
+}
+
+.sidebar-thumb {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+.sidebar-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Animation */
+.fade-in {
+  animation: newsFade 0.5s ease forwards;
+}
+@keyframes newsFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+  .news-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .news-featured .news-img-wrap {
+    height: 300px;
+  }
+  .news-category-nav {
+    gap: 25px;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar-item {
+    flex-direction: column-reverse;
+  }
+  .sidebar-thumb {
+    width: 100%;
+    height: 200px;
+  }
+  .news-featured h3 {
+    font-size: 1.8rem;
+  }
+}
