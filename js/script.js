@@ -148,6 +148,11 @@ document.addEventListener("DOMContentLoaded", () => {
     loop: true,
     speed: 1000,
     grabCursor: true,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
     navigation: {
       nextEl: ".port-next",
       prevEl: ".port-prev",
@@ -235,6 +240,38 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeModal();
     });
+  }
+
+  // Optimized Scroll Reveal for Proof Cards
+  const revealProofItems = () => {
+    const items = document.querySelectorAll(".proof-reveal-item");
+
+    if (items.length === 0) return;
+
+    const observerOptions = {
+      root: null, // use viewport
+      rootMargin: "0px 0px -50px 0px", // trigger slightly before it enters view
+      threshold: 0.05, // trigger early
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          // Once revealed, stop observing this specific item
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    items.forEach((item) => observer.observe(item));
+  };
+
+  // Ensure it runs after DOM is fully loaded
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", revealProofItems);
+  } else {
+    revealProofItems();
   }
 
   // --- 7. PORTAL SWITCHER (Network Page Sidebar) ---

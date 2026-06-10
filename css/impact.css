@@ -17,7 +17,7 @@
 
 /* 1. Text Area with Horizontal Foundation Line */
 .hero-text-content {
-  padding-left: 12%;
+  padding-left: var(--section-inline-padding);
   padding-right: 80px;
   position: relative;
 }
@@ -161,7 +161,7 @@
     order: -1;
   }
   .hero-text-content {
-    padding: 60px 5%;
+    padding: 60px var(--section-inline-padding);
     text-align: center;
   }
   .strategic-accent-line {
@@ -175,7 +175,7 @@
 /* 2. Immersive Thesis (A New Model Style) */
 .impact-thesis-immersive {
   position: relative;
-  padding: 30px 5%;
+  padding: 30px var(--section-inline-padding);
   min-height: 80vh;
   display: flex;
   align-items: center;
@@ -252,7 +252,7 @@
 
 /* 3. Community Stewardship (Articles) */
 .community-stewardship {
-  padding: 20px 5%;
+  padding: 20px var(--section-inline-padding);
 }
 .section-header-asym {
   margin-bottom: 20px;
@@ -343,7 +343,7 @@
 /* 4. ESG Section */
 .dark-anchor {
   background-color: var(--aeh-navy);
-  padding: 20px 5%;
+  padding: 20px var(--section-inline-padding);
   color: white;
 }
 
@@ -391,7 +391,7 @@
 
 .section-light-back {
   background-color: var(--aeh-light-back);
-  padding: 20px 5%;
+  padding: 20px var(--section-inline-padding);
   border-top: 1px solid var(--border);
   position: relative;
   overflow: hidden;

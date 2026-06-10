@@ -21,7 +21,7 @@
 
 /* --- SWIPER SECTION --- */
 .leadership-carousel-section {
-  padding: 20px 5%;
+  padding: 20px var(--section-inline-padding);
   background-color: var(--aeh-dark-background);
 }
 

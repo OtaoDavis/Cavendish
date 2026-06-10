@@ -8,8 +8,8 @@ section .container {
   max-width: 1300px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 5%;
-  padding-right: 5%;
+  padding-left: var(--section-inline-padding);
+  padding-right: var(--section-inline-padding);
 }
 
 /* ============================================================
@@ -591,7 +591,7 @@ section .container {
 .cabs-testimonial-inner {
   position: relative;
   z-index: 2;
-  padding: 100px 5%;
+  padding: 100px var(--section-inline-padding);
 }
 
 .testimonial-content {
@@ -874,7 +874,7 @@ section .container {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 100px 5%;
+  padding: 100px var(--section-inline-padding);
 }
 
 .cabs-cta .cabs-eyebrow {

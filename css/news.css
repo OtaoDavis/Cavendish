@@ -1,6 +1,6 @@
 /* --- NEWS LIST PAGE --- */
 .news-simple-hero {
-  padding: 20px 5%;
+  padding: 20px var(--section-inline-padding);
   background: var(--aeh-navy);
   position: relative;
 }
@@ -102,7 +102,7 @@
 /* --- PREMIUM NEWS FEED STYLING --- */
 
 .news-feed-section {
-  padding: 20px 5%;
+  padding: 20px var(--section-inline-padding);
   background-color: var(--aeh-white);
 }
 
@@ -251,7 +251,7 @@
 /* --- ARTICLE PAGE --- */
 .article-hero-navy {
   background: var(--aeh-navy);
-  padding: 60px 5%;
+  padding: 60px var(--section-inline-padding);
   color: white;
 }
 .article-hero-navy h1 {

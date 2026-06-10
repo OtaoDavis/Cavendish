@@ -8,8 +8,13 @@
    ============================================= */
 
 .container {
-  max-width: 1200px; /* Tighter container */
+  width: min(100% - (var(--container-gutter) * 2), var(--container-max));
   margin: 0 auto;
+}
+
+/* Keep the home page footer aligned with the global navbar edges. */
+.site-footer .container {
+  max-width: 100%;
 }
 
 /* 1. THE SWIPER HEIGHT */
@@ -319,7 +324,7 @@
   }
 
   .umbrella-definition {
-    padding: 80px 5%;
+    padding: 80px var(--section-inline-padding);
   }
 
   .umbrella-definition::before {
@@ -375,7 +380,7 @@
 .challenge-card {
   background: var(--aeh-white);
   padding: 50px 40px;
-  border: 1px solid #eee;
+  border: 1px solid var(--aeh-dark-blue);
   transition: all 0.4s ease;
   display: flex;
   flex-direction: column;
@@ -499,8 +504,6 @@
     background-attachment: scroll;
   } /* Disable parallax on mobile for performance */
 }
-
-/* PROBLEM SECTION END */
 
 /* =============================================
    THE GUIDE (CREDIBILITY) SECTION
@@ -747,6 +750,171 @@
 }
 
 /* =============================================
+   THE PLAN - PREMIUM EDITORIAL FIX
+   ============================================= */
+.the-plan-section {
+  position: relative;
+  padding: clamp(60px, 15vh, 60px) 0;
+  background-color: var(--aeh-dark-blue);
+  overflow: hidden;
+}
+
+/* --- WATERMARK: Subtle & Contained --- */
+.plan-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Playfair Display", serif;
+  /* Reduced size to ensure it fits the width without cutting off */
+  font-size: clamp(10rem, 20vw, 24rem);
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.03); /* Lower opacity for true background feel */
+  line-height: 1;
+  pointer-events: none;
+  z-index: 1;
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+}
+
+.relative-z {
+  position: relative;
+  z-index: 10;
+}
+
+/* --- GRID: No Overlap --- */
+.plan-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr; /* Clear 2-column split */
+  gap: clamp(40px, 8vw, 120px);
+  align-items: center;
+}
+
+/* --- HEADLINE: Bold & Stately --- */
+.plan-headline {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.8rem, 5.5vw, 5rem); /* Massive size */
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 35px;
+  color: white !important;
+  letter-spacing: -2px;
+}
+
+.plan-headline em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-green);
+  font-weight: 400;
+}
+
+.plan-body p {
+  font-family: "Merriweather", serif;
+  font-size: clamp(1rem, 1.15vw, 1.25rem);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 25px;
+  max-width: 600px;
+}
+
+/* --- RIGHT SIDE: THE GHOST LIST --- */
+.philosophy-accent-card {
+  padding-left: clamp(30px, 5vw, 80px);
+  border-left: 2px solid rgba(142, 200, 111, 0.2); /* Subtle anchor line */
+}
+
+.accent-label {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase !important;
+  letter-spacing: 4px;
+  font-size: 0.75rem;
+  color: var(--aeh-green);
+  display: block;
+  margin-bottom: 30px;
+}
+
+/* --- PILLAR LINK WHITE VERSION --- */
+.pillar-link.white {
+  color: #ffffff !important; /* Forces white text on dark background */
+  border-bottom: 2px solid var(--aeh-green); /* Brand green underline */
+  padding-bottom: 6px;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.pillar-link.white i {
+  transition: transform 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.pillar-link.white:hover {
+  color: var(--aeh-green) !important;
+}
+
+.pillar-link.white:hover i {
+  transform: translateX(8px);
+}
+
+.pillar-list-minimal {
+  list-style: none;
+  padding: 0;
+}
+
+.pillar-list-minimal li {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: clamp(2.5rem, 4.5vw, 4.5rem); /* Large artistic words */
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  opacity: 0.8;
+  transition: all 0.4s ease;
+}
+
+.pillar-list-minimal li:hover {
+  opacity: 1;
+  color: var(--aeh-blue);
+  transform: translateX(15px);
+}
+
+.accent-line-draw {
+  width: 60px;
+  height: 4px;
+  background-color: var(--aeh-green);
+  margin-top: 40px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .plan-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .plan-body p {
+    margin: 0 auto 30px;
+  }
+  .philosophy-accent-card {
+    border-left: none;
+    padding-left: 0;
+  }
+  .accent-line-draw {
+    margin: 40px auto 0;
+  }
+  .pillar-link.white {
+    justify-content: center;
+  }
+}
+
+/* =============================================
    SECTION 1: DYNAMIC GLANCE (DARK BENTO)
    ============================================= */
 .glance-bento.dark-version {
@@ -949,12 +1117,30 @@
   margin-top: 50px;
 }
 
+/* Prevent tiny baseline gaps under images inside swiper slides. */
+.hero-swiper-main .swiper-slide img,
+.portfolio-swiper .swiper-slide img,
+.testimonial-swiper .swiper-slide img,
+.partners-swiper .swiper-slide img {
+  display: block;
+}
+
+.portfolio-swiper .swiper-wrapper,
+.portfolio-swiper .swiper-slide {
+  height: 100%;
+}
+
+.portfolio-swiper .swiper-slide {
+  display: flex;
+  align-items: stretch;
+}
+
 /* ASSET CARD (The Slides) - Now Full Width */
 .asset-card {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Symmetrical 50/50 split */
   width: 100%;
-  min-height: 650px;
+  height: clamp(650px, 42vw, 780px);
   background: var(--aeh-light-back);
 }
 
@@ -966,6 +1152,7 @@
 .flash-img {
   width: 100%;
   height: 100%;
+  display: block;
   object-fit: cover;
   transition: transform 2s ease;
 }
@@ -990,8 +1177,8 @@
 }
 
 .asset-info-side {
-  /* Padding adjusted to 10% to keep text elegant on wide screens */
-  padding: 80px 10%;
+  /* Keep desktop breathing room without over-centering on very wide displays. */
+  padding: 80px clamp(1.25rem, 5vw, 6rem);
   background: white;
   display: flex;
   flex-direction: column;
@@ -1046,6 +1233,19 @@
   gap: 45px;
 }
 
+/* Keep CTA text and button perfectly centered on the same baseline. */
+.asset-actions .btn-solid {
+  margin-top: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.asset-actions .pillar-link {
+  display: inline-flex;
+  align-items: center;
+}
+
 /* CABS SPECIFIC STYLING */
 .cabs-card {
   border-left: 12px solid var(--aeh-blue);
@@ -1081,12 +1281,13 @@
 
   .asset-card {
     grid-template-columns: 1fr;
+    height: auto;
   }
   .asset-image-side {
     height: 400px;
   }
   .asset-info-side {
-    padding: 40px 5%;
+    padding: 40px var(--section-inline-padding);
   }
 }
 
@@ -1330,7 +1531,7 @@
 /* --- AEH NEWS ROOM --- */
 /* --- AEH NEWS ROOM (ORIGINAL TRANSPARENT STYLE) --- */
 .aeh-news-room {
-  padding: 80px 5%;
+  padding: 80px var(--section-inline-padding);
   border-top: 1px solid var(--border);
   background: var(--aeh-dark-background); /* #d6e9ec */
 }

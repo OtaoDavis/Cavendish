@@ -24,14 +24,50 @@ html {
   --aeh-text-bright: #dff1e0;
   --border: rgba(13, 44, 79, 0.2);
   --border-dark: rgba(13, 44, 79, 0.5);
+  --container-max: 1440px;
+  --container-gutter: clamp(1rem, 2.4vw, 2.75rem);
+  --section-inline-padding: clamp(1rem, 4vw, 4rem);
 }
 
 body {
   font-family: "Merriweather", serif;
-  font-size: 17px;
+  font-size: clamp(16px, 0.95vw, 17px);
   line-height: 1.7;
   color: #334155;
   transition: opacity 0.4s ease-in-out;
+}
+
+.container {
+  /* Use a percentage-based width with a hard max to keep it fluid */
+  width: 92%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  /* Ensure consistent side breathing room */
+  padding-left: var(--container-gutter);
+  padding-right: var(--container-gutter);
+  box-sizing: border-box;
+}
+
+@media (min-width: 1700px) {
+  :root {
+    --container-max: 1600px;
+    --section-inline-padding: clamp(2.5rem, 3vw, 3.75rem);
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1366px) {
+  :root {
+    --container-max: 1280px;
+    --section-inline-padding: clamp(1rem, 2.5vw, 2.5rem);
+  }
+
+  .nav-links {
+    gap: 28px;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+  }
 }
 
 body.content-hidden {

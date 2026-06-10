@@ -235,7 +235,7 @@ path {
 /* --- PORTAL FACULTIES AREA --- */
 
 .portal-faculties-area {
-  padding: 40px 5%;
+  padding: 40px var(--section-inline-padding);
   border-top: 1px solid var(--border);
   background: var(--aeh-light-back);
 }
@@ -430,7 +430,7 @@ path {
 /* --- INSTITUTIONAL LEADERSHIP AREA --- */
 
 .institutional-leadership-area {
-  padding: 50px 5%;
+  padding: 50px var(--section-inline-padding);
   border-top: 1px solid var(--border);
 }
 
