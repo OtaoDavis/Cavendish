@@ -146,10 +146,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const portfolioSwiper = new Swiper(".portfolio-swiper", {
     loop: true,
-    speed: 1000,
+    speed: 2000,
     grabCursor: true,
     autoplay: {
-      delay: 2000,
+      delay: 3000,
       disableOnInteraction: false,
       pauseOnMouseEnter: true,
     },
