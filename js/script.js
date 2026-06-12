@@ -62,6 +62,38 @@ document.addEventListener("DOMContentLoaded", () => {
       e.stopPropagation();
       document.body.classList.toggle("nav-open");
     });
+
+    navLinksEl.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (link.classList.contains("nav-btn-dropdown")) return;
+        document.body.classList.remove("nav-open");
+      });
+    });
+
+    const navDropdown = navLinksEl.querySelector(".nav-dropdown");
+    const navDropdownToggle = navLinksEl.querySelector(".nav-btn-dropdown");
+
+    if (navDropdown && navDropdownToggle) {
+      navDropdownToggle.addEventListener("click", (e) => {
+        if (window.matchMedia("(max-width: 768px)").matches) {
+          e.preventDefault();
+          navDropdown.classList.toggle("open");
+        }
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!navDropdown.contains(e.target)) {
+          navDropdown.classList.remove("open");
+        }
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.matchMedia("(min-width: 769px)").matches) {
+          navDropdown.classList.remove("open");
+        }
+      });
+    }
+
     document.addEventListener("click", (e) => {
       if (
         document.body.classList.contains("nav-open") &&
@@ -91,6 +123,11 @@ document.addEventListener("DOMContentLoaded", () => {
     loop: true,
     speed: 1200,
     grabCursor: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
     navigation: { nextEl: ".port-next", prevEl: ".port-prev" },
     pagination: {
       el: ".port-pagination",

@@ -403,16 +403,18 @@
 }
 
 /* =============================================
-   SECTION 3: BELIEF & PROOF IMMERSION (SPLIT)
+   SECTION 3: BELIEF & PROOF IMMERSION (FULL)
    ============================================= */
 .belief-immersion {
   background-color: var(--aeh-white);
-  overflow: visible;
+  overflow: visible; /* Required for sticky positioning to work */
 }
 
 .immersion-row {
   display: grid;
-  grid-template-columns: 1fr 1.2fr; /* Left Navy, Right White */
+  /* 1. THE ALIGNMENT FIX: Strict percentages ensure a perfectly straight 
+     vertical line across all sections, preventing 'choppy' extensions. */
+  grid-template-columns: 45% 55%;
   min-height: 100vh;
   align-items: stretch;
 }
@@ -423,16 +425,18 @@
   padding: clamp(80px, 12vh, 140px) var(--section-inline-padding);
   position: relative;
   z-index: 10;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .immersion-content-sticky {
   position: sticky;
   top: 150px;
-  max-width: 520px;
+  /* 2. THE WIDTH FIX: Prevents text from pushing the grid line to the right */
+  max-width: 480px;
 }
 
 .immersion-left-navy h2.text-white {
-  color: #ffffff !important;
+  color: #ffffff !important; /* Overrides global navy h2 */
   font-family: "Playfair Display", serif;
   font-size: clamp(2.2rem, 4.5vw, 3.8rem);
   line-height: 1.05;
@@ -455,48 +459,151 @@
   font-weight: 300;
 }
 
+.bright-tag {
+  color: var(--aeh-green);
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase !important;
+  letter-spacing: 4px;
+  font-size: 0.75rem;
+  margin-bottom: 25px;
+  display: block;
+}
+
 /* --- Right Side: Proof Gallery & Nested Swiper --- */
 .immersion-right-proof {
   background-color: var(--aeh-white);
-  padding: clamp(60px, 10vh, 120px) 8%;
+  padding: clamp(60px, 10vh, 120px) 5%;
   display: flex;
   align-items: center;
 }
 
 .belief-story-swiper {
   width: 100%;
-  max-width: 750px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
-.proof-container {
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
+/* --- THE SQUARE RECEDING PORTRAIT FIX --- */
+.proof-story-card.portrait-mode {
+  position: relative;
+  /* 3. THE RECEDE FIX: Card is smaller (65%) to feel less imposing */
+  max-width: 65%;
+  margin: 0 auto;
+  background: var(--aeh-light-back);
+  padding: 12px; /* Creates a physical 'frame' around the photo */
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease;
 }
 
-/* Nested Navigation Styling */
+.proof-story-card.portrait-mode img {
+  width: 100%;
+  /* 4. SQUARE RATIO: Forced 1:1 aspect ratio */
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  /* 5. THE HEAD FIX: Focuses on the top 15% of the image to prevent cutting foreheads */
+  object-position: center 15%;
+  display: block;
+}
+
+.story-meta {
+  background: var(--aeh-navy);
+  color: white;
+  padding: 25px;
+  margin-top: -1px; /* Prevents a tiny gap between frame and meta */
+}
+
+.story-meta h4 {
+  color: var(--aeh-green);
+  font-size: 0.65rem;
+  text-transform: uppercase !important;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+/* Academic & Role Details */
+.academic-detail {
+  font-family: "Inter", sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px;
+  color: var(--aeh-blue);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.role-detail {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  opacity: 0.85;
+  font-weight: 300;
+}
+
+/* --- STAT BOXES & QUOTES --- */
+.proof-stat-box {
+  background: var(--aeh-blue);
+  color: white;
+  padding: 40px;
+  text-align: center;
+  margin-bottom: 30px;
+  /* 6. SYMMETRY: Matches the 65% width of the images */
+  max-width: 65%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.proof-stat-box.outline {
+  background: transparent;
+  border: 2px solid var(--aeh-navy);
+  color: var(--aeh-navy);
+}
+
+.stat-huge {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.editorial-quote-premium {
+  padding: 50px;
+  border-left: 5px solid var(--aeh-green);
+  background: var(--aeh-light-back);
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.editorial-quote-premium p {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: 1.7rem !important;
+  line-height: 1.35;
+  color: var(--aeh-navy);
+  margin-bottom: 20px;
+}
+
+/* --- NAVIGATION --- */
 .belief-nav {
   display: flex;
-  gap: 10px;
+  justify-content: center;
+  gap: 15px;
   margin-top: 40px;
-  position: relative;
-  z-index: 3;
 }
 
 .b-prev,
 .b-next {
-  width: 50px;
-  height: 50px;
-  border: 1px solid rgba(13, 44, 79, 0.18);
+  width: 45px;
+  height: 45px;
+  border: 1px solid #eee;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
-  color: var(--aeh-dark-blue);
+  transition: 0.3s;
   background: white;
-  box-shadow: 0 10px 24px rgba(13, 44, 79, 0.08);
+  color: var(--aeh-navy);
 }
 
 .b-prev:hover,
@@ -506,88 +613,24 @@
   border-color: var(--aeh-blue);
 }
 
-/* Proof Point Elements */
-.proof-stat-box {
-  background: var(--aeh-blue);
-  color: white;
-  padding: 50px 40px;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.proof-stat-box.outline {
-  background: transparent;
-  border: 2px solid var(--aeh-navy);
-  color: var(--aeh-navy);
-}
-
-.proof-stat-box.green-tint {
-  background: var(--aeh-green);
-}
-
-.stat-huge {
-  display: block;
-  font-family: "Playfair Display", serif;
-  font-size: clamp(3.5rem, 6vw, 5.5rem);
-  font-weight: 700;
-  line-height: 1;
-  margin-bottom: 15px;
-}
-
-.proof-story-card {
-  position: relative;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1);
-}
-
-.proof-story-card img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  display: block;
-}
-
-.proof-image-placeholder {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  background: linear-gradient(160deg, #e2ebf2 0%, #f4f7fa 100%);
-  color: var(--aeh-dark-blue);
-}
-
-.proof-image-placeholder i {
-  font-size: 2rem;
-  opacity: 0.8;
-}
-
-.proof-image-placeholder p {
-  font-family: "Inter", sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase !important;
-  font-weight: 700;
-}
-
-.story-meta {
-  background: var(--aeh-navy);
-  color: white;
-  padding: 30px;
-}
-
-.story-meta h4 {
-  color: var(--aeh-green);
-  font-size: 0.75rem;
-  text-transform: uppercase !important;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
-}
-.story-meta p {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  opacity: 0.9;
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .immersion-row {
+    grid-template-columns: 1fr; /* Stack on mobile */
+  }
+  .immersion-left-navy {
+    min-height: auto;
+    padding: 60px 10%;
+  }
+  .immersion-content-sticky {
+    position: static;
+    max-width: 100%;
+    text-align: center;
+  }
+  .proof-story-card.portrait-mode,
+  .proof-stat-box {
+    max-width: 90%; /* Take more space on small screens */
+  }
 }
 
 /* =============================================

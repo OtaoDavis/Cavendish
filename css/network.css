@@ -2,25 +2,26 @@
 
 .network-portal {
   display: grid;
-  grid-template-columns: 350px 1fr; /* Fixed Left sidebar, Flexible Right stage */
-  min-height: calc(100vh - 80px);
+  grid-template-columns: 350px 1fr;
+  min-height: calc(100vh - 90px);
+  width: 100%;
+  position: relative;
 }
 
 /* --- PORTAL SIDEBAR: NAVY THEME --- */
 
 .portal-sidebar {
-  background-color: var(--aeh-navy); /* Dark Navy Background */
+  background-color: var(--aeh-navy);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   position: sticky;
-  top: 105px;
-  height: calc(100vh - 105px);
-  align-self: start;
-  padding: 0;
+  top: 90px;
+  height: calc(100vh - 90px);
+  z-index: 100;
   overflow-y: auto;
 }
 
 .sidebar-header {
-  padding: 60px 40px 20px 40px;
+  padding: 50px 40px 20px;
 }
 
 .portal-nav {
@@ -32,16 +33,16 @@
 /* --- THE FACTOR-STYLE LINK --- */
 .portal-link {
   display: flex;
-  gap: 25px;
-  padding: 40px; /* Horizontal padding inside the button keeps text safe */
+  align-items: flex-start;
+  gap: 20px;
+  padding: 35px 40px;
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   text-align: left;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
-  position: relative;
+  transition: all 0.4s ease;
 }
 
 .portal-link:first-child {
@@ -59,11 +60,10 @@
 /* Factor Number Styling */
 .portal-link .factor-num {
   font-family: "EB Garamond", serif;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: var(--aeh-green);
-  line-height: 1;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
+  opacity: 0.6;
+  flex-shrink: 0;
 }
 
 .portal-link.active .factor-num,
@@ -74,24 +74,24 @@
 /* Content Styling */
 .factor-content h4 {
   font-family: "EB Garamond", serif;
-  font-size: 1.4rem;
-  color: var(--aeh-white);
-  margin-bottom: 5px;
-  text-transform: none !important;
+  font-size: 1.3rem;
+  color: white;
+  margin-bottom: 4px;
 }
 
 .factor-content p {
   font-family: "Inter", sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.7rem;
   text-transform: uppercase !important;
-  letter-spacing: 1.5px;
-  color: #94a3b8; /* Muted slate */
+  color: #94a3b8;
+  letter-spacing: 1px;
 }
 
 /* Ensure the green border appears clearly on active state */
 .portal-link.active {
+  background: rgba(255, 255, 255, 0.03);
   border-bottom: 2px solid var(--aeh-green);
+  padding-left: 50px;
 }
 
 /* Custom Scrollbar for the Navy Sidebar */
@@ -105,27 +105,11 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* RESPONSIVE */
-@media (max-width: 1100px) {
-  .portal-sidebar {
-    height: auto;
-    position: relative;
-    top: 0;
-    border-right: none;
-  }
-  .portal-nav {
-    flex-direction: row;
-    overflow-x: auto;
-  }
-  .portal-link {
-    min-width: 300px;
-    padding: 30px;
-  }
-}
-
 /* --- STAGE (RIGHT) --- */
 .portal-stage {
   background-color: var(--aeh-white);
+  min-width: 0; /* Prevents grid blowout */
+  overflow-x: hidden; /* Contains the scaled map */
 }
 
 .asset-view {
@@ -149,22 +133,56 @@
 }
 
 .asset-header {
-  padding: 0 5%;
+  padding: 80px 8% 40px;
+  position: relative;
+}
+
+.asset-header::before {
+  content: attr(data-watermark);
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: "Playfair Display", serif;
+  font-size: 15rem;
+  font-weight: 900;
+  color: rgba(13, 44, 79, 0.03);
+  pointer-events: none;
+  line-height: 1;
 }
 .asset-display-title {
-  font-size: 4.5rem;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(3rem, 5vw, 4.8rem);
   line-height: 1;
-  letter-spacing: -2px;
-  margin-bottom: 60px;
+  color: var(--aeh-navy);
+  position: relative;
+  z-index: 2;
+}
+
+.asset-display-title em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-blue);
 }
 
 /* Glance Grid 50/50 */
 .glance-50-50 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: clamp(44px, 5vw, 80px);
   align-items: center;
-  margin-bottom: 80px;
+  padding: 0 6% 0 2%;
+  margin-bottom: 100px;
+}
+
+.glance-50-50 > * {
+  min-width: 0;
+}
+
+.map-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .portal-map {
@@ -172,11 +190,21 @@
   height: auto;
   display: block;
   transform: scale(1.5);
+  transform-origin: center;
+  filter: drop-shadow(0 20px 40px rgba(13, 44, 79, 0.1));
+}
+
+.glance-facts {
+  max-width: 440px;
+  width: 100%;
+  justify-self: start;
 }
 
 .glance-facts h3 {
+  font-family: "Playfair Display", serif;
   font-size: 1.8rem;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  color: var(--aeh-navy);
 }
 .glance-line {
   width: 60px;
@@ -235,9 +263,8 @@ path {
 /* --- PORTAL FACULTIES AREA --- */
 
 .portal-faculties-area {
-  padding: 40px var(--section-inline-padding);
-  border-top: 1px solid var(--border);
-  background: var(--aeh-light-back);
+  padding: 100px 8%;
+  background-color: var(--aeh-light-back);
 }
 
 .faculties-header h3 {
@@ -263,18 +290,13 @@ path {
 }
 
 .faculty-tab {
-  padding: 1rem 1.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid transparent;
-  border-left: 4px solid #e5e7eb;
-  background-color: transparent;
+  padding: 1.2rem 1.5rem;
+  border-left: 4px solid #e2e8f0;
   font-family: "Playfair Display", serif;
   font-weight: 700;
   font-size: 1.1rem;
-  color: #374151;
   cursor: pointer;
-  text-align: left;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
 .faculty-tab:hover {
@@ -283,20 +305,17 @@ path {
 }
 
 .faculty-tab.active {
-  background-color: white;
+  background: white;
   color: var(--aeh-blue);
-  border-color: #e5e7eb;
-  border-left: 4px solid var(--aeh-blue);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  border-left-color: var(--aeh-blue);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 /* Content Panel Styling */
 .faculty-display-panel {
   background: white;
-  padding: 50px;
-  border: 1px solid var(--border);
-  min-height: 400px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.02);
+  padding: 60px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.02);
 }
 
 .faculty-programs {
@@ -386,22 +405,22 @@ path {
 }
 
 .portal-facts-list li {
-  padding: 15px 0 15px 35px; /* Added 35px padding to the left for the icon */
-  border-bottom: 1px solid var(--border);
-  font-size: 1.1rem;
-  position: relative; /* Required for the absolute positioning of the icon */
-  text-transform: none !important; /* Ensure it stays institutional/readable */
+  padding: 18px 0 18px 40px;
+  border-bottom: 1px solid rgba(13, 44, 79, 0.1);
+  font-size: 1.05rem;
+  position: relative;
+  line-height: 1.4;
 }
 
 .portal-facts-list li::before {
-  content: "\f058"; /* Font Awesome circle-check unicode */
+  content: "\f058";
   font-family: "Font Awesome 6 Free";
-  font-weight: 900; /* Required for the "solid" style */
-  color: var(--aeh-green); /* AEH Green color variable */
+  font-weight: 900;
+  color: var(--aeh-green);
   position: absolute;
   left: 0;
-  top: 50%; /* Center vertically */
-  transform: translateY(-50%); /* Offset for perfect vertical centering */
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 1.2rem;
 }
 
@@ -413,12 +432,14 @@ path {
 }
 
 .context-card {
-  padding: 60px;
+  padding: 100px 12%;
+  color: white;
 }
 .context-card h4 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
   color: white;
-  font-size: 2rem;
-  margin-bottom: 15px;
 }
 .bg-blue {
   background-color: var(--aeh-blue);
@@ -571,27 +592,112 @@ path {
     grid-template-columns: 1fr;
   }
   .portal-sidebar {
-    position: relative;
-    top: 0;
+    position: sticky;
+    top: 72px;
     height: auto;
     width: 100%;
     border-right: none;
-    border-bottom: 1px solid var(--border);
   }
   .portal-nav {
     flex-direction: row;
     overflow-x: auto;
-    padding-bottom: 10px;
+    scrollbar-width: none;
   }
+
   .portal-link {
-    min-width: 250px;
+    min-width: 280px;
+    border-bottom: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
   }
-  .asset-display-title {
-    font-size: 3rem;
+
+  .portal-link.active {
+    border-bottom: 3px solid var(--aeh-green);
+    padding-left: 30px;
   }
+
   .glance-50-50,
   .high-contrast-context,
   .s-grid {
     grid-template-columns: 1fr;
+  }
+
+  .glance-50-50 {
+    text-align: center;
+  }
+
+  .portal-map {
+    transform: scale(1.1);
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  .glance-facts {
+    max-width: 100%;
+  }
+
+  .glance-line {
+    margin: 0 auto 30px;
+  }
+
+  .portal-facts-list li {
+    text-align: left;
+  }
+
+  .faculties-interactive-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .faculty-tabs {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .faculty-tabs {
+    padding-bottom: 10px;
+  }
+
+  .faculty-tab {
+    min-width: 170px;
+    font-size: 1rem;
+  }
+
+  .faculty-display-panel {
+    padding: 24px;
+    min-height: auto;
+  }
+
+  .context-card {
+    padding: 32px 24px;
+  }
+
+  .context-card h4 {
+    font-size: 1.7rem;
+  }
+
+  .leadership-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-member-name {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .bg-navy {
+    padding: 40px 24px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .faculties-interactive-wrapper {
+    grid-template-columns: 340px 1fr;
+    gap: 80px;
+  }
+
+  .asset-display-title {
+    letter-spacing: -2.5px;
   }
 }
