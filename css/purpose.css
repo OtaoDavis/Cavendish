@@ -316,6 +316,38 @@
   font-weight: 300;
 }
 
+.highlight-step-blue .step-marker {
+  border-color: var(--aeh-blue);
+  color: var(--aeh-blue);
+}
+
+.highlight-step-blue:hover .step-marker {
+  background: var(--aeh-blue);
+}
+
+.highlight-step-blue .step-content p {
+  color: var(--aeh-navy);
+  font-weight: 400;
+  border-left: 3px solid var(--aeh-blue);
+  padding-left: 25px;
+}
+
+.highlight-step-dark-blue .step-marker {
+  border-color: var(--aeh-dark-blue);
+  color: var(--aeh-dark-blue);
+}
+
+.highlight-step-dark-blue:hover .step-marker {
+  background: var(--aeh-dark-blue);
+}
+
+.highlight-step-dark-blue .step-content p {
+  color: var(--aeh-navy);
+  font-weight: 400;
+  border-left: 3px solid var(--aeh-dark-blue);
+  padding-left: 25px;
+}
+
 /* Highlight the Imperative (Step 3) */
 .highlight-step .step-marker {
   border-color: var(--aeh-green);
@@ -371,42 +403,34 @@
 }
 
 /* =============================================
-   BELIEF IMMERSION - SPLIT SCREEN EDITORIAL
+   SECTION 3: BELIEF & PROOF IMMERSION (SPLIT)
    ============================================= */
 .belief-immersion {
   background-color: var(--aeh-white);
-  /* Ensure no overflow issues for sticky */
   overflow: visible;
 }
 
 .immersion-row {
   display: grid;
-  /* 1fr for Navy side, 1.2fr for Proof side */
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 1fr 1.2fr; /* Left Navy, Right White */
   min-height: 100vh;
-  /* Crucial: ensures the left column stretches the full height of the proof content */
   align-items: stretch;
 }
 
-/* --- Left Side: Dark Navy --- */
+/* --- Left Side: Dark Navy Anchor --- */
 .immersion-left-navy {
   background-color: var(--aeh-dark-blue);
-  /* Use your global padding variable */
   padding: clamp(80px, 12vh, 140px) var(--section-inline-padding);
   position: relative;
-  /* Higher z-index ensures it stays "above" the right side in stacking context */
   z-index: 10;
 }
 
-/* Sticky behavior for the text */
 .immersion-content-sticky {
   position: sticky;
-  /* Distance from the top of the viewport when it pins */
   top: 150px;
   max-width: 520px;
 }
 
-/* FORCING VISIBILITY: Overriding global style.css navy headings */
 .immersion-left-navy h2.text-white {
   color: #ffffff !important;
   font-family: "Playfair Display", serif;
@@ -426,52 +450,75 @@
 .immersion-lead {
   font-family: "Merriweather", serif;
   font-size: clamp(1rem, 1.1vw, 1.2rem);
-  line-height: 1.8;
-  /* Slightly transparent white for that 'High Look' depth */
-  color: rgba(255, 255, 255, 0.85) !important;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.8) !important;
   font-weight: 300;
 }
 
-.bright-tag {
-  color: var(--aeh-green);
-  font-family: "Inter", sans-serif;
-  font-weight: 800;
-  text-transform: uppercase !important;
-  letter-spacing: 4px;
-  font-size: 0.75rem;
-  margin-bottom: 25px;
-  display: block;
-}
-
-/* --- Right Side: Proof Gallery --- */
+/* --- Right Side: Proof Gallery & Nested Swiper --- */
 .immersion-right-proof {
   background-color: var(--aeh-white);
-  /* Generous padding to allow the fade-ins to feel 'airy' */
-  padding: 120px 10%;
+  padding: clamp(60px, 10vh, 120px) 8%;
+  display: flex;
+  align-items: center;
+}
+
+.belief-story-swiper {
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
 }
 
 .proof-container {
   display: flex;
   flex-direction: column;
-  gap: 100px; /* Large gaps between proof points */
-  max-width: 750px;
-  margin: 0 auto;
+  gap: 60px;
 }
 
-/* --- Proof Elements --- */
+/* Nested Navigation Styling */
+.belief-nav {
+  display: flex;
+  gap: 10px;
+  margin-top: 40px;
+  position: relative;
+  z-index: 3;
+}
+
+.b-prev,
+.b-next {
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(13, 44, 79, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--aeh-dark-blue);
+  background: white;
+  box-shadow: 0 10px 24px rgba(13, 44, 79, 0.08);
+}
+
+.b-prev:hover,
+.b-next:hover {
+  background: var(--aeh-blue);
+  color: white;
+  border-color: var(--aeh-blue);
+}
+
+/* Proof Point Elements */
 .proof-stat-box {
   background: var(--aeh-blue);
   color: white;
-  padding: clamp(40px, 6vh, 80px) 40px;
+  padding: 50px 40px;
   text-align: center;
-  box-shadow: 0 30px 60px rgba(13, 44, 79, 0.1);
+  margin-bottom: 40px;
 }
 
 .proof-stat-box.outline {
   background: transparent;
   border: 2px solid var(--aeh-navy);
   color: var(--aeh-navy);
-  box-shadow: none;
 }
 
 .proof-stat-box.green-tint {
@@ -481,36 +528,53 @@
 .stat-huge {
   display: block;
   font-family: "Playfair Display", serif;
-  font-size: clamp(3.5rem, 6vw, 6rem);
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
   font-weight: 700;
   line-height: 1;
   margin-bottom: 15px;
 }
 
-.proof-stat-box p {
-  font-family: "Inter", sans-serif;
-  text-transform: uppercase !important;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  font-size: 0.85rem;
-  margin: 0;
-}
-
 .proof-story-card {
   position: relative;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1);
 }
 
 .proof-story-card img {
   width: 100%;
-  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
   display: block;
+}
+
+.proof-image-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: linear-gradient(160deg, #e2ebf2 0%, #f4f7fa 100%);
+  color: var(--aeh-dark-blue);
+}
+
+.proof-image-placeholder i {
+  font-size: 2rem;
+  opacity: 0.8;
+}
+
+.proof-image-placeholder p {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase !important;
+  font-weight: 700;
 }
 
 .story-meta {
   background: var(--aeh-navy);
   color: white;
-  padding: 35px;
+  padding: 30px;
 }
 
 .story-meta h4 {
@@ -518,107 +582,22 @@
   font-size: 0.75rem;
   text-transform: uppercase !important;
   letter-spacing: 2px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .story-meta p {
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 0.95rem;
+  line-height: 1.5;
   opacity: 0.9;
-  font-weight: 300;
-}
-
-.editorial-quote-premium {
-  padding: 60px 50px;
-  border-left: 5px solid var(--aeh-green);
-  background: var(--aeh-light-back);
-}
-
-.editorial-quote-premium i {
-  font-size: 2.5rem;
-  color: var(--aeh-green);
-  margin-bottom: 25px;
-  opacity: 0.3;
-}
-.editorial-quote-premium p {
-  font-family: "EB Garamond", serif;
-  font-style: italic;
-  font-size: 2rem !important;
-  line-height: 1.35;
-  color: var(--aeh-navy);
-  margin-bottom: 25px;
-}
-.editorial-quote-premium span {
-  font-family: "Inter", sans-serif;
-  font-weight: 700;
-  font-size: 0.75rem;
-  text-transform: uppercase !important;
-  color: #64748b;
-  letter-spacing: 1px;
-}
-
-.pathway-badge {
-  position: absolute;
-  top: 30px;
-  right: -20px;
-  background: var(--aeh-blue);
-  color: white;
-  padding: 12px 25px;
-  font-family: "Inter", sans-serif;
-  font-weight: 800;
-  text-transform: uppercase !important;
-  font-size: 0.65rem;
-  letter-spacing: 2px;
-  box-shadow: 0 10px 30px rgba(57, 152, 189, 0.3);
-}
-
-/* --- FADE-IN ANIMATION LOGIC --- */
-.proof-reveal-item {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-.proof-reveal-item.revealed {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
-
-.no-js .proof-reveal-item {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* --- RESPONSIVE --- */
-@media (max-width: 1024px) {
-  .immersion-row {
-    grid-template-columns: 1fr;
-  }
-  .immersion-left-navy {
-    min-height: auto;
-    padding: 80px var(--section-inline-padding);
-  }
-  .immersion-content-sticky {
-    position: static;
-    max-width: 100%;
-    text-align: center;
-  }
-  .immersion-right-proof {
-    padding: 80px var(--section-inline-padding);
-  }
-  .pathway-badge {
-    right: 20px;
-  }
 }
 
 /* =============================================
-   THE PHILOSOPHICAL CENTER - PILLAR CHAPTERS
+   SECTION 4: THE PHILOSOPHICAL CENTER
    ============================================= */
 
-/* --- Part 1: Master Intro --- */
+/* --- Master Intro --- */
 .philosophy-intro-block {
   background-color: var(--aeh-navy);
-  padding: clamp(60px, 15vh, 60px) 0;
+  padding: clamp(80px, 15vh, 80px) 0;
   text-align: center;
 }
 
@@ -626,29 +605,19 @@
   max-width: 900px;
   margin: 0 auto;
 }
-
 .intro-content h2 {
   font-family: "Playfair Display", serif;
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   color: white !important;
   margin-bottom: 30px;
 }
-
 .intro-content h2 em {
   font-family: "EB Garamond", serif;
   font-style: italic;
   color: var(--aeh-blue);
 }
 
-.intro-lead {
-  font-family: "Merriweather", serif;
-  font-size: clamp(1.1rem, 1.3vw, 1.4rem);
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.85) !important;
-  font-weight: 300;
-}
-
-/* --- Part 2: Pillar Chapters Shared Logic --- */
+/* --- Pillar Chapters --- */
 .pillar-chapter {
   padding: clamp(80px, 12vh, 140px) 0;
   border-bottom: 1px solid rgba(13, 44, 79, 0.05);
@@ -690,25 +659,30 @@
   font-weight: 400;
 }
 
-.chapter-text p {
-  font-family: "Merriweather", serif;
-  font-size: clamp(1rem, 1.1vw, 1.15rem);
-  line-height: 1.8;
-  color: #4a5568;
-  margin-bottom: 25px;
-  font-weight: 300;
-}
-
-/* --- PILLAR 01: IMAGE FRAME --- */
-.image-frame {
+/* --- FLASH GALLERY --- */
+.flash-gallery {
   position: relative;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  background: #eee;
 }
 
-.image-frame img {
+.flash-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+  z-index: 1;
+}
+
+.flash-img.active {
+  opacity: 1;
+  z-index: 2;
 }
 
 .frame-label {
@@ -721,98 +695,73 @@
   font-size: 0.7rem;
   text-transform: uppercase !important;
   letter-spacing: 2px;
+  z-index: 10;
 }
 
-/* --- PILLAR 02: REFINED COLLAGE (THE FIX) --- */
-.collage-proof {
-  position: relative;
-  width: 100%;
-  max-width: 550px;
-  margin: 0 auto;
+/* --- HIGHLIGHT LIST (Holistic Pillar) --- */
+.highlight-list {
+  margin-top: 40px;
+  border-top: 1px solid #eee;
+  padding-top: 30px;
 }
 
-.collage-proof img {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  display: block;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
-}
-
-.floating-proof-card {
-  position: absolute;
-  bottom: -40px;
-  right: -40px;
-  background: var(--aeh-green);
-  color: white;
-  padding: clamp(25px, 3vh, 40px);
-  max-width: 280px;
-  z-index: 20;
-  box-shadow: 0 20px 50px rgba(142, 200, 111, 0.3);
-}
-
-.floating-proof-card i {
-  font-size: 2rem;
+.h-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
   margin-bottom: 15px;
-  display: block;
-}
-.floating-proof-card p {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  margin: 0;
-  color: white !important;
 }
 
-.proof-mini-grid {
+.h-item span {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  color: var(--aeh-green);
+  border: 1px solid var(--aeh-green);
+  padding: 3px 10px;
+  flex-shrink: 0;
+}
+
+.h-item p {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--aeh-navy);
+  font-weight: 600;
+}
+
+/* --- EXPERIENCE STACK (Real World Pillar) --- */
+.experience-highlight-stack {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  margin-top: 40px;
-  padding-top: 40px;
-  border-top: 1px solid #eee;
-}
-
-.p-mini-num {
-  display: block;
-  font-family: "Playfair Display", serif;
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--aeh-navy);
-  margin-bottom: 5px;
-}
-
-.p-mini-item p {
-  font-family: "Inter", sans-serif;
-  font-size: 0.7rem;
-  text-transform: uppercase !important;
-  letter-spacing: 1px;
-  color: var(--aeh-green);
-  font-weight: 800;
-}
-
-/* --- PILLAR 03: EXPERIENCE HIGHLIGHTS --- */
-.experience-highlight-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+  gap: 20px;
+  margin-top: -60px;
+  position: relative;
+  z-index: 10;
+  padding: 0 20px; /* Keeps them from hitting the very edge */
 }
 
 .exp-card {
   background: white;
-  padding: 40px;
+  padding: clamp(25px, 3vh, 35px);
   border-left: 4px solid var(--aeh-green);
-  box-shadow: 0 20px 50px rgba(57, 152, 189, 0.08);
-  transition: transform 0.3s ease;
+  /* 3. Premium Blue Shadow from Home Page */
+  box-shadow: 0 20px 50px rgba(57, 152, 189, 0.15);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  height: 100%; /* Ensures both cards are the same height */
 }
 
 .exp-card.blue-card {
   background: var(--aeh-navy);
   color: white;
   border-left-color: var(--aeh-blue);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
 }
 
 .exp-card:hover {
-  transform: translateX(10px);
+  transform: translateY(-10px);
 }
 
 .exp-header {
@@ -824,29 +773,55 @@
 
 .exp-stat {
   font-family: "Playfair Display", serif;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 2vw, 2rem);
   font-weight: 700;
+  line-height: 1;
 }
+
 .exp-header i {
-  font-size: 1.5rem;
-  opacity: 0.3;
+  font-size: 1.4rem;
+  color: var(--aeh-blue);
+  opacity: 0.6;
 }
+
+.blue-card .exp-header i {
+  color: var(--aeh-green);
+}
+
 .exp-card p {
-  font-size: 0.95rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
   line-height: 1.6;
   margin: 0;
+  color: inherit;
 }
 
 /* --- RESPONSIVE --- */
+
+/* 13" Thinkpad / Small Laptops */
 @media (max-width: 1280px) {
-  .floating-proof-card {
-    right: -20px;
-    bottom: -20px;
-    max-width: 240px;
+  .experience-highlight-stack {
+    margin-top: -40px;
+    gap: 15px;
+  }
+  .exp-card {
+    padding: 25px;
   }
 }
-
 @media (max-width: 1024px) {
+  .immersion-row {
+    grid-template-columns: 1fr;
+  }
+  .immersion-left-navy {
+    min-height: auto;
+    padding: 60px 10%;
+  }
+  .immersion-content-sticky {
+    position: static;
+    max-width: 100%;
+    text-align: center;
+  }
+
   .chapter-grid,
   .chapter-grid.reverse {
     grid-template-columns: 1fr;
@@ -857,13 +832,19 @@
     max-width: 600px;
     margin: 0 auto;
   }
-  .floating-proof-card {
-    position: static;
-    max-width: 100%;
+
+  .experience-highlight-stack {
     margin-top: 20px;
   }
-  .pillar-chapter.section-slate {
-    padding-bottom: 80px;
+
+  .experience-highlight-stack {
+    grid-template-columns: 1fr; /* Stack vertically on mobile */
+    margin-top: 20px;
+    padding: 0;
+  }
+
+  .pillar-chapter {
+    padding-bottom: 60px;
   }
 }
 /* =============================================

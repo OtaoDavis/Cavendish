@@ -1,82 +1,102 @@
-/* --- LEADERSHIP PAGE DESIGN --- */
+/* =============================================
+   TEAM PAGE - INSTITUTIONAL EDITORIAL DESIGN
+   ============================================= */
 
-.team-hero {
-  padding: 20px 0 20px;
-  text-align: center;
+/* --- EDITORIAL PREFACE (HERO) --- */
+.team-editorial-hero {
+  padding: clamp(80px, 12vh, 80px) 0 60px;
+  background-color: var(--aeh-white);
 }
 
-.hero-content-center h1 {
-  font-size: clamp(3.5rem, 6vw, 5.5rem);
-  line-height: 1.1;
-  margin-bottom: 25px;
+.editorial-intro-grid {
+  display: grid;
+  /* Left side (Statement) is wider than Right side (Narrative) */
+  grid-template-columns: 1.3fr 1fr;
+  gap: clamp(40px, 6vw, 100px);
+  align-items: flex-start;
 }
 
-.hero-lead {
-  font-size: 1.3rem;
-  font-weight: 300;
-  color: var(--text-muted);
-  max-width: 750px;
-  margin: 0 auto;
-}
-
-/* --- SWIPER SECTION --- */
-.leadership-carousel-section {
-  padding: 20px var(--section-inline-padding);
-  background-color: var(--aeh-dark-background);
-}
-
-.section-header-between {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 50px;
-}
-
-.institutional-title {
-  font-size: 3.5rem;
+/* Left Side: The 100 Years Statement */
+.editorial-main h1 {
+  font-family: "Playfair Display", serif;
+  /* Fluid typography for 13" to 24" screens */
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  line-height: 1.15;
   color: var(--aeh-navy);
+  font-weight: 700;
+  margin-top: 20px;
+  letter-spacing: -0.02em;
+}
+
+/* Right Side: The Narrative */
+.editorial-narrative {
+  padding-top: 25px;
+}
+
+.editorial-divider {
+  width: 60px;
+  height: 3px;
+  background-color: var(--aeh-green);
+  margin-bottom: 35px;
+}
+
+.editorial-narrative p {
+  font-family: "Merriweather", serif;
+  font-size: clamp(1rem, 1.1vw, 1.15rem);
+  line-height: 1.9;
+  color: #4a5568;
+  font-weight: 300;
+}
+
+/* --- TEAM CAROUSEL SECTION --- */
+.leadership-carousel-section {
+  padding: 80px var(--section-inline-padding) 120px;
+  background-color: var(--aeh-light-back); /* #f4f4f4 */
+  border-top: 1px solid rgba(13, 44, 79, 0.05);
+}
+
+.section-header-minimal {
+  display: flex;
+  justify-content: flex-end; /* Aligns arrows to the right */
+  margin-bottom: 40px;
 }
 
 .swiper-controls {
   display: flex;
-  gap: 15px;
+  gap: 2px; /* Tight gap for modern look */
 }
 
 .team-prev,
 .team-next {
-  width: 50px;
-  height: 50px;
-  border: 1px solid var(--border);
+  width: 60px;
+  height: 60px;
+  background: white;
+  border: 1px solid rgba(13, 44, 79, 0.05);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
   color: var(--aeh-navy);
 }
 
 .team-prev:hover,
 .team-next:hover {
   background-color: var(--aeh-blue);
-  border-color: var(--aeh-blue);
   color: white;
+  transform: translateY(-5px);
 }
 
-.swiper-wrapper {
-  padding-top: 20px;
-  padding-bottom: 40px;
-}
-
-/* --- TEAM CARDS --- */
+/* --- TEAM CARDS REFINEMENT --- */
 .team-card {
   background-color: var(--aeh-white);
-  border-radius: 15px;
-  box-shadow: 0 10px 30px -5px rgba(13, 44, 79, 0.08);
+  border-radius: 0; /* Square corners for institutional feel */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
   height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid rgba(57, 152, 189, 0.15);
+  border: none;
   transition:
     transform 0.4s cubic-bezier(0.2, 1, 0.3, 1),
     box-shadow 0.4s ease;
@@ -84,13 +104,12 @@
 }
 
 .team-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 25px 50px -12px rgba(13, 44, 79, 0.15);
-  border-color: var(--aeh-blue);
+  transform: translateY(-15px);
+  box-shadow: 0 40px 80px rgba(13, 44, 79, 0.1);
 }
 
 .team-card-image {
-  height: 380px;
+  height: 450px; /* Taller portraits for Dell 24" impact */
   width: 100%;
   background-color: #f1f5f9;
   position: relative;
@@ -101,27 +120,17 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 15%; /* Perfect head framing */
+  object-position: center 15%;
   display: block;
+  transition: transform 1s ease;
 }
 
-.card-icon-placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--aeh-light-back);
-}
-
-.card-icon-placeholder i {
-  font-size: 5rem;
-  color: var(--aeh-blue);
-  opacity: 0.2;
+.team-card:hover .team-card-image img {
+  transform: scale(1.05);
 }
 
 .team-card-info {
-  padding: 30px 25px;
+  padding: 35px 30px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -134,12 +143,12 @@
   color: var(--aeh-green);
   text-transform: uppercase !important;
   letter-spacing: 2px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .team-member-name {
   font-family: "EB Garamond", serif;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   color: var(--aeh-navy);
   line-height: 1.2;
   margin-bottom: 25px;
@@ -151,6 +160,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid #f1f5f9;
 }
 
 .read-more-link {
@@ -162,28 +173,60 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: 0.5s;
-}
-
-.read-more-link:hover {
-  transform: scale(1.1);
-  color: var(--aeh-green);
 }
 
 .linkedin-card-link {
   color: var(--aeh-navy);
   font-size: 1rem;
-  opacity: 0.5;
-  transition: 0.5s;
+  opacity: 0.4;
+  transition: 0.3s;
 }
 
 .linkedin-card-link:hover {
   opacity: 1;
-  color: var(--aeh-green);
-  transform: scale(1.5);
+  color: var(--aeh-blue);
 }
 
-/* --- MODAL --- */
+/* --- RESPONSIVE SCALING --- */
+
+/* Tablet / Small Laptop (13" Thinkpad) */
+@media (max-width: 1024px) {
+  .editorial-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .editorial-divider {
+    margin-bottom: 20px;
+  }
+
+  .team-card-image {
+    height: 380px;
+  }
+
+  .leadership-carousel-section {
+    padding: 60px 5%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .section-header-minimal {
+    justify-content: center;
+  }
+
+  .team-editorial-hero {
+    text-align: center;
+  }
+
+  .editorial-divider {
+    margin: 0 auto 25px;
+  }
+}
+
+/* =============================================
+   BIO MODAL STYLES (UNTOUCHED)
+   ============================================= */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -291,7 +334,6 @@
   color: rgba(0, 0, 0, 0.05);
 }
 
-/* RESPONSIVE */
 @media (max-width: 1024px) {
   .modal-flex {
     flex-direction: column;
@@ -302,11 +344,5 @@
   }
   .modal-card {
     height: 95vh;
-  }
-  .institutional-title {
-    font-size: 2.5rem;
-  }
-  .hero-content-center h1 {
-    font-size: 3rem;
   }
 }

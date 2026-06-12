@@ -164,10 +164,14 @@ em,
   justify-content: space-between;
   align-items: center;
   padding: 0 5%;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
-.nav-container,
 .site-footer .container {
+  width: 100%;
+  max-width: none;
   margin: 0 auto;
   padding-left: 2rem;
   padding-right: 2rem;

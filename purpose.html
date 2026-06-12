@@ -53,7 +53,7 @@
       src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
       defer
     ></script>
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
   </head>
 
   <body class="bg-gray-50">
@@ -82,7 +82,7 @@
           <a href="purpose.html">Our Purpose</a>
           <a href="impact.html">Impact</a>
           <a href="network.html">Network</a>
-          <a href="team.html">Leadership</a>
+          <a href="team.html">Team</a>
           <a href="partnerships.html" class="nav-btn">Partner With Us</a>
         </div>
       </div>
@@ -134,7 +134,7 @@
         <!-- The Three-Step Progression -->
         <div class="narrative-progression-grid">
           <!-- Step 1: Opportunity -->
-          <div class="narrative-step">
+          <div class="narrative-step highlight-step-blue">
             <div class="step-marker">01</div>
             <div class="step-content">
               <h3>The Opportunity</h3>
@@ -148,14 +148,14 @@
           </div>
 
           <!-- Step 2: Challenge -->
-          <div class="narrative-step">
+          <div class="narrative-step highlight-step-dark-blue">
             <div class="step-marker">02</div>
             <div class="step-content">
               <h3>The Challenge</h3>
               <p>
                 Yet too many people still face limited access to transformative
-                education, practical pathways to opportunity, and the strategic
-                support they need to realize their full potential.
+                education, practical pathways to opportunity, and the support
+                they need to realize their full potential.
               </p>
             </div>
           </div>
@@ -166,9 +166,10 @@
             <div class="step-content">
               <h3>The Imperative</h3>
               <p>
-                Unlocking this potential requires more than expanding access. It
-                requires creating environments where people develop the mindset,
-                skills, and experience to solve Africa's real challenges.
+                Unlocking this potential requires more than expanding access to
+                education. It requires creating environments where people
+                develop the mindset, skills, and experience to solve Africa's
+                real challenges.
               </p>
             </div>
           </div>
@@ -180,7 +181,6 @@
     <section class="belief-immersion">
       <!-- BELIEF 01: HUMAN POTENTIAL -->
       <div class="immersion-row">
-        <!-- Left: The Statement (Dark Navy) -->
         <div class="immersion-left-navy">
           <div class="immersion-content-sticky">
             <h2 class="text-white">
@@ -194,37 +194,57 @@
             </p>
           </div>
         </div>
-        <!-- Right: The Proof (White + Fade-ins) -->
         <div class="immersion-right-proof">
-          <div class="proof-container">
-            <!-- Stat Card -->
-            <div class="proof-reveal-item">
-              <div class="proof-stat-box">
-                <span class="stat-huge">14%</span>
-                <p>of Cavendish University Uganda graduates are refugees</p>
+          <!-- NESTED SWIPER FOR STORIES -->
+          <div class="swiper belief-story-swiper">
+            <div class="swiper-wrapper">
+              <!-- Story A: Abdi -->
+              <div class="swiper-slide">
+                <div class="proof-reveal-item revealed">
+                  <div class="proof-stat-box">
+                    <span class="stat-huge">14%</span>
+                    <p>of CUU graduates are refugees</p>
+                  </div>
+                  <div class="proof-story-card">
+                    <img
+                      src="images/abdi.png"
+                      alt="Hon. Abdirahman Abdi Ahmed"
+                    />
+                    <div class="story-meta">
+                      <h4>Alumni Spotlight</h4>
+                      <p>
+                        <strong>Hon. Abdirahman Abdi Ahmed:</strong> From
+                        refugee to Minister of Planning and International
+                        Cooperation, Jubaland.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <!-- Student Story -->
-            <div class="proof-reveal-item">
-              <div class="proof-story-card">
-                <img src="images/abdi.png" alt="Minister Story" />
-                <div class="story-meta">
-                  <h4>Alumni Spotlight</h4>
-                  <p>
-                    Hon. Abdirahman Abdi Ahmed: From refugee to Minister of
-                    Planning and International Cooperation.
-                  </p>
+              <!-- Story B: Shancel Kabuya -->
+              <div class="swiper-slide">
+                <div class="proof-reveal-item revealed">
+                  <div class="proof-stat-box outline">
+                    <span class="stat-huge">Global</span>
+                    <p>DRC Refugee to US Case Manager</p>
+                  </div>
+                  <div class="proof-story-card">
+                    <img src="images/shancel.png" alt="Shancel Kabuya" />
+                    <div class="story-meta">
+                      <h4>International Success</h4>
+                      <p>
+                        <strong>Shancel Kabuya:</strong> A 2021 Law graduate now
+                        serving as a Resettlement Case Manager for World Relief
+                        in the USA.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <!-- Secondary Stat -->
-            <div class="proof-reveal-item">
-              <div class="proof-stat-box outline">
-                <span class="stat-huge">30%+</span>
-                <p>
-                  of graduates are from conflict-affected regions across Africa
-                </p>
-              </div>
+            <div class="belief-nav">
+              <div class="b-prev">←</div>
+              <div class="b-next">→</div>
             </div>
           </div>
         </div>
@@ -245,21 +265,55 @@
           </div>
         </div>
         <div class="immersion-right-proof">
-          <div class="proof-container">
-            <div class="proof-reveal-item">
-              <div class="editorial-quote-premium">
-                <i class="fa-solid fa-quote-left"></i>
-                <p>
-                  "Cavendish didn't just teach me skills; they built my
-                  confidence to lead and create change in my community."
-                </p>
-                <span>— Student Leadership Council</span>
+          <div class="swiper belief-story-swiper">
+            <div class="swiper-wrapper">
+              <!-- Story A: Jonah Buyoya -->
+              <div class="swiper-slide">
+                <div class="proof-reveal-item revealed">
+                  <div class="proof-story-card">
+                    <img src="images/jonah.jpg" alt="Jonah Buyoya" />
+                    <div class="story-meta">
+                      <h4>BBC Award Recipient</h4>
+                      <p>
+                        <strong>Jonah Buyoya:</strong> Recipient of the BBC News
+                        Komla Dumor Award, recognized for exceptional
+                        storytelling and media leadership.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Story B: Cosmas Mulenga -->
+              <div class="swiper-slide">
+                <div class="proof-reveal-item revealed">
+                  <div class="proof-story-card">
+                    <img
+                      src="images/cosmas.jpg"
+                      alt="Cosmas Chongo Mulenga"
+                      onerror="
+                        this.style.display = 'none';
+                        this.nextElementSibling.style.display = 'flex';
+                      "
+                    />
+                    <div class="proof-image-placeholder" style="display: none">
+                      <i class="fa-solid fa-user"></i>
+                      <p>Cosmas Chongo Mulenga</p>
+                    </div>
+                    <div class="story-meta">
+                      <h4>Award-Winning Journalist</h4>
+                      <p>
+                        "Cavendish allowed me to chase my dreams without putting
+                        my career on hold, growing in the classroom and the real
+                        world simultaneously."
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="proof-reveal-item">
-              <div class="proof-story-card">
-                <img src="images/home1.jpg" alt="Student Leadership" />
-              </div>
+            <div class="belief-nav">
+              <div class="b-prev">←</div>
+              <div class="b-next">→</div>
             </div>
           </div>
         </div>
@@ -281,20 +335,27 @@
           </div>
         </div>
         <div class="immersion-right-proof">
-          <div class="proof-container">
-            <div class="proof-reveal-item">
-              <div class="proof-story-card">
-                <img src="images/kapisha.png" alt="Kapisha Story" />
-                <div class="pathway-badge">Direct Career Pathway</div>
-              </div>
-            </div>
-            <div class="proof-reveal-item">
-              <div class="proof-stat-box green-tint">
-                <span class="stat-huge">MOU</span>
-                <p>
-                  Strategic partnerships that hand-hold students from classroom
-                  to global employment.
-                </p>
+          <div class="swiper belief-story-swiper">
+            <div class="swiper-wrapper">
+              <!-- Story A: Evelyn Kaingu -->
+              <div class="swiper-slide">
+                <div class="proof-reveal-item revealed">
+                  <div class="proof-stat-box green-tint">
+                    <span class="stat-huge">$20.5M</span>
+                    <p>Raised in funding for Lupiya Fintech</p>
+                  </div>
+                  <div class="proof-story-card">
+                    <img src="images/evelyn.jpg" alt="Evelyn Kaingu" />
+                    <div class="story-meta">
+                      <h4>Entrepreneurial Excellence</h4>
+                      <p>
+                        <strong>Evelyn Kaingu:</strong> Founder of Lupiya,
+                        reshaping access to finance in Zambia and recognized by
+                        US VP Kamala Harris.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -309,7 +370,7 @@
         <div class="container">
           <div class="intro-content">
             <h2 class="text-white">Reimagining <em>Education.</em></h2>
-            <p class="intro-lead">
+            <p class="intro-lead" style="color: var(--aeh-white)">
               Preparing people to realize their full potential and contribute to
               solving Africa's real challenges requires more than traditional
               approaches to education. We believe learning should be connected
@@ -322,7 +383,7 @@
 
       <!-- PART 2: THE THREE PILLARS -->
 
-      <!-- PILLAR 01: REAL CHALLENGES -->
+      <!-- PILLAR 01: REAL CHALLENGES (Environmental Cleaning Gallery) -->
       <div class="pillar-chapter section-white">
         <div class="container">
           <div class="chapter-grid">
@@ -340,25 +401,42 @@
                 workplaces and businesses.
               </p>
               <p>
-                Our university and business education programs emphasize
-                problem-centered learning that empowers learners to apply
-                knowledge and skills to create opportunity and solve real
-                social, economic, and technological challenges across Africa.
+                Our programs emphasize problem-centered learning that empowers
+                learners to apply knowledge to solve real social, economic, and
+                technological challenges.
               </p>
             </div>
             <div class="chapter-visual">
-              <div class="image-frame">
-                <img src="images/cuu-community.jpg" alt="Community Impact" />
-                <div class="frame-label">
-                  Problem-Centered Learning in Action
-                </div>
+              <!-- FLASH GALLERY -->
+              <div class="flash-gallery">
+                <img
+                  src="images/cl1.jpg"
+                  class="flash-img active"
+                  alt="Environmental Cleaning"
+                />
+                <img
+                  src="images/cl2.JPG"
+                  class="flash-img"
+                  alt="Community Work"
+                />
+                <img
+                  src="images/cl3.jpg"
+                  class="flash-img"
+                  alt="Student Impact"
+                />
+                <img
+                  src="images/cl4.JPG"
+                  class="flash-img"
+                  alt="Student Impact"
+                />
+                <div class="frame-label">Keep Zambia Clean Campaign</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- PILLAR 02: HOLISTIC VALUES (THE REFINED COLLAGE) -->
+      <!-- PILLAR 02: HOLISTIC VALUES (Leadership Gallery) -->
       <div class="pillar-chapter section-slate">
         <div class="container">
           <div class="chapter-grid reverse">
@@ -367,35 +445,43 @@
               <h3>Holistic Values-Based <br /><em>Education.</em></h3>
               <p>
                 Our learners come from diverse social, economic and cultural
-                backgrounds, each bringing unique experiences and potential.
-                Preparing them to thrive requires more than academic knowledge
-                alone.
+                backgrounds. Preparing them to thrive requires more than
+                academic knowledge alone.
               </p>
               <p>
                 We focus on developing the whole person—cultivating character,
                 mindset, values, resilience, and leadership alongside academic
-                and professional skills.
+                skills.
               </p>
 
-              <div class="proof-mini-grid">
-                <div class="p-mini-item">
-                  <span class="p-mini-num">45+</span>
-                  <p>Nationalities Represented</p>
+              <div class="highlight-list">
+                <div class="h-item">
+                  <span>Focus</span>
+                  <p>Character & Mindset Cultivation</p>
                 </div>
-                <div class="p-mini-item">
-                  <span class="p-mini-num">Impact</span>
-                  <p>Alumni in Key Leadership Positions</p>
+                <div class="h-item">
+                  <span>Focus</span>
+                  <p>Ethical Leadership Frameworks</p>
                 </div>
               </div>
             </div>
             <div class="chapter-visual">
-              <div class="collage-proof">
-                <img src="images/potential.JPG" alt="Holistic Growth" />
+              <div class="flash-gallery">
+                <img
+                  src="images/pl1.jpg"
+                  class="flash-img active"
+                  alt="Leadership"
+                />
+                <img
+                  src="images/pl2.jpg"
+                  class="flash-img"
+                  alt="Values Education"
+                />
                 <div class="floating-proof-card">
                   <i class="fa-solid fa-hands-holding-circle"></i>
                   <p>
-                    Students engaged in community environmental cleaning and
-                    ethical leadership initiatives.
+                    Developing grounded, purpose-driven graduates who lead with
+                    integrity.
                   </p>
                 </div>
               </div>
@@ -424,12 +510,29 @@
               <p>
                 Our programs emphasize practical learning and global
                 experiences, empowering learners to access employment and
-                entrepreneurship opportunities in Africa and around the world.
+                entrepreneurship opportunities globally.
               </p>
             </div>
 
             <div class="chapter-visual">
+              <!-- The Image Gallery -->
+              <div class="flash-gallery">
+                <img
+                  src="images/hl1.jpg"
+                  class="flash-img active"
+                  alt="Hult Prize Winner"
+                />
+                <!-- <img
+                  src="images/hl1.jpg"
+                  class="flash-img"
+                  alt="International Project"
+                /> -->
+                <div class="frame-label">Global Impact & Innovation</div>
+              </div>
+
+              <!-- THE FIX: Side-by-Side Highlight Stack -->
               <div class="experience-highlight-stack">
+                <!-- Card 1 -->
                 <div class="exp-card">
                   <div class="exp-header">
                     <span class="exp-stat">40+</span>
@@ -440,9 +543,11 @@
                     States, gaining international experience.
                   </p>
                 </div>
+
+                <!-- Card 2: Launching (Restored) -->
                 <div class="exp-card blue-card">
                   <div class="exp-header">
-                    <span class="exp-stat">Active</span>
+                    <span class="exp-stat">Launching</span>
                     <i class="fa-solid fa-briefcase"></i>
                   </div>
                   <p>

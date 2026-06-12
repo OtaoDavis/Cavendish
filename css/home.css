@@ -1023,6 +1023,13 @@
   color: white;
 }
 
+.bento-content,
+.bento-num-sm,
+.bento-label-sm {
+  position: relative;
+  z-index: 1;
+}
+
 .bento-bg-icon {
   position: absolute;
   top: -20px;
@@ -1030,6 +1037,14 @@
   font-size: 15rem;
   color: rgba(255, 255, 255, 0.03);
   pointer-events: none;
+  z-index: 0;
+}
+
+.bento-item:not(.graduands-box) .bento-bg-icon {
+  top: -14px;
+  right: -14px;
+  font-size: 9rem;
+  color: rgba(255, 255, 255, 0.04);
 }
 
 /* =============================================
