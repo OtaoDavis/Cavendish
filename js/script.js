@@ -109,22 +109,51 @@ document.addEventListener("DOMContentLoaded", () => {
   const portalLinks = document.querySelectorAll(".portal-link");
   const assetViews = document.querySelectorAll(".asset-view");
 
+  const activatePortalView = (targetId) => {
+    if (!targetId) return;
+
+    const targetView = document.getElementById(targetId);
+    if (!targetView) return;
+
+    portalLinks.forEach((item) => item.classList.remove("active"));
+    assetViews.forEach((view) => view.classList.remove("active"));
+
+    const activeLink = document.querySelector(
+      `.portal-link[data-target="${targetId}"]`,
+    );
+    if (activeLink) activeLink.classList.add("active");
+    targetView.classList.add("active");
+  };
+
   if (portalLinks.length && assetViews.length) {
     portalLinks.forEach((link) => {
       link.addEventListener("click", () => {
         const targetId = link.dataset.target;
-        if (!targetId) return;
-
-        const targetView = document.getElementById(targetId);
-        if (!targetView) return;
-
-        portalLinks.forEach((item) => item.classList.remove("active"));
-        assetViews.forEach((view) => view.classList.remove("active"));
-
-        link.classList.add("active");
-        targetView.classList.add("active");
+        activatePortalView(targetId);
       });
     });
+
+    const openFromHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (!hash) return;
+
+      let sectionId = "";
+      if (hash.startsWith("zambia")) sectionId = "zambia";
+      if (hash.startsWith("uganda")) sectionId = "uganda";
+      if (hash.startsWith("standard")) sectionId = "standard";
+
+      if (sectionId) activatePortalView(sectionId);
+
+      const targetEl = document.getElementById(hash);
+      if (targetEl) {
+        setTimeout(() => {
+          targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 80);
+      }
+    };
+
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
   }
 
   const facultyWrappers = document.querySelectorAll(
