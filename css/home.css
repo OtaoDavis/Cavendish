@@ -769,7 +769,7 @@
   /* Reduced size to ensure it fits the width without cutting off */
   font-size: clamp(10rem, 20vw, 24rem);
   font-weight: 900;
-  color: rgba(255, 255, 255, 0.03); /* Lower opacity for true background feel */
+  color: rgba(255, 255, 255, 0.05); /* Lower opacity for true background feel */
   line-height: 1;
   pointer-events: none;
   z-index: 1;
