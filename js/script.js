@@ -105,6 +105,55 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // --- 4.5 NETWORK PORTAL TABS (Network Page) ---
+  const portalLinks = document.querySelectorAll(".portal-link");
+  const assetViews = document.querySelectorAll(".asset-view");
+
+  if (portalLinks.length && assetViews.length) {
+    portalLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        const targetId = link.dataset.target;
+        if (!targetId) return;
+
+        const targetView = document.getElementById(targetId);
+        if (!targetView) return;
+
+        portalLinks.forEach((item) => item.classList.remove("active"));
+        assetViews.forEach((view) => view.classList.remove("active"));
+
+        link.classList.add("active");
+        targetView.classList.add("active");
+      });
+    });
+  }
+
+  const facultyWrappers = document.querySelectorAll(
+    ".faculties-interactive-wrapper",
+  );
+
+  facultyWrappers.forEach((wrapper) => {
+    const tabs = wrapper.querySelectorAll(".faculty-tab");
+    const panels = wrapper.querySelectorAll(".faculty-programs");
+
+    if (!tabs.length || !panels.length) return;
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const targetId = tab.dataset.target;
+        if (!targetId) return;
+
+        const targetPanel = wrapper.querySelector(`#${targetId}`);
+        if (!targetPanel) return;
+
+        tabs.forEach((item) => item.classList.remove("active"));
+        panels.forEach((panel) => panel.classList.remove("active"));
+
+        tab.classList.add("active");
+        targetPanel.classList.add("active");
+      });
+    });
+  });
+
   // --- 5. SWIPER INITIALIZATIONS ---
 
   // Main Hero Swiper

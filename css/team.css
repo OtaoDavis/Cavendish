@@ -18,7 +18,7 @@
 
 /* Left Side: The 100 Years Statement */
 .editorial-main h1 {
-  font-family: "Playfair Display", serif;
+  font-family: "EB Garamond", serif;
   /* Fluid typography for 13" to 24" screens */
   font-size: clamp(2rem, 3.5vw, 3.2rem);
   line-height: 1.15;

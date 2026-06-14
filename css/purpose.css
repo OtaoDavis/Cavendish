@@ -702,6 +702,15 @@
   font-weight: 400;
 }
 
+.chapter-text p {
+  font-family: "Merriweather", serif;
+  font-size: clamp(1rem, 1.1vw, 1.25rem);
+  line-height: 1.8;
+  color: #4a5568;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
 /* --- FLASH GALLERY --- */
 .flash-gallery {
   position: relative;

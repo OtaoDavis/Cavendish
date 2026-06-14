@@ -5,66 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Explore the AEH university network: Cavendish University Uganda and Cavendish University Zambia. Discover faculties, programs, leadership, and campus details across our pan-African academic alliance."
+      content="Explore the Cavendish University network in Uganda and Zambia. Discover our faculties, programs, and leadership."
     />
     <title>University Network | Cavendish Africa</title>
 
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/network.css" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="images/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="images/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="images/favicon-16x16.png"
-    />
-    <link rel="manifest" href="images/site.webmanifest" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700&family=Inter:wght@400;700;800&display=swap"
       rel="stylesheet"
     />
 
-    <!-- font awesome     -->
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
     />
 
-    <!-- SwiperJS CSS -->
+    <!-- SwiperJS -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-
-    <!-- SwiperJS Script -->
     <script
       src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
       defer
     ></script>
+    <script src="js/script.js" defer></script>
   </head>
 
   <body class="bg-gray-50">
     <!-- OVERLAY LOADER -->
     <div id="aeh-loader" class="aeh-loader-overlay">
       <div class="loader-content">
-        <img src="images/Logo.png" alt="AEH" class="loader-logo-pulse" />
+        <img
+          src="images/logo.png"
+          alt="Cavendish Africa"
+          class="loader-logo-pulse"
+        />
       </div>
     </div>
 
@@ -72,45 +54,29 @@
     <nav class="sticky-nav">
       <div class="nav-container">
         <a href="index.html" class="logo">
-          <img src="images/Logo.png" alt="AEH" class="logo-img" />
+          <img src="images/logo.png" alt="Cavendish Africa" class="logo-img" />
         </a>
         <button class="hamburger" aria-label="Toggle menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
+          <span class="bar"></span><span class="bar"></span
+          ><span class="bar"></span>
         </button>
         <div class="nav-links">
-          <a href="network.html">Universities</a>
+          <a href="purpose.html">Purpose</a>
+          <a href="network.html" class="active-link">Universities</a>
           <a href="cabs.html">Business School</a>
           <a href="team.html">Team</a>
-          <a href="purpose.html">Our Purpose</a>
-          <div class="nav-dropdown">
-            <a href="#" class="nav-btn nav-btn-dropdown"
-              >Explore our programs <i class="fa-solid fa-chevron-down"></i
-            ></a>
-            <div class="nav-dropdown-menu">
-              <a href="https://www.cavendishza.org/admissions/" target="_blank"
-                >CUZ Enrolment</a
-              >
-              <a href="https://www.cavendish.ac.ug/admissions/" target="_blank"
-                >CUU Enrolment</a
-              >
-              <a href="cabs.html#enroll">CABS Enrolment</a>
-            </div>
-          </div>
+          <a href="partnerships.html" class="nav-btn">Partner With Us</a>
         </div>
       </div>
     </nav>
 
     <main class="network-portal">
-      <!-- LEFT SIDEBAR: NAVIGATION -->
+      <!-- LEFT SIDEBAR -->
       <aside class="portal-sidebar">
         <div class="sidebar-header">
           <p class="green-tag">Our Universities</p>
         </div>
-
         <nav class="portal-nav">
-          <!-- Asset 01: Zambia (Now First) -->
           <button class="portal-link active" data-target="zambia">
             <span class="factor-num">01.</span>
             <div class="factor-content">
@@ -118,8 +84,6 @@
               <p>Cavendish University Zambia</p>
             </div>
           </button>
-
-          <!-- Asset 02: Uganda -->
           <button class="portal-link" data-target="uganda">
             <span class="factor-num">02.</span>
             <div class="factor-content">
@@ -127,23 +91,21 @@
               <p>Cavendish University Uganda</p>
             </div>
           </button>
-
-          <!-- Asset 03: Standards -->
           <button class="portal-link" data-target="standard">
             <span class="factor-num">03.</span>
             <div class="factor-content">
-              <h4>The AEH Standard</h4>
+              <h4>The Cavendish Standard</h4>
               <p>Network Governance</p>
             </div>
           </button>
         </nav>
       </aside>
 
-      <!-- RIGHT SIDE: THE CONTENT STAGE -->
+      <!-- RIGHT STAGE -->
       <div class="portal-stage">
-        <!-- ZAMBIA SECTION (Active by Default) -->
+        <!-- ZAMBIA SECTION -->
         <section id="zambia" class="asset-view active">
-          <div class="asset-header">
+          <div class="asset-header" data-watermark="Zambia">
             <p class="green-tag">SOUTHERN AFRICA HUB</p>
             <h2 class="asset-display-title">
               Cavendish University <br /><em>Zambia.</em>
@@ -170,13 +132,11 @@
             </div>
           </div>
 
-          <!-- ZAMBIA FACULTIES -->
           <div class="portal-faculties-area">
             <div class="faculties-header">
               <p class="blue-tag">ACADEMICS</p>
               <h3>Faculties & <em>Programs.</em></h3>
             </div>
-
             <div class="faculties-interactive-wrapper">
               <ul class="faculty-tabs">
                 <li class="faculty-tab active" data-target="med-zm">
@@ -190,7 +150,6 @@
                   Arts & Social Sciences
                 </li>
               </ul>
-
               <div class="faculty-display-panel">
                 <div id="med-zm" class="faculty-programs active">
                   <h4>Medicine & Health Sciences</h4>
@@ -209,9 +168,8 @@
                     >Enroll Today <i class="fa-solid fa-arrow-right"></i
                   ></a>
                 </div>
-
                 <div id="bus-zm" class="faculty-programs">
-                  <h4>Business and Information Technology</h4>
+                  <h4>Business and IT</h4>
                   <ul class="program-list">
                     <li>Bachelor of Science in Information Technology</li>
                     <li>Master of Business Administration (MBA)</li>
@@ -225,7 +183,6 @@
                     >Enroll Today <i class="fa-solid fa-arrow-right"></i
                   ></a>
                 </div>
-
                 <div id="law-zm" class="faculty-programs">
                   <h4>Law</h4>
                   <ul class="program-list">
@@ -240,9 +197,8 @@
                     >Enroll Today <i class="fa-solid fa-arrow-right"></i
                   ></a>
                 </div>
-
                 <div id="arts-zm" class="faculty-programs">
-                  <h4>Arts, Education & Social Sciences</h4>
+                  <h4>Arts & Social Sciences</h4>
                   <ul class="program-list">
                     <li>Bachelor of Arts in Social Work</li>
                     <li>Bachelor of Arts in Development Studies</li>
@@ -259,7 +215,6 @@
             </div>
           </div>
 
-          <!-- ZAMBIA CONTEXT BOXES -->
           <div class="high-contrast-context">
             <div class="context-card bg-green">
               <h4>Pioneering Access and Impact</h4>
@@ -280,87 +235,74 @@
             </div>
           </div>
 
-          <!-- ZAMBIA LEADERSHIP (Keep existing structure) -->
-          <!-- leadership part -->
           <div class="institutional-leadership-area">
             <div class="lead-header">
               <p class="blue-tag">GOVERNANCE</p>
               <h2 class="section-main-title">University <em>Leadership</em></h2>
             </div>
-
             <div class="leadership-grid">
-              <!-- Leader 01: Prof. Welani Chilengwe -->
               <div class="team-card">
                 <div class="team-card-visual">
                   <img
-                    src="images/vice-chancellor-cuz.jpg"
-                    alt="Prof. Welani Chilengwe"
+                    src="images/philip-vc.jpg"
+                    alt="Prof. Justice Phillip Musonda"
                   />
-                  <div class="visual-overlay"></div>
                 </div>
                 <div class="team-card-info">
                   <p class="team-member-title">Vice Chancellor</p>
-                  <h3 class="team-member-name">Prof. Welani Chilengwe</h3>
-                  <div class="title-line"></div>
+                  <h3 class="team-member-name">
+                    Prof. Justice Phillip Musonda
+                  </h3>
                   <p class="team-member-bio">
-                    A seasoned academic leader and retired military officer,
-                    Prof. Chilengwe drives the delivery of market-relevant
-                    education while advancing CUZ as a premier Tier 1
-                    institution through global partnerships.
+                    Professor Justice Phillip Musonda is a retired Zambia
+                    Supreme Court Justice, esteemed legal scholar, and authority
+                    in constitutional law. As Acting Vice Chancellor of
+                    Cavendish University Zambia, he brings decades of judicial
+                    and academic leadership.
                   </p>
                 </div>
               </div>
-
-              <!-- Leader 02: Mr. Oscar Correia -->
-              <div class="team-card">
-                <div class="team-card-visual">
-                  <img src="images/oscar.jpg" alt="Mr. Oscar Correia" />
-                  <div class="visual-overlay"></div>
-                </div>
-                <div class="team-card-info">
-                  <p class="team-member-title">Deputy Vice Chancellor</p>
-                  <h3 class="team-member-name">Mr. Oscar Correia</h3>
-                  <div class="title-line"></div>
-                  <p class="team-member-bio">
-                    An expert in academic operations and digital transformation
-                    with an MBA from Warwick Business School. Mr. Correia leads
-                    the integration of innovative technology and systems into
-                    the institutional model.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Leader 03: Mr. Reginald Rainey -->
               <div class="team-card">
                 <div class="team-card-visual">
                   <img
-                    src="images/Reggie.jpg"
-                    alt="Mr. Reginald Rainey"
-                    style="object-position: center 15%"
+                    src="images/rachel-dvc.jpg"
+                    alt="Dr. Rachel Milomba Velu"
                   />
-                  <div class="visual-overlay"></div>
+                </div>
+                <div class="team-card-info">
+                  <p class="team-member-title">Deputy Vice Chancellor</p>
+                  <h3 class="team-member-name">Dr. Rachel Milomba Velu</h3>
+                  <p class="team-member-bio">
+                    Dr. Rachel Milomba Velu (PhD, MSc, MBChB, BSc) is Acting
+                    Deputy Vice Chancellor – Academic Affairs, a physician,
+                    epidemiologist, and accomplished researcher whose work in
+                    infectious diseases and public health has advanced
+                    healthcare and medical education.
+                  </p>
+                </div>
+              </div>
+              <div class="team-card">
+                <div class="team-card-visual">
+                  <img src="images/Reggie.jpg" alt="Mr. Reginald Rainey" />
                 </div>
                 <div class="team-card-info">
                   <p class="team-member-title">Executive Director</p>
                   <h3 class="team-member-name">Mr. Reginald Rainey</h3>
-                  <div class="title-line"></div>
                   <p class="team-member-bio">
-                    An executive leader with over 25 years of expertise in
-                    university operations. Mr. Rainey directs the strategic
-                    functions of CUZ, focusing on digital innovation and global
-                    partnerships to empower youth.
+                    Reginald Rainey is a higher education executive advancing
+                    digital innovation, remote workforce development, and global
+                    partnerships, leveraging over 25 years of experience to
+                    expand opportunities for African talent worldwide.
                   </p>
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- leadership part end -->
         </section>
 
         <!-- UGANDA SECTION -->
         <section id="uganda" class="asset-view">
-          <div class="asset-header">
+          <div class="asset-header" data-watermark="Uganda">
             <p class="green-tag">EAST AFRICA HUB</p>
             <h2 class="asset-display-title">
               Cavendish University <br /><em>Uganda.</em>
@@ -387,13 +329,11 @@
             </div>
           </div>
 
-          <!-- UGANDA FACULTIES -->
           <div class="portal-faculties-area">
             <div class="faculties-header">
               <p class="blue-tag">ACADEMICS</p>
               <h3>Faculties & <em>Programs.</em></h3>
             </div>
-
             <div class="faculties-interactive-wrapper">
               <ul class="faculty-tabs">
                 <li class="faculty-tab active" data-target="law-ug">Law</li>
@@ -407,7 +347,6 @@
                   Socio-Economic Sciences
                 </li>
               </ul>
-
               <div class="faculty-display-panel">
                 <div id="law-ug" class="faculty-programs active">
                   <h4>Law</h4>
@@ -423,13 +362,11 @@
                     >Enroll Today <i class="fa-solid fa-arrow-right"></i
                   ></a>
                 </div>
-                <!-- Other Uganda Faculties follow same pattern... -->
-                ...
+                <!-- Other panels follow same structure -->
               </div>
             </div>
           </div>
 
-          <!-- UGANDA CONTEXT BOXES -->
           <div class="high-contrast-context">
             <div class="context-card bg-blue">
               <h4>Access and Opportunity</h4>
@@ -451,85 +388,199 @@
             </div>
           </div>
 
-          <!-- UGANDA LEADERSHIP (Keep existing structure) -->
-          <!-- UGANDA LEADERSHIP -->
           <div class="institutional-leadership-area">
             <div class="lead-header">
               <p class="blue-tag">GOVERNANCE</p>
               <h2 class="section-main-title">University <em>Leadership</em></h2>
             </div>
-
-            <!-- 3-Column Grid for leadership -->
             <div class="leadership-grid">
-              <!-- Leader 01 -->
               <div class="team-card">
                 <div class="team-card-visual">
                   <img
                     src="images/chancellor-cuu.jpg"
-                    alt="H.E. Dr. Goodluck Jonathan"
+                    alt="Dr. Goodluck Jonathan"
                   />
-                  <div class="visual-overlay"></div>
                 </div>
                 <div class="team-card-info">
                   <p class="team-member-title">Chancellor</p>
                   <h3 class="team-member-name">Dr. Goodluck Jonathan</h3>
-                  <div class="title-line"></div>
                   <p class="team-member-bio">
-                    A distinguished scholar and former academic lecturer holding
-                    a PhD in Zoology. Dr. Jonathan oversees the strategic and
-                    ethical direction of CUU’s academic mission.
+                    Oversees the strategic and ethical direction of CUU’s
+                    academic mission.
                   </p>
                 </div>
               </div>
-
-              <!-- Leader 02 -->
               <div class="team-card">
                 <div class="team-card-visual">
                   <img
                     src="images/vice-chancellor-cuu.jpg"
                     alt="Dr. Olive Sabiiti"
                   />
-                  <div class="visual-overlay"></div>
                 </div>
                 <div class="team-card-info">
                   <p class="team-member-title">Vice Chancellor</p>
                   <h3 class="team-member-name">Dr. Olive Sabiiti</h3>
-                  <div class="title-line"></div>
                   <p class="team-member-bio">
-                    A distinguished legal scholar and Commonwealth Scholar with
-                    a PhD from the University of Manchester. Dr. Sabiiti
-                    provides expert academic and administrative leadership to
+                    Provides expert academic and administrative leadership to
                     CUU.
                   </p>
                 </div>
               </div>
-
-              <!-- Leader 03 -->
               <div class="team-card">
                 <div class="team-card-visual">
                   <img
                     src="images/executive-director-cuu.jpg"
                     alt="Mr. David Mutabanura"
                   />
-                  <div class="visual-overlay"></div>
                 </div>
                 <div class="team-card-info">
                   <p class="team-member-title">Executive Director</p>
                   <h3 class="team-member-name">Mr. David Mutabanura</h3>
-                  <div class="title-line"></div>
                   <p class="team-member-bio">
-                    An operational strategist with over 20 years of commercial
-                    experience. Mr. Mutabanura directs the financial and
-                    administrative functions of CUU with institutional rigor.
+                    Directs the financial and administrative functions of CUU
+                    with institutional rigor.
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Uganda leadership end -->
+        </section>
+
+        <!-- THE CAVENDISH STANDARD SECTION -->
+        <section id="standard" class="asset-view">
+          <div class="asset-header" data-watermark="Standard">
+            <p class="blue-tag">NETWORK GOVERNANCE</p>
+            <h2 class="asset-display-title">
+              The framework of <br /><em>Standardized Quality.</em>
+            </h2>
+          </div>
+          <div class="standards-full-card bg-navy">
+            <div class="s-grid">
+              <div class="s-pillar">
+                <h5>Governance</h5>
+                <p>
+                  Centralized financial oversight and strategic management
+                  ensuring institutional stability and long-term growth.
+                </p>
+              </div>
+              <div class="s-pillar">
+                <h5>Pedagogy</h5>
+                <p>
+                  A modernized, student-centered curriculum designed for market
+                  relevance and practical problem-solving.
+                </p>
+              </div>
+              <div class="s-pillar">
+                <h5>Reach</h5>
+                <p>
+                  A borderless Pan-African academic alliance facilitating
+                  faculty exchange and global student opportunities.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION: STRATEGIC PARTNERSHIPS (WIDE NARRATIVE) -->
+          <section class="strategic-partnerships">
+            <div class="container">
+              <div class="strategic-grid">
+                <div class="strategic-left">
+                  <p class="blue-tag">Collaboration</p>
+                  <h2 class="strategic-headline">
+                    Strategic <em>Partnerships.</em>
+                  </h2>
+                </div>
+                <div class="strategic-right">
+                  <div class="strategic-text">
+                    <p>
+                      Expanding opportunity for Africa's youth and entrepreneurs
+                      requires collaboration. Cavendish Africa works with
+                      education institutions, employers, businesses,
+                      foundations, investors, and other partners who share our
+                      commitment to transformative education, employment,
+                      entrepreneurship and leadership development.
+                    </p>
+                    <p>
+                      If you are interested in partnering with us to strengthen
+                      education, expand opportunity, and support Africa's next
+                      generation of leaders and entrepreneurs, we would welcome
+                      a conversation.
+                    </p>
+                  </div>
+                  <button class="btn-solid" id="openPartnerModal">
+                    Initiate Dialogue <i class="fa-solid fa-paper-plane"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
         </section>
       </div>
     </main>
+
+    <!-- THE PARTNERSHIP MODAL -->
+    <div id="partnerModal" class="aeh-modal">
+      <div class="modal-overlay" id="closeModalOverlay"></div>
+      <div class="modal-content-wrapper">
+        <button class="modal-close-btn" id="closePartnerModal">&times;</button>
+
+        <div class="contact-form-wrapper">
+          <div class="form-decorative-element"></div>
+          <h3 class="modal-form-title">Partner With Us</h3>
+          <form class="aeh-premium-form">
+            <div class="form-row split">
+              <div class="field-group">
+                <label>Full Name</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Jean-Pierre Mensah"
+                  required
+                />
+              </div>
+              <div class="field-group">
+                <label>Phone Number</label>
+                <input type="text" placeholder="+000 000 000 000" required />
+              </div>
+            </div>
+
+            <div class="form-row split">
+              <div class="field-group">
+                <label>Organization</label>
+                <input
+                  type="text"
+                  placeholder="Institutional / Private Equity"
+                  required
+                />
+              </div>
+              <div class="field-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="name@company.com" required />
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label>Nature of Inquiry</label>
+              <select>
+                <option>Network Partnership</option>
+                <option>Investment Inquiry</option>
+                <option>University Collaboration</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label>Message</label>
+              <textarea
+                rows="4"
+                placeholder="How can we align our missions?"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-initiate">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <!-- START: Footer Section -->
     <footer class="site-footer">
@@ -539,7 +590,7 @@
           <div class="footer-col">
             <img
               src="images/logo_trans.png"
-              alt="AEH Logo"
+              alt="Cavendish Africa Logo"
               class="footer-logo mb-4"
             />
             <p class="text-gray-400">
@@ -592,8 +643,8 @@
         <!-- Footer Bottom Bar -->
         <div class="footer-bottom">
           <p class="copyright-text">
-            &copy; <span id="copyright-year"></span> Africa Education Holdings.
-            All Rights Reserved.
+            &copy; <span id="copyright-year"></span> Cavendish Africa. All
+            Rights Reserved.
           </p>
           <div class="social-links">
             <a href="#" aria-label="Facebook"
@@ -613,114 +664,3 @@
     <!-- END: Footer Section -->
   </body>
 </html>
-
-<script src="js/script.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const preloader = document.getElementById("aeh-loader");
-
-    // 1. Loader Logic (Hides preloader after 1s)
-    const hideLoader = () => {
-      setTimeout(() => {
-        if (preloader) preloader.classList.add("loader-finished");
-        document.body.classList.remove("content-hidden");
-      }, 1000);
-    };
-
-    if (document.readyState === "complete") {
-      hideLoader();
-    } else {
-      window.addEventListener("load", hideLoader);
-    }
-
-    // 2. Redirection Logic (Shows loader when leaving page)
-    const internalLinks = document.querySelectorAll(
-      'a[href^="index.html"], a[href^="about.html"], a[href^="talent.html"], a[href^="partnerships.html"], a[href^="network.html"]',
-    );
-
-    internalLinks.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        // Don't trigger for hash links like #contact
-        if (!link.hash && !e.metaKey && !e.ctrlKey) {
-          e.preventDefault();
-          const destination = link.href;
-          if (preloader) preloader.classList.remove("loader-finished");
-          setTimeout(() => {
-            window.location.href = destination;
-          }, 500);
-        }
-      });
-    });
-
-    // 3. Hamburger Menu (Mobile Navigation)
-    const btn = document.getElementById("menu-btn");
-    const menu = document.getElementById("menu");
-    if (btn && menu) {
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        btn.classList.toggle("open");
-        menu.classList.toggle("hidden");
-      });
-    }
-
-    // 4. Portal Switcher Logic (Left Sidebar: Uganda vs Zambia)
-    const portalLinks = document.querySelectorAll(".portal-link");
-    const assetViews = document.querySelectorAll(".asset-view");
-
-    portalLinks.forEach((button) => {
-      button.addEventListener("click", () => {
-        const targetId = button.dataset.target;
-
-        // Update Sidebar Active Class
-        portalLinks.forEach((btn) => btn.classList.remove("active"));
-        button.classList.add("active");
-
-        // Update Content Stage (Hide all sections, show target)
-        assetViews.forEach((section) => section.classList.remove("active"));
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-          targetSection.classList.add("active");
-        }
-
-        // Smooth scroll stage back to top
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    });
-
-    // 5. Interactive Faculty Tabs Logic (Inside each University View)
-    const facultyTabs = document.querySelectorAll(".faculty-tab");
-
-    facultyTabs.forEach((tab) => {
-      tab.addEventListener("click", function () {
-        // Scope search to the current university wrapper only
-        const wrapper = this.closest(".faculties-interactive-wrapper");
-        const targetId = this.dataset.target;
-        const targetContent = document.getElementById(targetId);
-
-        // Deactivate tabs in this specific university section
-        wrapper
-          .querySelectorAll(".faculty-tab")
-          .forEach((t) => t.classList.remove("active"));
-        // Deactivate program panels in this specific university section
-        wrapper
-          .querySelectorAll(".faculty-programs")
-          .forEach((p) => p.classList.remove("active"));
-
-        // Activate the clicked tab and content
-        this.classList.add("active");
-        if (targetContent) {
-          targetContent.classList.add("active");
-        }
-      });
-    });
-
-    // 6. Smooth Scroll on Page Load (Handles links from Home page like #uganda)
-    if (window.location.hash) {
-      const hash = window.location.hash.substring(1);
-      const targetButton = document.querySelector(`[data-target="${hash}"]`);
-      if (targetButton) {
-        targetButton.click(); // Automatically "clicks" the sidebar link
-      }
-    }
-  });
-</script>
