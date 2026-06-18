@@ -21,543 +21,755 @@ section .container {
 /* ============================================================
    1. HERO
    ============================================================ */
-.cabs-hero {
+.cabs-hero-cinematic {
   position: relative;
-  height: 100vh;
-  min-height: 680px;
+  /* Subtract nav height to fit perfectly in viewport */
+  height: calc(100vh - 90px);
+  min-height: 700px;
+  width: 100%;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-end; /* Anchor to bottom */
   overflow: hidden;
+  background-color: var(--aeh-navy);
 }
 
+/* --- Background & Ken Burns --- */
 .cabs-hero-bg {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  background-size: cover;
+  background-position: center 30%;
+  z-index: 1;
+  animation: kenBurnsZoom 25s infinite alternate ease-in-out;
 }
 
-/* Hero background video — full bleed, GPU-composited */
-.cabs-hero-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
-  /* Prevent flicker on some browsers */
-  backface-visibility: hidden;
-  transform: translateZ(0);
-}
-
-/* Fallback image (shown if video can't autoplay or on low-power mode) */
-.cabs-hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
-}
-
-/* Reduce motion: pause video for users who prefer it */
-@media (prefers-reduced-motion: reduce) {
-  .cabs-hero-video {
-    animation: none;
-    /* Can't pause with CSS alone, but the JS below handles it */
+@keyframes kenBurnsZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
   }
 }
 
+/* --- Sophisticated Scrim Overlay --- */
 .cabs-hero-overlay {
   position: absolute;
   inset: 0;
+  /* Heavy bottom-left gradient for text readability */
   background: linear-gradient(
-    to right,
-    rgba(10, 26, 41, 0.92) 0%,
-    rgba(10, 26, 41, 0.65) 55%,
-    rgba(10, 26, 41, 0.25) 100%
+    to top right,
+    rgba(13, 44, 79, 0.95) 0%,
+    rgba(13, 44, 79, 0.7) 40%,
+    rgba(13, 44, 79, 0.2) 100%
   );
+  z-index: 2;
 }
 
-.cabs-hero-inner {
+/* --- Content Layout --- */
+.hero-container-bottom {
   position: relative;
-  z-index: 2;
+  z-index: 10;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 var(--section-inline-padding) 60px var(--section-inline-padding);
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  padding-bottom: 80px;
-  width: 100%;
+  justify-content: flex-start;
+  box-sizing: border-box;
 }
 
 .cabs-hero-content {
-  max-width: 680px;
+  max-width: 950px; /* Slightly wider to accommodate the longer subheadline */
+  text-align: left;
 }
 
-.cabs-eyebrow {
-  display: inline-block;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 3.5px;
-  text-transform: uppercase;
+.cabs-hero-content .hero-eyebrow {
   color: var(--aeh-green);
-  margin-bottom: 24px;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 0.75rem;
+  margin-bottom: 20px;
+  display: block;
 }
 
-.cabs-hero h1 {
+.cabs-hero-content h1 {
   font-family: "Playfair Display", serif;
-  font-size: clamp(3.5rem, 6vw, 6rem);
-  line-height: 1;
+  font-size: clamp(2.5rem, 5.5vw, 4.8rem);
+  color: #fff;
+  line-height: 1.05;
+  margin-bottom: 25px;
   font-weight: 700;
-  color: white;
-  margin: 0 0 28px;
   letter-spacing: -1.5px;
 }
 
-.cabs-hero h1 em {
+.cabs-hero-content h1 em {
+  font-family: "EB Garamond", serif;
   font-style: italic;
   color: var(--aeh-blue);
   font-weight: 400;
 }
 
-.cabs-hero-desc {
-  font-size: 1.1rem;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.78);
-  max-width: 480px;
+.cabs-hero-content .hero-lead {
+  font-family: "Merriweather", serif;
+  font-size: clamp(1rem, 1.1vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 800px;
   line-height: 1.7;
+  font-weight: 300;
   margin-bottom: 40px;
 }
 
-.cabs-hero-actions {
+/* --- ACTIONS --- */
+.hero-actions {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 40px;
 }
 
-/* Scroll cue */
-.scroll-cue {
+.pillar-link.white {
+  color: #ffffff !important;
+  border-bottom: 2px solid var(--aeh-green);
+  padding-bottom: 5px;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+/* --- SCROLL INDICATOR --- */
+.scroll-indicator-wrapper {
+  position: absolute;
+  bottom: 30px;
+  right: var(--section-inline-padding); /* Anchored to the right for balance */
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 0.62rem;
-  letter-spacing: 2px;
+  gap: 12px;
+}
+
+.scroll-text {
+  font-family: "Inter", sans-serif;
+  font-size: 0.6rem;
   text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 700;
 }
 
-.scroll-line {
+.scroll-line-path {
   width: 1px;
-  height: 56px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), transparent);
-  animation: scrollPulse 2s ease-in-out infinite;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
 }
 
-@keyframes scrollPulse {
-  0%,
-  100% {
-    opacity: 0.4;
-    transform: scaleY(1);
+.scroll-line-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--aeh-green);
+  animation: scrollLineDraw 3s infinite cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+@keyframes scrollLineDraw {
+  0% {
+    transform: translateY(-100%);
   }
   50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* --- ENTRANCE ANIMATIONS --- */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: revealUp 1s forwards 0.5s;
+}
+.fade-up-delayed {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: revealUp 1s forwards 0.8s;
+}
+.fade-up-more-delayed {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: revealUp 1s forwards 1.1s;
+}
+
+@keyframes revealUp {
+  to {
     opacity: 1;
-    transform: scaleY(1.1);
+    transform: translateY(0);
+  }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .cabs-hero-cinematic {
+    height: auto;
+    min-height: 100vh;
+  }
+  .hero-container-bottom {
+    padding-bottom: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .scroll-indicator-wrapper {
+    display: none;
   }
 }
 
 /* ============================================================
    2. VISION STATEMENT
    ============================================================ */
-.cabs-vision {
-  background: #ffffff;
-  padding: 120px 0;
+/* =============================================
+   CABS DEFINITION SECTION (EDITORIAL SPLIT)
+   ============================================= */
+.cabs-definition {
+  padding: clamp(80px, 12vh, 140px) 0;
+  background-color: var(--aeh-white);
+  position: relative;
+  overflow: hidden; /* Clips the massive watermark */
 }
 
-.cabs-vision-inner {
-  max-width: 860px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.vision-label {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--aeh-blue);
-  margin-bottom: 32px;
-}
-
-.vision-quote {
+/* --- THE CABS WATERMARK --- */
+.section-watermark {
+  position: absolute;
+  top: 50%;
+  right: -5%;
+  transform: translateY(-50%);
   font-family: "Playfair Display", serif;
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-style: italic;
-  font-weight: 400;
-  color: var(--aeh-navy);
-  line-height: 1.35;
-  margin: 0 0 40px;
-  border: none;
-  padding: 0;
+  font-size: clamp(15rem, 35vw, 40rem);
+  font-weight: 700;
+  color: rgba(13, 44, 79, 0.03); /* Extremely subtle navy tint */
+  line-height: 1;
+  pointer-events: none;
+  z-index: 1;
+  letter-spacing: -15px;
+  white-space: nowrap;
 }
 
-.vision-rule {
+.relative-z {
+  position: relative;
+  z-index: 10;
+}
+
+.umbrella-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(40px, 8vw, 120px);
+  align-items: center;
+}
+
+/* --- LEFT SIDE --- */
+.eyebrow-accent {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase !important;
+  letter-spacing: 4px;
+  font-size: 0.7rem;
+  color: var(--aeh-green);
+  margin-bottom: 24px;
+  display: block;
+}
+
+.umbrella-headline {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  line-height: 1.05;
+  color: var(--aeh-navy);
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+}
+
+.umbrella-headline em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-blue);
+  font-weight: 400;
+}
+
+.branded-line {
   width: 60px;
   height: 3px;
-  background: var(--aeh-green);
-  margin: 0 auto 40px;
-  border-radius: 2px;
+  background-color: var(--aeh-blue);
 }
 
-.vision-body {
-  font-size: 1.15rem;
-  font-weight: 300;
+/* --- RIGHT SIDE --- */
+.umbrella-description p {
+  font-family: "Merriweather", serif;
+  font-size: clamp(1rem, 1.1vw, 1.15rem);
+  line-height: 1.85;
   color: #4a5568;
-  line-height: 1.8;
-  max-width: 700px;
-  margin: 0 auto;
+  margin-bottom: 25px;
+  font-weight: 300;
+}
+
+.mission-highlight {
+  padding-left: 30px;
+  border-left: 2px solid var(--aeh-green);
+  font-style: italic;
+  color: var(--aeh-navy) !important;
+  font-weight: 400;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .umbrella-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .section-watermark {
+    display: none;
+  }
+  .cabs-definition {
+    padding: 80px 5%;
+  }
 }
 
 /* ============================================================
    3. IMPACT NUMBERS
    ============================================================ */
-.cabs-impact {
-  background: var(--aeh-navy);
-  padding: 70px 0;
-}
-
-.cabs-impact-grid {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.impact-stat {
-  text-align: center;
-  flex: 1;
-}
-
-.impact-num {
-  display: block;
-  font-family: "Playfair Display", serif;
-  font-size: clamp(2.8rem, 4vw, 4rem);
-  font-weight: 700;
-  color: white;
-  line-height: 1;
-  margin-bottom: 10px;
-}
-
-.impact-num em {
-  color: var(--aeh-green);
-  font-style: normal;
-}
-
-.impact-label {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.impact-divider {
-  width: 1px;
-  height: 60px;
-  background: rgba(255, 255, 255, 0.12);
-  flex-shrink: 0;
-}
-
-/* ============================================================
-   4. FEATURES — editorial split
-   ============================================================ */
-.cabs-features {
-  background: #f8f9fb;
-  padding: 120px 0;
-}
-
-.cabs-features-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 80px;
-  align-items: start;
-}
-
-/* Image side */
-.features-image-col {
-  position: relative;
-  top: 40px; /* intentional offset for editorial feel */
-}
-
-.features-img {
-  width: 100%;
-  height: 580px;
-  object-fit: cover;
-  display: block;
-}
-
-.features-img-caption {
-  font-size: 0.7rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #999;
-  margin-top: 12px;
-  font-weight: 500;
-}
-
-/* Text side */
-.features-text-col {
-  padding-top: 20px;
-}
-
-.features-block {
-  margin-bottom: 0;
-}
-
-.features-eyebrow {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--aeh-blue);
-  margin-bottom: 12px;
-}
-
-.features-block h3 {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
-  color: var(--aeh-navy);
-  font-weight: 700;
-  margin-bottom: 28px;
-  line-height: 1.2;
-}
-
-.feature-list {
-  list-style: none;
-}
-
-.feature-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  margin-bottom: 18px;
-  font-size: 1rem;
-  font-weight: 400;
-  color: #4a5568;
-  line-height: 1.5;
-}
-
-.feature-list i {
-  color: var(--aeh-blue);
-  width: 18px;
-  font-size: 0.9rem;
-  margin-top: 3px;
-  flex-shrink: 0;
-}
-
-.features-divider {
-  border: none;
-  border-top: 1px solid #e2e8f0;
-  margin: 48px 0;
-}
-
-/* ============================================================
-   5. PROGRAMMES — image overlay cards
-   ============================================================ */
-.cabs-programmes {
-  padding: 120px 0;
-  background: white;
-}
-
-.cabs-section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 56px;
-  padding-bottom: 28px;
-  border-bottom: 1px solid #e8ecf0;
-}
-
-.cabs-eyebrow-dark {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--aeh-blue);
-  margin-bottom: 10px;
-  display: block;
-}
-
-.cabs-section-title {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(2rem, 3.5vw, 3rem);
-  color: var(--aeh-navy);
-  font-weight: 700;
-  margin: 0;
-  line-height: 1.1;
-}
-
-/* Filter tags */
-.prog-filters {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-
-.filter-tag {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #888;
-  cursor: pointer;
-  padding: 6px 0;
-  border-bottom: 2px solid transparent;
-  transition:
-    color 0.25s,
-    border-color 0.25s;
-}
-
-.filter-tag.active,
-.filter-tag:hover {
-  color: var(--aeh-blue);
-  border-color: var(--aeh-blue);
-}
-
-/* Programme card grid — featured card spans full width */
-.programme-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 4px;
-}
-
-.prog-card {
+/* =============================================
+   CABS STRATEGIC NARRATIVE - DARK BLUE THEME
+   ============================================= */
+.cabs-narrative-section.dark-theme {
+  padding: clamp(100px, 12vh, 160px) 0;
+  background-color: var(--aeh-dark-blue); /* #3a5f7d */
   position: relative;
   overflow: hidden;
-  background: var(--aeh-navy) var(--card-img) center / cover no-repeat;
-  cursor: pointer;
-  min-height: 360px;
-  display: flex;
-  align-items: flex-end;
 }
 
-/* Featured card spans both columns */
-.prog-card--featured {
-  grid-column: 1 / -1;
-  min-height: 480px;
+.cabs-narrative-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(40px, 6vw, 80px);
+  position: relative;
 }
 
-.prog-card-overlay {
+/* The Connecting Line (Lightened for Dark BG) */
+.cabs-narrative-grid::before {
+  content: "";
   position: absolute;
-  inset: 0;
+  top: 12px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  /* Subtle white-to-green gradient */
   background: linear-gradient(
-    to top,
-    rgba(10, 26, 41, 0.95) 0%,
-    rgba(10, 26, 41, 0.5) 50%,
-    rgba(10, 26, 41, 0.15) 100%
+    to right,
+    rgba(255, 255, 255, 0.1) 0%,
+    var(--aeh-green) 50%,
+    rgba(255, 255, 255, 0.1) 100%
   );
-  transition: background 0.45s ease;
+  z-index: 1;
 }
 
-.prog-card:hover .prog-card-overlay {
-  background: linear-gradient(
-    to top,
-    rgba(10, 26, 41, 0.98) 0%,
-    rgba(10, 26, 41, 0.75) 60%,
-    rgba(10, 26, 41, 0.3) 100%
-  );
-}
-
-.prog-card-body {
+.cabs-narrative-card {
   position: relative;
   z-index: 2;
-  padding: 36px 40px;
-  width: 100%;
-  transform: translateY(12px);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
-.prog-card:hover .prog-card-body {
-  transform: translateY(0);
+/* The Marker - Green pops best on Dark Blue */
+.narrative-marker {
+  width: 24px;
+  height: 24px;
+  background: var(--aeh-dark-blue);
+  border: 2px solid var(--aeh-green);
+  border-radius: 50%;
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  flex-shrink: 0;
 }
 
-.prog-cat {
-  display: block;
-  font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--aeh-green);
-  margin-bottom: 10px;
+.cabs-narrative-card:hover .narrative-marker {
+  background: var(--aeh-green);
+  transform: scale(1.2);
+  box-shadow: 0 0 25px rgba(142, 200, 111, 0.4);
 }
 
-.prog-card h4 {
+/* Typography for Dark Theme */
+.text-white {
+  color: #ffffff !important;
+}
+.text-light {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.narrative-card-content h3 {
   font-family: "Playfair Display", serif;
-  font-size: 1.5rem;
-  color: white;
-  margin: 0 0 12px;
+  font-size: clamp(1.5rem, 2.2vw, 1.8rem);
   line-height: 1.2;
-}
-
-.prog-card--featured h4 {
-  font-size: 2rem;
-}
-
-.prog-card p {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
-  max-width: 520px;
-  margin-bottom: 24px;
-  opacity: 0;
-  transform: translateY(8px);
-  transition:
-    opacity 0.35s ease 0.05s,
-    transform 0.35s ease 0.05s;
-}
-
-.prog-card--featured p {
-  opacity: 1;
-  transform: none;
-}
-
-.prog-card:hover p {
-  opacity: 1;
-  transform: none;
-}
-
-.prog-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  padding-top: 18px;
-}
-
-.prog-duration {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.6);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.prog-link {
-  font-size: 0.78rem;
+  margin-bottom: 20px;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: white;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition:
-    color 0.25s,
-    gap 0.25s;
 }
 
-.prog-link:hover {
+.narrative-card-content p {
+  font-family: "Merriweather", serif;
+  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+  line-height: 1.85;
+  font-weight: 300;
+}
+
+/* Highlight the 3rd Card (Leadership) */
+.highlight-card .narrative-card-content p {
+  color: #ffffff;
+  font-weight: 400;
+  /* Strong Green accent for the 'Solution' */
+  border-left: 3px solid var(--aeh-green);
+  padding-left: 25px;
+}
+
+/* --- RESPONSIVE SCALING --- */
+
+@media (max-width: 1024px) {
+  .cabs-narrative-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .cabs-narrative-grid::before {
+    width: 1px;
+    height: 100%;
+    left: 12px;
+    top: 0;
+  }
+
+  .cabs-narrative-card {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 30px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .cabs-narrative-grid {
+    gap: 120px;
+  }
+}
+
+/* ============================================================
+   4. CABS DIFFERENTIATION 
+   ============================================================ */
+.cabs-differentiation {
+  width: 100%;
+  background-color: var(--aeh-white);
+  overflow: hidden;
+}
+
+.diff-split-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Perfect 50/50 split */
+  min-height: 85vh; /* Large enough to be a centerpiece, but not full 100vh */
+}
+
+.diff-side {
+  padding: clamp(60px, 10vh, 120px) 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diff-content-wrap {
+  max-width: 600px;
+  width: 100%;
+}
+
+/* --- APPROACH SIDE (Light) --- */
+.approach-side {
+  background-color: var(--aeh-light-back);
+  color: var(--aeh-navy);
+}
+
+.diff-headline {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+  line-height: 1.2;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: var(--aeh-navy);
+}
+
+.diff-headline em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-blue);
+  font-weight: 400;
+}
+
+.diff-feature-item p {
+  font-family: "Merriweather", serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #4a5568;
+  font-weight: 300;
+}
+
+.diff-divider {
+  width: 40px;
+  height: 2px;
+  background-color: var(--aeh-green);
+  margin: 40px 0;
+}
+
+/* --- RESULT SIDE (Dark Navy) --- */
+.result-side {
+  background-color: var(--aeh-navy);
+  color: white;
+  position: relative;
+}
+
+/* Subtle background texture for the Result side */
+.result-side::after {
+  content: "Result";
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  font-family: "Playfair Display", serif;
+  font-size: 15rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.02);
+  pointer-events: none;
+  letter-spacing: -10px;
+}
+
+.result-outcome-block {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.outcome-item {
+  position: relative;
+}
+
+.outcome-num {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 0.8rem;
   color: var(--aeh-green);
-  gap: 12px;
+  letter-spacing: 3px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.outcome-item h2 {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.outcome-line {
+  width: 0;
+  height: 3px;
+  background-color: var(--aeh-blue);
+  margin-top: 25px;
+  transition: width 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.result-side:hover .outcome-line {
+  width: 100px;
+}
+
+.result-footer {
+  margin-top: 80px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.result-footer p {
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase !important;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* --- RESPONSIVE --- */
+
+/* 13" Thinkpad Optimization */
+@media (max-width: 1280px) {
+  .diff-side {
+    padding: 60px 5%;
+  }
+  .diff-headline {
+    font-size: 1.8rem;
+  }
+}
+
+/* Tablet / Mobile Stack */
+@media (max-width: 1024px) {
+  .diff-split-container {
+    grid-template-columns: 1fr; /* Stack vertically */
+  }
+
+  .diff-side {
+    min-height: auto;
+    padding: 80px 10%;
+  }
+
+  .result-side::after {
+    display: none;
+  }
+}
+
+/* ============================================================
+   5. WHY CABS - CREDIBILITY SECTION
+   ============================================================ */
+.cabs-why-section {
+  padding: clamp(100px, 15vh, 160px) 0;
+  background-color: var(--aeh-white);
+  position: relative;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: clamp(60px, 8vw, 120px);
+  align-items: flex-start;
+}
+
+/* --- LEFT SIDE --- */
+.why-headline {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  line-height: 1.1;
+  color: var(--aeh-navy);
+  margin-bottom: 30px;
+}
+
+.why-headline em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-blue);
+  font-weight: 400;
+}
+
+.why-lead {
+  font-family: "Merriweather", serif;
+  font-size: 1.15rem;
+  line-height: 1.85;
+  color: #4a5568;
+  margin-bottom: 45px;
+  font-weight: 300;
+}
+
+/* --- RIGHT SIDE: PILLARS --- */
+.why-pillars-stack {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #eee;
+}
+
+.cred-pillar {
+  display: flex;
+  gap: 35px;
+  padding: 40px 0;
+  border-bottom: 1px solid #eee;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.cred-icon {
+  font-size: 1.5rem;
+  color: var(--aeh-blue);
+  padding-top: 5px;
+  transition: transform 0.3s ease;
+}
+
+.cred-pillar:hover .cred-icon {
+  transform: scale(1.2);
+  color: var(--aeh-green);
+}
+
+.cred-text h4 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  color: var(--aeh-navy);
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.cred-text p {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #64748b;
+  max-width: 550px;
+}
+
+/* Babson Specific Styling */
+.babson-highlight {
+  background: rgba(57, 152, 189, 0.02);
+  margin: 0 -40px;
+  padding: 40px;
+}
+
+.babson-tag {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 800;
+  text-transform: uppercase !important;
+  letter-spacing: 2px;
+  color: var(--aeh-green);
+  border: 1px solid var(--aeh-green);
+  padding: 4px 12px;
+}
+
+/* --- RESPONSIVE --- */
+
+@media (max-width: 1024px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .why-intro {
+    text-align: center;
+  }
+
+  .why-lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .babson-highlight {
+    margin: 0;
+  }
+
+  .babson-tag {
+    position: static;
+    display: inline-block;
+    margin-top: 20px;
+  }
 }
 
 /* ============================================================
@@ -731,122 +943,289 @@ section .container {
   align-self: flex-start;
 }
 
-/* ============================================================
-   8. VIDEO SECTION
-   ============================================================ */
-.cabs-video-section {
-  padding: 120px 0;
-  background: white;
+/* =============================================
+   WHO WE SERVE - STRATEGIC PROFILE GRID
+   ============================================= */
+.cabs-serve-section {
+  padding: clamp(100px, 12vh, 160px) 0;
+  background-color: var(--aeh-light-back); /* #f4f4f4 */
+  position: relative;
 }
 
-.cabs-video-inner {
+.serve-header-centered {
+  text-align: center;
+  margin-bottom: clamp(60px, 8vh, 100px);
+}
+
+.serve-main-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  line-height: 1.1;
+  color: var(--aeh-navy);
+}
+
+.serve-main-title em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-blue);
+  font-weight: 400;
+}
+
+/* --- THE GRID --- */
+.serve-grid {
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 80px;
-  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
-.video-body {
-  font-size: 1rem;
-  font-weight: 300;
-  color: #4a5568;
-  line-height: 1.7;
-  margin-top: 20px;
-}
-
-/* Video frame */
-.video-frame {
-  background: #0a1a29;
+.serve-card {
+  background: white;
+  padding: clamp(40px, 6vh, 60px) clamp(30px, 4vw, 50px);
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.video-thumb {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  backface-visibility: hidden;
-}
-
-.video-frame:hover .video-thumb {
-  transform: scale(1.03);
-  opacity: 0.85;
-}
-
-.video-play-ring {
-  position: absolute;
-  inset: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+  /* PREMIUM BLUE SHADOW */
+  box-shadow: 0 20px 50px rgba(57, 152, 189, 0.08);
+  border: 1px solid rgba(57, 152, 189, 0.05);
 }
 
-.video-play-circle {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  border: 2px solid rgba(255, 255, 255, 0.55);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(6px);
-  transition:
-    background 0.3s,
-    transform 0.3s;
+.serve-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 40px 80px rgba(57, 152, 189, 0.15);
+  border-color: var(--aeh-blue);
 }
 
-.video-play-circle svg {
-  width: 24px;
-  height: 24px;
-  fill: white;
-  margin-left: 4px;
+/* Highlight the middle card slightly */
+.highlight-serve {
+  border-top: 4px solid var(--aeh-green);
 }
 
-.video-frame:hover .video-play-circle {
-  background: rgba(57, 152, 189, 0.45);
-  transform: scale(1.08);
-}
-
-.video-play-label {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
-}
-
-/* When playing, hide thumb and show iframe */
-.video-iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  visibility: hidden;
-  transition:
-    opacity 0.6s ease,
-    visibility 0.6s;
+.serve-icon-wrap {
+  font-size: 2rem;
+  color: var(--aeh-green); /* High contrast green */
+  margin-bottom: 40px;
+  position: relative;
   z-index: 5;
 }
 
-.video-frame.playing .video-thumb,
-.video-frame.playing .video-play-ring {
-  opacity: 0;
+.serve-ghost-num {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-family: "Playfair Display", serif;
+  font-size: 10rem;
+  font-weight: 900;
+  color: rgba(13, 44, 79, 0.05); /* Extremely subtle ghost number */
+  line-height: 1;
   pointer-events: none;
+}
+
+.serve-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  color: var(--aeh-navy);
+  line-height: 1.3;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 5;
+}
+
+.serve-card p {
+  font-family: "Merriweather", serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #64748b;
+  font-weight: 300;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 5;
+}
+
+.serve-card-line {
+  width: 40px;
+  height: 2px;
+  background-color: var(--aeh-blue);
+  margin-top: auto;
+  transition: width 0.5s ease;
+}
+
+.serve-card:hover .serve-card-line {
+  width: 100%;
+  background-color: var(--aeh-green);
+}
+
+/* --- RESPONSIVE --- */
+
+@media (max-width: 1100px) {
+  .serve-grid {
+    grid-template-columns: 1fr; /* Stack on mobile/small laptop */
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .serve-card {
+    padding: 40px;
+  }
+}
+/* ============================================================
+   8. VIDEO SECTION
+   ============================================================ */
+/* =============================================
+   CABS LEADERSHIP THEATER - CINEMATIC VIDEOS
+   ============================================= */
+.cabs-video-theater {
+  padding: clamp(100px, 15vh, 180px) 0;
+  background-color: var(--aeh-navy);
+  color: white;
+  overflow: hidden;
+}
+
+.theater-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto clamp(60px, 8vh, 100px);
+}
+
+.theater-lead {
+  font-family: "Merriweather", serif;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  margin-top: 25px;
+}
+
+/* --- THE VIDEO GRID --- */
+.theater-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.video-card {
+  position: relative;
+  height: clamp(450px, 60vh, 600px);
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #000;
+}
+
+/* Inline video placeholder with cinematic hover motion */
+.video-card-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+  transition: transform 1.5s cubic-bezier(0.2, 1, 0.3, 1);
+  filter: grayscale(0.4) brightness(0.8); /* Muted institutional look */
+}
+
+.video-card:hover .video-card-media {
+  transform: scale(1.1);
+  filter: grayscale(0) brightness(0.9);
+}
+
+/* Scrim Overlay */
+.video-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(13, 44, 79, 0.95) 0%,
+    rgba(13, 44, 79, 0.4) 50%,
+    transparent 100%
+  );
+  z-index: 2;
   transition: opacity 0.4s ease;
 }
 
-.video-frame.playing .video-iframe {
-  opacity: 1;
-  visibility: visible;
+.video-card:hover .video-card-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(57, 152, 189, 0.8) 0%,
+    /* AEH Blue tint on hover */ rgba(13, 44, 79, 0.5) 100%
+  );
 }
 
+/* Content Layer */
+.video-card-content {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+/* Play Button */
+.play-trigger-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: white;
+  margin-top: 20%;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.video-card:hover .play-trigger-circle {
+  background: var(--aeh-green);
+  border-color: var(--aeh-green);
+  transform: scale(1.15);
+  box-shadow: 0 0 30px rgba(142, 200, 111, 0.4);
+}
+
+/* Leader Info */
+.leader-role {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase !important;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--aeh-green);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.leader-info h4 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
+  color: white !important;
+  margin-bottom: 10px;
+}
+
+.leader-info p {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .theater-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .video-card {
+    height: 500px;
+  }
+}
 /* ============================================================
    9. FINAL CTA
    ============================================================ */
@@ -988,299 +1367,6 @@ section .container {
 .reveal-ready.revealed {
   opacity: 1;
   transform: none;
-}
-
-/* ── FOUNDER EXPLAINER ─────────────────────────────────────── */
-.founder-explainer {
-  position: relative;
-  padding: 120px 0;
-  background: var(--aeh-navy);
-  color: white;
-  overflow: hidden;
-}
-.founder-explainer-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-.founder-explainer-bg-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.15;
-}
-.founder-explainer-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(10, 26, 41, 0.95) 0%,
-    rgba(10, 26, 41, 0.7) 100%
-  );
-}
-.founder-explainer-inner {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-.founder-explainer-title {
-  font-family: var(--playfair);
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  line-height: 1.1;
-  margin-bottom: 30px;
-  color: white;
-}
-.founder-explainer-title em {
-  color: var(--aeh-blue);
-  font-style: italic;
-}
-.founder-explainer-lead {
-  font-size: 1.3rem;
-  margin-bottom: 20px;
-  color: rgba(255, 255, 255, 0.9);
-}
-.founder-explainer-lead strong {
-  color: var(--aeh-green);
-}
-.founder-explainer-body {
-  font-size: 1.05rem;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 15px;
-}
-.founder-explainer-body strong {
-  color: white;
-}
-.founder-explainer-body em {
-  color: var(--aeh-blue);
-  font-style: italic;
-}
-.founder-explainer-question {
-  font-family: var(--playfair);
-  font-size: 1.5rem;
-  font-style: italic;
-  color: var(--aeh-blue);
-  margin: 25px 0;
-  padding-left: 20px;
-  border-left: 3px solid var(--aeh-green);
-}
-.founder-pain-list {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
-}
-.founder-pain-list li {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 12px;
-}
-.founder-pain-list i {
-  color: #e85d5d;
-  font-size: 0.9rem;
-}
-.multiplier-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin: 35px 0;
-}
-.multiplier-card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  text-align: center;
-  border-radius: 4px;
-  transition:
-    background 0.3s,
-    border-color 0.3s,
-    transform 0.3s;
-}
-.multiplier-card:hover {
-  background: rgba(57, 152, 189, 0.12);
-  border-color: var(--aeh-blue);
-  transform: translateY(-3px);
-}
-.multiplier-label {
-  display: block;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: white;
-  margin-bottom: 4px;
-}
-.multiplier-verb {
-  display: block;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 4px;
-}
-.multiplier-result {
-  display: block;
-  font-family: var(--playfair);
-  font-size: 1.3rem;
-  font-style: italic;
-  color: var(--aeh-green);
-}
-.founder-explainer-closing {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: white;
-  margin-top: 25px;
-  margin-bottom: 30px;
-}
-.founder-explainer-rule {
-  width: 60px;
-  height: 3px;
-  background: var(--aeh-green);
-  margin-bottom: 20px;
-}
-.founder-tagline {
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.5);
-}
-.founder-explainer-visual {
-  position: relative;
-}
-.founder-explainer-img {
-  width: 100%;
-  height: 550px;
-  object-fit: cover;
-  border-radius: 4px;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-}
-.founder-explainer-img-accent {
-  position: absolute;
-  top: -15px;
-  right: -15px;
-  bottom: 15px;
-  left: 15px;
-  border: 2px solid var(--aeh-blue);
-  border-radius: 4px;
-  z-index: -1;
-  opacity: 0.4;
-}
-
-/* ── CLASSES OF FOUNDERS ───────────────────────────────────── */
-.founders-section {
-  padding: 120px 0;
-  background: var(--aeh-light-bg);
-}
-.founders-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-.founder-card {
-  background: white;
-  border: 1px solid #e8ecf1;
-  border-radius: 6px;
-  overflow: hidden;
-  transition:
-    transform 0.35s,
-    box-shadow 0.35s,
-    border-color 0.35s;
-}
-.founder-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(10, 26, 41, 0.12);
-  border-color: var(--aeh-blue);
-}
-.founder-card-header {
-  padding: 28px 28px 20px;
-  border-bottom: 1px solid #edf2f7;
-}
-.founder-card-header h4 {
-  font-family: var(--playfair);
-  font-size: 1.25rem;
-  color: var(--aeh-navy);
-  margin-bottom: 14px;
-  line-height: 1.3;
-}
-.founder-card-badges {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.fc-badge {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 5px 12px;
-  border-radius: 3px;
-}
-.fc-badge--revenue {
-  background: var(--aeh-navy);
-  color: white;
-}
-.fc-badge--team {
-  background: rgba(57, 152, 189, 0.12);
-  color: var(--aeh-blue);
-}
-.founder-card-body {
-  padding: 24px 28px 28px;
-}
-.fc-row {
-  margin-bottom: 14px;
-}
-.fc-label {
-  display: inline-block;
-  font-size: 0.65rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--aeh-blue);
-  margin-bottom: 4px;
-}
-.fc-label--risk {
-  color: #e85d5d;
-}
-.fc-row p {
-  font-size: 0.92rem;
-  line-height: 1.6;
-  color: #4a5568;
-  margin: 0;
-}
-.fc-needs {
-  margin-top: 20px;
-  padding-top: 18px;
-  border-top: 1px solid #edf2f7;
-}
-.fc-needs-title {
-  display: block;
-  font-size: 0.7rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--aeh-navy);
-  margin-bottom: 12px;
-}
-.fc-needs ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.fc-needs li {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.88rem;
-  color: #4a5568;
-  margin-bottom: 8px;
-}
-.fc-needs i {
-  color: var(--aeh-green);
-  font-size: 0.8rem;
 }
 
 /* ── ENROLLMENT FORM ───────────────────────────────────────── */
@@ -1432,7 +1518,7 @@ section .container {
 
 /* ── FAQ ───────────────────────────────────────────────────── */
 .cabs-faq {
-  padding: 100px 0;
+  padding: 80px 0;
   background: var(--aeh-light-bg);
 }
 .faq-list {

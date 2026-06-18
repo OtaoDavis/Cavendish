@@ -1,85 +1,9 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Explore the Cavendish University network in Uganda and Zambia. Discover our faculties, programs, and leadership."
-    />
-    <title>University Network | Cavendish Africa</title>
+<?php
+/* Template Name: Front Page */
+get_header();
+?>
 
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/network.css" />
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700&family=Inter:wght@400;700;800&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-
-    <!-- SwiperJS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
-      defer
-    ></script>
-    <script src="js/script.js" defer></script>
-  </head>
-
-  <body class="bg-gray-50">
-    <!-- OVERLAY LOADER -->
-    <div id="aeh-loader" class="aeh-loader-overlay">
-      <div class="loader-content">
-        <img
-          src="images/logo.png"
-          alt="Cavendish Africa"
-          class="loader-logo-pulse"
-        />
-      </div>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="sticky-nav">
-      <div class="nav-container">
-        <a href="index.html" class="logo">
-          <img src="images/logo.png" alt="Cavendish Africa" class="logo-img" />
-        </a>
-        <button class="hamburger" aria-label="Toggle menu">
-          <span class="bar"></span><span class="bar"></span
-          ><span class="bar"></span>
-        </button>
-        <div class="nav-links">
-          <a href="purpose.html">Purpose</a>
-          <a href="network.html" class="active-link">Universities</a>
-          <a href="cabs.html">Business School</a>
-          <a href="team.html">Team</a>
-          <div class="nav-dropdown">
-            <a href="#" class="nav-btn nav-btn-dropdown"
-              >Explore our programs <i class="fa-solid fa-chevron-down"></i
-            ></a>
-            <div class="nav-dropdown-menu">
-              <a href="network.html#zambia-faculties">Cavendish Zambia</a>
-              <a href="network.html#uganda-faculties">Cavendish Uganda</a>
-              <a href="cabs.html#enroll">Cavendish Business</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <main class="network-portal">
+<main class="network-portal">
       <!-- LEFT SIDEBAR -->
       <aside class="portal-sidebar">
         <div class="sidebar-header">
@@ -123,7 +47,7 @@
 
           <div class="glance-50-50">
             <div class="map-visual">
-              <img src="images/cuz-map.svg" alt="Zambia" class="portal-map" />
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cuz-map.svg" alt="Zambia" class="portal-map" />
             </div>
             <div class="glance-facts">
               <h3>University at a Glance</h3>
@@ -253,7 +177,7 @@
               <div class="team-card">
                 <div class="team-card-visual">
                   <img
-                    src="images/philip-vc.jpg"
+                    src="<?php echo get_template_directory_uri(); ?>/assets/images/philip-vc.jpg"
                     alt="Prof. Justice Phillip Musonda"
                   />
                 </div>
@@ -274,7 +198,7 @@
               <div class="team-card">
                 <div class="team-card-visual">
                   <img
-                    src="images/rachel-dvc.jpg"
+                    src="<?php echo get_template_directory_uri(); ?>/assets/images/rachel-dvc.jpg"
                     alt="Dr. Rachel Milomba Velu"
                   />
                 </div>
@@ -292,7 +216,7 @@
               </div>
               <div class="team-card">
                 <div class="team-card-visual">
-                  <img src="images/Reggie.jpg" alt="Mr. Reginald Rainey" />
+                  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Reggie.jpg" alt="Mr. Reginald Rainey" />
                 </div>
                 <div class="team-card-info">
                   <p class="team-member-title">Executive Director</p>
@@ -320,7 +244,7 @@
 
           <div class="glance-50-50">
             <div class="map-visual">
-              <img src="images/cuu-map.svg" alt="Uganda" class="portal-map" />
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cuu-map.svg" alt="Uganda" class="portal-map" />
             </div>
             <div class="glance-facts">
               <h3>University at a Glance</h3>
@@ -447,7 +371,7 @@
               <div class="team-card">
                 <div class="team-card-visual">
                   <img
-                    src="images/chancellor-cuu.jpg"
+                    src="<?php echo get_template_directory_uri(); ?>/assets/images/chancellor-cuu.jpg"
                     alt="H.E. Dr. Goodluck Jonathan"
                   />
                 </div>
@@ -467,7 +391,7 @@
               <div class="team-card">
                 <div class="team-card-visual">
                   <img
-                    src="images/vice-chancellor-cuu.jpg"
+                    src="<?php echo get_template_directory_uri(); ?>/assets/images/vice-chancellor-cuu.jpg"
                     alt="Dr. Olive Sabiiti"
                   />
                 </div>
@@ -487,7 +411,7 @@
               <div class="team-card">
                 <div class="team-card-visual">
                   <img
-                    src="images/executive-director-cuu.jpg"
+                    src="<?php echo get_template_directory_uri(); ?>/assets/images/executive-director-cuu.jpg"
                     alt="Mr. David Mutabanura"
                   />
                 </div>
@@ -642,85 +566,4 @@
       </div>
     </div>
 
-    <!-- START: Footer Section -->
-    <footer class="site-footer">
-      <div class="container mx-auto px-6 py-12">
-        <div class="footer-grid">
-          <!-- Column 1: Logo and About -->
-          <div class="footer-col">
-            <img
-              src="images/logo_trans.png"
-              alt="Cavendish Africa Logo"
-              class="footer-logo mb-4"
-            />
-            <p class="text-gray-400">
-              Expanding access to transformative education and opportunity to
-              unlock Africa’s potential
-            </p>
-          </div>
-
-          <!-- Column 2: Quick Links -->
-          <div class="footer-col">
-            <h3 class="footer-title">Quick Links</h3>
-            <ul class="footer-links">
-              <li><a href="purpose.html">Our Purpose</a></li>
-              <li><a href="impact.html">Our Impact</a></li>
-              <li><a href="network.html">Our Network</a></li>
-            </ul>
-          </div>
-
-          <!-- Column 3: Contact Us -->
-          <div class="footer-col">
-            <h3 class="footer-title">Contact Us</h3>
-            <ul class="contact-info">
-              <li class="contact-item">
-                <i class="fa-solid fa-envelope"></i>
-                <span style="text-transform: none"
-                  >info@maarifaeducation.com</span
-                >
-              </li>
-              <li class="contact-item">
-                <i class="fa-solid fa-phone"></i>
-                <span>(+254) 708021483</span>
-              </li>
-              <li class="contact-item">
-                <i class="fa-solid fa-map-marker-alt"></i>
-                <span>Nairobi, Kenya</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Column 4: Network Development -->
-          <div class="footer-col">
-            <h3 class="footer-title">Network Development</h3>
-            <p class="text-gray-400">
-              Cavendish Africa welcomes partners who are committed to expanding
-              access to education and opportunity in Africa.
-            </p>
-          </div>
-        </div>
-
-        <!-- Footer Bottom Bar -->
-        <div class="footer-bottom">
-          <p class="copyright-text">
-            &copy; <span id="copyright-year"></span> Cavendish Africa. All
-            Rights Reserved.
-          </p>
-          <div class="social-links">
-            <a href="#" aria-label="Facebook"
-              ><i class="fab fa-facebook-f"></i
-            ></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="LinkedIn"
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
-            <a href="#" aria-label="Instagram"
-              ><i class="fab fa-instagram"></i
-            ></a>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- END: Footer Section -->
-  </body>
-</html>
+<?php get_footer(); ?>

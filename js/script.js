@@ -19,15 +19,61 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(hideLoader, 4000);
 
   // --- 2. AUTOMATIC ACTIVE NAV LINK LOGIC ---
-  const currentUrl = window.location.pathname.split("/").pop();
-  const navLinks = document.querySelectorAll(".nav-links a");
+  const navLinks = document.querySelectorAll(".nav-links > a");
+
+  const normalizePath = (path) => {
+    if (!path) return "";
+    return path.replace(/\/+$/, "");
+  };
+
+  const getLastSegment = (path) => {
+    const normalized = normalizePath(path);
+    const segments = normalized.split("/").filter(Boolean);
+    return segments.length ? segments[segments.length - 1].toLowerCase() : "";
+  };
+
+  const toNavKey = (pathOrSlug) => {
+    const value = (pathOrSlug || "").toLowerCase();
+    const aliases = {
+      home: ["", "/", "index.html"],
+      purpose: ["our-purpose", "purpose.html"],
+      network: ["cavendish-network", "network.html"],
+      business: ["cavendish-business-school", "cabs.html"],
+      team: ["team", "team.html"],
+    };
+
+    for (const [key, values] of Object.entries(aliases)) {
+      if (values.some((v) => value === v || value.endsWith(`/${v}`))) {
+        return key;
+      }
+    }
+
+    return getLastSegment(value);
+  };
+
+  const toNavKeyFromLabel = (label) => {
+    const text = (label || "").trim().toLowerCase();
+    if (text === "purpose") return "purpose";
+    if (text === "universities") return "network";
+    if (text === "business school") return "business";
+    if (text === "team") return "team";
+    return "";
+  };
+
+  const currentPath = normalizePath(window.location.pathname.toLowerCase());
+  const currentKey = toNavKey(currentPath || getLastSegment(currentPath));
+
   navLinks.forEach((link) => {
     const linkHref = link.getAttribute("href");
-    if (
-      currentUrl === linkHref ||
-      ((currentUrl === "" || currentUrl === "index.html") &&
-        linkHref === "index.html")
-    ) {
+    if (!linkHref || linkHref === "#") return;
+
+    const linkUrl = new URL(linkHref, window.location.origin);
+    const linkPath = normalizePath(linkUrl.pathname.toLowerCase());
+    const linkKey =
+      toNavKey(linkPath || getLastSegment(linkPath) || linkHref) ||
+      toNavKeyFromLabel(link.textContent);
+
+    if (currentKey === linkKey) {
       link.classList.add("active-link");
     }
   });
@@ -328,17 +374,20 @@ function openVideoModal(videoSource) {
   const modal = document.getElementById("videoModal");
   const iframe = document.getElementById("videoPlayer");
   const localVideo = document.getElementById("localVideoPlayer");
-  if (!modal) return;
+  if (!modal || !iframe || !localVideo) return;
 
   const isLocal =
     videoSource.includes(".") || videoSource.startsWith("videos/");
   if (isLocal) {
     iframe.style.display = "none";
+    iframe.src = "";
     localVideo.style.display = "block";
     localVideo.src = videoSource;
     localVideo.play();
   } else {
     localVideo.style.display = "none";
+    localVideo.pause();
+    localVideo.removeAttribute("src");
     iframe.style.display = "block";
     iframe.src = `https://www.youtube.com/embed/${videoSource}?autoplay=1&rel=0`;
   }
@@ -350,10 +399,12 @@ function closeVideoModal() {
   const modal = document.getElementById("videoModal");
   const iframe = document.getElementById("videoPlayer");
   const localVideo = document.getElementById("localVideoPlayer");
-  if (modal) {
+  if (modal && iframe && localVideo) {
     modal.classList.remove("active");
     iframe.src = "";
     localVideo.pause();
+    localVideo.removeAttribute("src");
+    localVideo.load();
     document.body.style.overflow = "auto";
   }
 }

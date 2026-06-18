@@ -130,7 +130,7 @@
 }
 
 .team-card-info {
-  padding: 35px 30px;
+  padding: 35px 24px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -142,7 +142,8 @@
   font-weight: 800;
   color: var(--aeh-green);
   text-transform: uppercase !important;
-  letter-spacing: 2px;
+  letter-spacing: 1.2px;
+  white-space: nowrap;
   margin-bottom: 12px;
 }
 

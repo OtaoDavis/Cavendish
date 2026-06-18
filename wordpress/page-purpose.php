@@ -1,0 +1,633 @@
+<?php
+/* Template Name: Front Page */
+get_header();
+?>
+
+<header class="purpose-hero-cinematic">
+      <div
+        class="purpose-hero-bg"
+        style="background-image: url(&quot;<?php echo get_template_directory_uri(); ?>/assets/images/home2.jpg&quot;)"
+      ></div>
+      <div class="purpose-hero-overlay"></div>
+
+      <div class="container">
+        <div class="purpose-hero-content">
+          <h1 class="fade-up-delayed">
+            Unlocking Africa’s Potential Through <br />
+            <em>Transformative Education</em> & Opportunity.
+          </h1>
+          <p class="hero-lead fade-up-more-delayed">
+            We believe Africa's future will be shaped by the talent, innovation
+            and leadership of its youth and entrepreneurs. Our purpose is to
+            expand access to transformative education and opportunity that
+            empowers learners to realize their potential and create lasting
+            impact.
+          </p>
+        </div>
+      </div>
+
+      <div class="scroll-indicator-wrapper">
+        <span class="scroll-text">Explore Our Purpose</span>
+        <div class="scroll-line-path">
+          <div class="scroll-line-fill"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION: THE STRATEGIC NARRATIVE -->
+    <section class="purpose-narrative-section">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="narrative-header">
+          <h2 class="narrative-main-title">
+            Africa's Greatest Opportunity is its <br /><em
+              >Youth & Entrepreneurs.</em
+            >
+          </h2>
+        </div>
+
+        <!-- The Three-Step Progression -->
+        <div class="narrative-progression-grid">
+          <!-- Step 1: Opportunity -->
+          <div class="narrative-step highlight-step-blue">
+            <div class="step-marker">01</div>
+            <div class="step-content">
+              <h3>The Opportunity</h3>
+              <p>
+                Africa is home to one of the world's youngest populations and a
+                growing generation of ambitious entrepreneurs. Together, they
+                represent one of the greatest opportunities for innovation,
+                economic growth, and social progress on the continent.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2: Challenge -->
+          <div class="narrative-step highlight-step-dark-blue">
+            <div class="step-marker">02</div>
+            <div class="step-content">
+              <h3>The Challenge</h3>
+              <p>
+                Yet too many people still face limited access to transformative
+                education, practical pathways to opportunity, and the support
+                they need to realize their full potential.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3: Imperative -->
+          <div class="narrative-step highlight-step">
+            <div class="step-marker">03</div>
+            <div class="step-content">
+              <h3>The Imperative</h3>
+              <p>
+                Unlocking this potential requires more than expanding access to
+                education. It requires creating opportunities for people to
+                develop the mindset, skills and experience to realize their full
+                potential and contribute to solving Africa's real challenges.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: THE BELIEF & PROOF IMMERSION -->
+    <section class="belief-immersion">
+      <!-- BELIEF 01: HUMAN POTENTIAL -->
+      <div class="immersion-row">
+        <div class="immersion-left-navy">
+          <div class="immersion-content-sticky">
+            <h2 class="text-white">
+              We Believe in <br /><em>Human Potential.</em>
+            </h2>
+            <p class="immersion-lead">
+              Every person has the potential to learn, grow, and contribute
+              positively to society. Expanding access to transformative
+              education and opportunity helps individuals realize their
+              potential regardless of their backgrounds or circumstances.
+            </p>
+          </div>
+        </div>
+        <div class="immersion-right-proof">
+          <div class="swiper belief-story-swiper">
+            <div class="swiper-wrapper">
+              <!-- Story A: Abdi -->
+              <div class="swiper-slide">
+                <div class="proof-reveal-item revealed">
+                  <div class="proof-stat-box">
+                    <span class="stat-huge">14%</span>
+                    <p>of CUU graduates are refugees</p>
+                  </div>
+                  <div class="proof-story-card portrait-mode">
+                    <img
+                      src="<?php echo get_template_directory_uri(); ?>/assets/images/abdi.png"
+                      alt="Hon. Abdirahman Abdi Ahmed"
+                    />
+                    <div class="story-meta">
+                      <h4>Alumni Spotlight</h4>
+                      <p class="academic-detail">
+                        CUZ | BA Economics | Class of 2016
+                      </p>
+                      <p class="role-detail">
+                        <strong>Hon. Abdirahman Abdi Ahmed:</strong> From
+                        refugee to Minister of Planning and International
+                        Cooperation, Jubaland State.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Story B: Shancel Kabuya -->
+              <div class="swiper-slide">
+                <div class="proof-reveal-item revealed">
+                  <div class="proof-stat-box outline">
+                    <span class="stat-huge">Global</span>
+                    <p>DRC Refugee to US Case Manager</p>
+                  </div>
+                  <div class="proof-story-card portrait-mode">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/shancel.png" alt="Shancel Kabuya" />
+                    <div class="story-meta">
+                      <h4>International Success</h4>
+                      <p class="academic-detail">
+                        CUZ | School of Law | Class of 2021
+                      </p>
+                      <p class="role-detail">
+                        <strong>Shancel Kabuya:</strong> A Law graduate from
+                        Congo DRC, now serving as a Resettlement Case Manager
+                        for World Relief in the USA.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="belief-nav">
+              <div class="b-prev">←</div>
+              <div class="b-next">→</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BELIEF 02: TRANSFORM LIVES -->
+      <div class="immersion-row">
+        <div class="immersion-left-navy">
+          <div class="immersion-content-sticky">
+            <h2 class="text-white">
+              We Believe Education <br />Should <em>Transform Lives.</em>
+            </h2>
+            <p class="immersion-lead">
+              Education should do more than transmit knowledge. It should impart
+              values, develop confidence, critical thinking, leadership, and the
+              ability to solve meaningful challenges and create positive change.
+            </p>
+          </div>
+        </div>
+        <div class="immersion-right-proof">
+          <div class="swiper belief-story-swiper">
+            <div class="swiper-wrapper">
+              <!-- Story A: Jonah Buyoya -->
+              <div class="swiper-slide">
+                <div class="proof-reveal-item revealed">
+                  <div class="proof-story-card portrait-mode">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/jonah.jpg" alt="Jonah Buyoya" />
+                    <div class="story-meta">
+                      <h4>BBC Award Recipient</h4>
+                      <p class="academic-detail">
+                        CUZ | BA Mass Communication & PR
+                      </p>
+                      <p class="role-detail">
+                        <strong>Dingindaba Jonah Buyoya:</strong> Recipient of
+                        the BBC News Komla Dumor Award, recognized for
+                        exceptional storytelling and media leadership.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Story B: Cosmas Mulenga -->
+              <div class="swiper-slide">
+                <div class="proof-reveal-item revealed">
+                  <div class="proof-story-card portrait-mode">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cosmas.jpg" alt="Cosmas Chongo Mulenga" />
+                    <div class="story-meta">
+                      <h4>Award-Winning Journalist</h4>
+                      <p class="academic-detail">
+                        CUZ | BA Mass Communication & PR
+                      </p>
+                      <p class="role-detail">
+                        <strong>Cosmas Chongo Mulenga:</strong> Multi-Award
+                        Winning Journalist who balanced a professional media
+                        career with flexible distance learning at Cavendish.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="belief-nav">
+              <div class="b-prev">←</div>
+              <div class="b-next">→</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BELIEF 03: CREATE OPPORTUNITY -->
+      <div class="immersion-row">
+        <div class="immersion-left-navy">
+          <div class="immersion-content-sticky">
+            <h2 class="text-white">
+              We Believe Learning <br />Should <em>Create Opportunity.</em>
+            </h2>
+            <p class="immersion-lead">
+              Learning should be practical, globally relevant, and connected to
+              real challenges and opportunities. It should prepare people not
+              only for employment, but also for entrepreneurship, innovation,
+              and leadership in Africa and around the world.
+            </p>
+          </div>
+        </div>
+        <div class="immersion-right-proof">
+          <div class="swiper belief-story-swiper">
+            <div class="swiper-wrapper">
+              <!-- Story A: Evelyn Kaingu -->
+              <div class="swiper-slide">
+                <div class="proof-reveal-item revealed">
+                  <div class="proof-stat-box green-tint">
+                    <span class="stat-huge">$20.5M</span>
+                    <p>Raised in funding for Lupiya Fintech</p>
+                  </div>
+                  <div class="proof-story-card portrait-mode">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/evelyn.jpg" alt="Evelyn Kaingu" />
+                    <div class="story-meta">
+                      <h4>Entrepreneurial Excellence</h4>
+                      <p class="academic-detail">
+                        CUZ | BA Economics | Class of 2016
+                      </p>
+                      <p class="role-detail">
+                        <strong>Evelyn Kaingu:</strong> Founder of Lupiya,
+                        reshaping access to finance in Zambia and recognized by
+                        US VP Kamala Harris for her impact.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: THE PHILOSOPHICAL CENTER (REIMAGINING EDUCATION) -->
+    <section class="philosophy-center">
+      <!-- PART 1: THE MASTER INTRO -->
+      <div class="philosophy-intro-block">
+        <div class="container">
+          <div class="intro-content">
+            <h2 class="text-white">Reimagining <em>Education.</em></h2>
+            <p class="intro-lead" style="color: var(--aeh-white)">
+              Preparing people to realize their full potential and contribute to
+              solving Africa's real challenges requires more than traditional
+              approaches to education. We believe learning should be connected
+              to real problems, grounded in strong values, and reinforced
+              through practical experience.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART 2: THE THREE PILLARS -->
+
+      <!-- PILLAR 01: REAL CHALLENGES (Environmental Cleaning Gallery) -->
+      <div class="pillar-chapter section-white">
+        <div class="container">
+          <div class="chapter-grid">
+            <div class="chapter-text">
+              <span class="chapter-num">01</span>
+              <h3>
+                Education Connected to Solving <br /><em
+                  >Africa’s Real Challenges.</em
+                >
+              </h3>
+              <p>
+                Africa’s social, economic, and leadership challenges remind us
+                that education must do more than transmit knowledge. It must be
+                anchored in the realities people face in their communities,
+                workplaces and businesses.
+              </p>
+              <p>
+                Our programs emphasize problem-centered learning that empowers
+                learners to apply knowledge to solve real social, economic, and
+                technological challenges on the continent.
+              </p>
+            </div>
+            <div class="chapter-visual">
+              <!-- FLASH GALLERY -->
+              <div class="flash-gallery">
+                <img
+                  src="<?php echo get_template_directory_uri(); ?>/assets/images/cl1.jpg"
+                  class="flash-img active"
+                  alt="Environmental Cleaning"
+                />
+                <img
+                  src="<?php echo get_template_directory_uri(); ?>/assets/images/cl2.JPG"
+                  class="flash-img"
+                  alt="Community Work"
+                />
+                <img
+                  src="<?php echo get_template_directory_uri(); ?>/assets/images/cl3.jpg"
+                  class="flash-img"
+                  alt="Student Impact"
+                />
+                <img
+                  src="<?php echo get_template_directory_uri(); ?>/assets/images/cl4.JPG"
+                  class="flash-img"
+                  alt="Student Impact"
+                />
+                <div class="frame-label">Keep Zambia Clean Campaign</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILLAR 02: HOLISTIC VALUES (Leadership Gallery) -->
+      <div class="pillar-chapter section-slate">
+        <div class="container">
+          <div class="chapter-grid reverse">
+            <div class="chapter-text">
+              <span class="chapter-num">02</span>
+              <h3>Holistic Values-Based <br /><em>Education.</em></h3>
+              <p>
+                Our learners come from diverse social, economic and cultural
+                backgrounds, each bringing unique experiences, perspectives and
+                potential. Preparing them to thrive in a rapidly changing world
+                requires more than academic knowledge alone.
+              </p>
+              <p>
+                Our university and business education therefore focus on
+                developing the whole person, cultivating character, mindset,
+                values, resilience, and leadership alongside academic and
+                professional skills.
+              </p>
+
+              <div class="highlight-list">
+                <div class="h-item">
+                  <span>Focus</span>
+                  <p>Character & Mindset Cultivation</p>
+                </div>
+                <div class="h-item">
+                  <span>Focus</span>
+                  <p>Ethical Leadership Frameworks</p>
+                </div>
+              </div>
+            </div>
+            <div class="chapter-visual">
+              <div class="flash-gallery">
+                <img
+                  src="<?php echo get_template_directory_uri(); ?>/assets/images/pl1.jpg"
+                  class="flash-img active"
+                  alt="Leadership"
+                />
+                <img
+                  src="<?php echo get_template_directory_uri(); ?>/assets/images/pl2.jpg"
+                  class="flash-img"
+                  alt="Values Education"
+                />
+                <div class="floating-proof-card">
+                  <i class="fa-solid fa-hands-holding-circle"></i>
+                  <p>
+                    Developing grounded, purpose-driven graduates who lead with
+                    integrity.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILLAR 03: REAL WORLD EXPERIENCE -->
+      <div class="pillar-chapter section-white">
+        <div class="container">
+          <div class="chapter-grid">
+            <div class="chapter-text">
+              <span class="chapter-num">03</span>
+              <h3>
+                Learning Through Real World Experience <br /><em
+                  >& Pathways to Employment.</em
+                >
+              </h3>
+              <p>
+                Transformative learning happens through practice. Real-world
+                learning helps people develop the confidence, adaptability, and
+                problem-solving abilities needed to succeed in a rapidly
+                changing world.
+              </p>
+              <p>
+                Our programs emphasize practical learning and global real-world
+                experiences, empowering learners to develop practical skills and
+                access employment and entrepreneurship opportunities in Africa
+                and around the world.
+              </p>
+            </div>
+
+            <div class="chapter-visual">
+              <!-- The Image Gallery -->
+              <div class="flash-gallery">
+                <img
+                  src="<?php echo get_template_directory_uri(); ?>/assets/images/hl1.jpg"
+                  class="flash-img active"
+                  alt="Hult Prize Winner"
+                />
+                <!-- <img
+                  src="#"
+                  class="flash-img"
+                  alt="International Project"
+                /> -->
+                <div class="frame-label">Global Impact & Innovation</div>
+              </div>
+
+              <!-- THE FIX: Side-by-Side Highlight Stack -->
+              <div class="experience-highlight-stack">
+                <!-- Card 1 -->
+                <div class="exp-card">
+                  <div class="exp-header">
+                    <span class="exp-stat">40+</span>
+                    <i class="fa-solid fa-globe"></i>
+                  </div>
+                  <p>
+                    Real-world projects completed for companies in the United
+                    States, gaining international experience.
+                  </p>
+                </div>
+
+                <!-- Card 2: Launching (Restored) -->
+                <div class="exp-card blue-card">
+                  <div class="exp-header">
+                    <span class="exp-stat">Launching</span>
+                    <i class="fa-solid fa-briefcase"></i>
+                  </div>
+                  <p>
+                    Students work alongside entrepreneurs to implement business
+                    improvement projects and drive growth.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: PURPOSE, VISION, MISSION -->
+    <section class="vpm-parallax-section">
+      <div class="vpm-parallax-overlay"></div>
+
+      <div class="container relative-z">
+        <div class="vpm-editorial-grid">
+          <!-- LEFT SIDE: THE VISION (GLASS ANCHOR) -->
+          <div class="vpm-vision-anchor">
+            <div class="vision-box-glass">
+              <p class="bright-tag">Our Vision</p>
+              <h2 class="vision-text">
+                A future where Africa's youth and entrepreneurs are
+                <em>empowered</em> to realize their full potential and unlock
+                the continent's potential through innovation, entrepreneurship
+                and <em>ethical leadership.</em>
+              </h2>
+              <div class="vision-line"></div>
+            </div>
+          </div>
+
+          <!-- RIGHT SIDE: PURPOSE & MISSION (GHOST STACK) -->
+          <div class="vpm-strategy-stack">
+            <!-- PURPOSE (Ghost Card) -->
+            <div class="strategy-card-ghost">
+              <div class="card-header">
+                <div class="card-icon-raw">
+                  <i class="fa-solid fa-seedling"></i>
+                </div>
+                <p class="eyebrow-accent text-green">Our Purpose</p>
+              </div>
+              <div class="card-body">
+                <h3 class="text-white">
+                  To unlock Africa's potential through
+                  <span class="text-blue">transformative education</span> and
+                  opportunity.
+                </h3>
+              </div>
+            </div>
+
+            <!-- MISSION (Ghost Card) -->
+            <div class="strategy-card-ghost">
+              <div class="card-header">
+                <div class="card-icon-raw">
+                  <i class="fa-solid fa-circle-nodes"></i>
+                </div>
+                <p class="eyebrow-accent text-green">Our Mission</p>
+              </div>
+              <div class="card-body">
+                <h3 class="text-white">
+                  To build and scale centers of excellence, innovation and
+                  transformation that empower learners across Africa to reach
+                  their <span class="text-blue">Full Potential</span> in
+                  employment, entrepreneurship, and ethical leadership.
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: STRATEGIC INVITATION GRID -->
+    <section class="purpose-pathways-grid">
+      <div class="container">
+        <!-- Header: Word-for-word as requested -->
+        <div class="pathways-header-centered">
+          <h2 class="final-title">
+            Join Us In Unlocking <br /><em>Africa's Potential.</em>
+          </h2>
+          <p class="final-lead">
+            Whether you are a student, entrepreneur, employer, partner or
+            investor, we invite you to join us in expanding access to
+            transformative education and opportunity across Africa.
+          </p>
+        </div>
+
+        <!-- 2x2 Entry Grid -->
+        <div class="entry-grid">
+          <!-- PATH 01: STUDENTS -->
+          <div class="entry-card">
+            <div
+              class="entry-bg"
+              style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/join.jpg')"
+            ></div>
+            <div class="entry-overlay"></div>
+            <div class="entry-content">
+              <h3>Thinking about joining <br />our universities?</h3>
+              <a href="<?php echo home_url('/cavendish-network'); ?>" class="pillar-link white"
+                >Explore University Programs
+                <i class="fa-solid fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- PATH 02: ENTREPRENEURS -->
+          <div class="entry-card">
+            <div
+              class="entry-bg"
+              style="
+                background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/workshop-training.png');
+              "
+            ></div>
+            <div class="entry-overlay"></div>
+            <div class="entry-content">
+              <h3>Ready to build and <br />scale your business?</h3>
+              <a href="<?php echo home_url('/cavendish-business-school'); ?>" class="pillar-link white"
+                >Explore CABS <i class="fa-solid fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- PATH 03: PARTNERS -->
+          <div class="entry-card">
+            <div
+              class="entry-bg"
+              style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/shake.jpg')"
+            ></div>
+            <div class="entry-overlay"></div>
+            <div class="entry-content">
+              <h3>Interested in a <br />strategic collaboration?</h3>
+              <a href="<?php echo home_url('/partnerships'); ?>" class="pillar-link white"
+                >Partner With Us <i class="fa-solid fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- PATH 04: CONTACT -->
+          <div class="entry-card">
+            <div
+              class="entry-bg"
+              style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/vis.jpg')"
+            ></div>
+            <div class="entry-overlay"></div>
+            <div class="entry-content">
+              <h3>Have questions about <br />our mission?</h3>
+              <a
+                href="#contact"
+                class="pillar-link white"
+                id="openPartnerModalFinal"
+                >Contact Our Team <i class="fa-solid fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<?php get_footer(); ?>
