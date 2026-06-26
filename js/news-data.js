@@ -112,13 +112,14 @@ async function getArticleBySlug(slug) {
   }
 }
 
-if (article.videoId) {
+if (typeof article !== "undefined" && article && article.videoId) {
   const videoHTML = `
         <div class="video-responsive">
             <iframe src="https://www.youtube.com/embed/${article.videoId}" frameborder="0" allowfullscreen></iframe>
         </div>
     `;
-  // Insert the video at the top of the content or wherever you prefer
-  document.getElementById("artContent").innerHTML =
-    videoHTML + marked.parse(article.content);
+  const contentEl = document.getElementById("artContent");
+  if (contentEl && typeof marked !== "undefined") {
+    contentEl.innerHTML = videoHTML + marked.parse(article.content);
+  }
 }

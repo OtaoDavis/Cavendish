@@ -4,10 +4,8 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // --- 0. DEFINITIONS ---
+  // --- 1. DEFINITIONS & LOADER ---
   const preloader = document.getElementById("aeh-loader");
-
-  // --- 1. LOADER HIDE LOGIC ---
   let loaderDismissed = false;
   const hideLoader = () => {
     if (!preloader || loaderDismissed) return;
@@ -20,65 +18,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- 2. AUTOMATIC ACTIVE NAV LINK LOGIC ---
   const navLinks = document.querySelectorAll(".nav-links > a");
-
-  const normalizePath = (path) => {
-    if (!path) return "";
-    return path.replace(/\/+$/, "");
-  };
-
-  const getLastSegment = (path) => {
-    const normalized = normalizePath(path);
-    const segments = normalized.split("/").filter(Boolean);
-    return segments.length ? segments[segments.length - 1].toLowerCase() : "";
-  };
-
-  const toNavKey = (pathOrSlug) => {
-    const value = (pathOrSlug || "").toLowerCase();
-    const aliases = {
-      home: ["", "/", "index.html"],
-      purpose: ["our-purpose", "purpose.html"],
-      network: ["cavendish-network", "network.html"],
-      business: ["cavendish-business-school", "cabs.html"],
-      team: ["team", "team.html"],
-    };
-
-    for (const [key, values] of Object.entries(aliases)) {
-      if (values.some((v) => value === v || value.endsWith(`/${v}`))) {
-        return key;
-      }
-    }
-
-    return getLastSegment(value);
-  };
-
-  const toNavKeyFromLabel = (label) => {
-    const text = (label || "").trim().toLowerCase();
-    if (text === "purpose") return "purpose";
-    if (text === "universities") return "network";
-    if (text === "business school") return "business";
-    if (text === "team") return "team";
-    return "";
-  };
-
+  const normalizePath = (path) => (path ? path.replace(/\/+$/, "") : "");
   const currentPath = normalizePath(window.location.pathname.toLowerCase());
-  const currentKey = toNavKey(currentPath || getLastSegment(currentPath));
 
   navLinks.forEach((link) => {
     const linkHref = link.getAttribute("href");
     if (!linkHref || linkHref === "#") return;
-
-    const linkUrl = new URL(linkHref, window.location.origin);
-    const linkPath = normalizePath(linkUrl.pathname.toLowerCase());
-    const linkKey =
-      toNavKey(linkPath || getLastSegment(linkPath) || linkHref) ||
-      toNavKeyFromLabel(link.textContent);
-
-    if (currentKey === linkKey) {
+    if (currentPath.includes(linkHref.toLowerCase().replace(".html", ""))) {
       link.classList.add("active-link");
     }
   });
 
-  // --- 3. GLOBAL REDIRECTION LOGIC ---
+  // --- 3. GLOBAL REDIRECTION & HAMBURGER ---
   const allLinks = document.querySelectorAll("a");
   allLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
@@ -100,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- 4. HAMBURGER MENU LOGIC ---
   const hamburgerBtn = document.querySelector(".hamburger");
   const navLinksEl = document.querySelector(".nav-links");
   if (hamburgerBtn && navLinksEl) {
@@ -108,38 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
       e.stopPropagation();
       document.body.classList.toggle("nav-open");
     });
-
-    navLinksEl.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        if (link.classList.contains("nav-btn-dropdown")) return;
-        document.body.classList.remove("nav-open");
-      });
-    });
-
-    const navDropdown = navLinksEl.querySelector(".nav-dropdown");
-    const navDropdownToggle = navLinksEl.querySelector(".nav-btn-dropdown");
-
-    if (navDropdown && navDropdownToggle) {
-      navDropdownToggle.addEventListener("click", (e) => {
-        if (window.matchMedia("(max-width: 768px)").matches) {
-          e.preventDefault();
-          navDropdown.classList.toggle("open");
-        }
-      });
-
-      document.addEventListener("click", (e) => {
-        if (!navDropdown.contains(e.target)) {
-          navDropdown.classList.remove("open");
-        }
-      });
-
-      window.addEventListener("resize", () => {
-        if (window.matchMedia("(min-width: 769px)").matches) {
-          navDropdown.classList.remove("open");
-        }
-      });
-    }
-
     document.addEventListener("click", (e) => {
       if (
         document.body.classList.contains("nav-open") &&
@@ -151,182 +69,161 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- 4.5 NETWORK PORTAL TABS (Network Page) ---
-  const portalLinks = document.querySelectorAll(".portal-link");
-  const assetViews = document.querySelectorAll(".asset-view");
-
-  const activatePortalView = (targetId) => {
-    if (!targetId) return;
-
-    const targetView = document.getElementById(targetId);
-    if (!targetView) return;
-
-    portalLinks.forEach((item) => item.classList.remove("active"));
-    assetViews.forEach((view) => view.classList.remove("active"));
-
-    const activeLink = document.querySelector(
-      `.portal-link[data-target="${targetId}"]`,
-    );
-    if (activeLink) activeLink.classList.add("active");
-    targetView.classList.add("active");
-  };
-
-  if (portalLinks.length && assetViews.length) {
-    portalLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        const targetId = link.dataset.target;
-        activatePortalView(targetId);
+  // --- 4. SWIPERS ---
+  if (typeof Swiper !== "undefined") {
+    if (document.querySelector(".hero-swiper-main")) {
+      new Swiper(".hero-swiper-main", {
+        effect: "fade",
+        speed: 1500,
+        loop: true,
+        autoplay: { delay: 6000 },
+        fadeEffect: { crossFade: true },
+        navigation: { nextEl: ".hero-next", prevEl: ".hero-prev" },
+        pagination: { el: ".hero-pagination-fraction", type: "fraction" },
       });
-    });
+    }
 
-    const openFromHash = () => {
-      const hash = window.location.hash.replace("#", "");
-      if (!hash) return;
+    if (document.querySelector(".portfolio-swiper")) {
+      new Swiper(".portfolio-swiper", {
+        loop: true,
+        speed: 1200,
+        grabCursor: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        },
+        navigation: { nextEl: ".port-next", prevEl: ".port-prev" },
+        pagination: {
+          el: ".port-pagination",
+          type: "fraction",
+          renderFraction: function (currentClass, totalClass) {
+            return (
+              '<span class="' +
+              currentClass +
+              '"></span>' +
+              " / " +
+              '<span class="' +
+              totalClass +
+              '"></span>'
+            );
+          },
+        },
+      });
+    }
 
-      let sectionId = "";
-      if (hash.startsWith("zambia")) sectionId = "zambia";
-      if (hash.startsWith("uganda")) sectionId = "uganda";
-      if (hash.startsWith("standard")) sectionId = "standard";
+    if (document.querySelector(".testimonial-swiper")) {
+      new Swiper(".testimonial-swiper", {
+        loop: true,
+        speed: 1200,
+        spaceBetween: 30,
+        autoplay: { delay: 5000 },
+        navigation: { nextEl: ".test-next", prevEl: ".test-prev" },
+        pagination: {
+          el: ".test-pagination-dots",
+          clickable: true,
+          type: "bullets",
+        },
+      });
+    }
 
-      if (sectionId) activatePortalView(sectionId);
+    if (document.querySelector(".partners-swiper")) {
+      new Swiper(".partners-swiper", {
+        loop: true,
+        slidesPerView: "auto",
+        spaceBetween: 0,
+        speed: 10000,
+        allowTouchMove: false,
+        freeMode: true,
+        autoplay: { delay: 0 },
+      });
+    }
 
-      const targetEl = document.getElementById(hash);
-      if (targetEl) {
-        setTimeout(() => {
-          targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 80);
+    const beliefSwipers = document.querySelectorAll(".belief-story-swiper");
+    beliefSwipers.forEach((sliderEl) => {
+      const totalSlides = sliderEl.querySelectorAll(".swiper-slide").length;
+      const prevEl = sliderEl.querySelector(".b-prev");
+      const nextEl = sliderEl.querySelector(".b-next");
+
+      const sliderConfig = {
+        speed: 900,
+        spaceBetween: 24,
+        autoHeight: true,
+        loop: totalSlides > 1,
+      };
+
+      if (prevEl && nextEl) {
+        sliderConfig.navigation = { prevEl, nextEl };
       }
-    };
 
-    openFromHash();
-    window.addEventListener("hashchange", openFromHash);
+      if (totalSlides > 1) {
+        sliderConfig.autoplay = {
+          delay: 6500,
+          disableOnInteraction: false,
+        };
+      }
+
+      new Swiper(sliderEl, sliderConfig);
+    });
   }
 
-  const facultyWrappers = document.querySelectorAll(
-    ".faculties-interactive-wrapper",
-  );
+  // --- 5. CINEMATIC JOURNEY: HORIZONTAL SCROLL LOCK ---
+  const journeyWrap = document.getElementById("journeySection");
+  const ribbonFlow = document.getElementById("ribbonFlow");
+  const ribbonProgress = document.getElementById("ribbonProgress");
+  const scrollHint = document.querySelector(".ribbon-scroll-hint");
 
-  facultyWrappers.forEach((wrapper) => {
-    const tabs = wrapper.querySelectorAll(".faculty-tab");
-    const panels = wrapper.querySelectorAll(".faculty-programs");
+  if (journeyWrap && ribbonFlow) {
+    window.addEventListener(
+      "scroll",
+      () => {
+        const rect = journeyWrap.getBoundingClientRect();
 
-    if (!tabs.length || !panels.length) return;
+        // scrollDist = how many px of the section have scrolled past the top of the viewport
+        const scrollDist = -rect.top;
+        const viewHeight = window.innerHeight;
 
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        const targetId = tab.dataset.target;
-        if (!targetId) return;
+        // ── Phase 1: Background + visibility toggle ──────────────────────────────
+        // Swap to dark once the user has scrolled 20% of a viewport height into the section.
+        if (scrollDist > viewHeight * 0.2) {
+          journeyWrap.classList.add("bg-dark");
+        } else {
+          journeyWrap.classList.remove("bg-dark");
+        }
 
-        const targetPanel = wrapper.querySelector(`#${targetId}`);
-        if (!targetPanel) return;
+        // ── Phase 2: Horizontal ribbon movement ──────────────────────────────────
+        const ribbonStart = viewHeight;
+        const ribbonRange = viewHeight * 2;
 
-        tabs.forEach((item) => item.classList.remove("active"));
-        panels.forEach((panel) => panel.classList.remove("active"));
-
-        tab.classList.add("active");
-        targetPanel.classList.add("active");
-      });
-    });
-  });
-
-  // --- 5. SWIPER INITIALIZATIONS ---
-
-  // Main Hero Swiper
-  const mainHeroSwiper = new Swiper(".hero-swiper-main", {
-    effect: "fade",
-    speed: 1500,
-    loop: true,
-    autoplay: { delay: 6000, disableOnInteraction: false },
-    fadeEffect: { crossFade: true },
-    navigation: { nextEl: ".hero-next", prevEl: ".hero-prev" },
-    pagination: { el: ".hero-pagination-fraction", type: "fraction" },
-  });
-
-  // Portfolio Swiper
-  const portfolioSwiper = new Swiper(".portfolio-swiper", {
-    loop: true,
-    speed: 1200,
-    grabCursor: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-      pauseOnMouseEnter: true,
-    },
-    navigation: { nextEl: ".port-next", prevEl: ".port-prev" },
-    pagination: {
-      el: ".port-pagination",
-      type: "fraction",
-      renderFraction: function (currentClass, totalClass) {
-        return (
-          '<span class="' +
-          currentClass +
-          '"></span>' +
-          " / " +
-          '<span class="' +
-          totalClass +
-          '"></span>'
+        const ribbonPhase = Math.min(
+          Math.max((scrollDist - ribbonStart) / ribbonRange, 0),
+          1,
         );
+
+        const leftPad = window.innerWidth * 0.08;
+        const maxScroll = ribbonFlow.scrollWidth - window.innerWidth + leftPad;
+
+        if (maxScroll > 0) {
+          ribbonFlow.style.transform = `translateX(-${ribbonPhase * maxScroll}px)`;
+        }
+
+        // ── Phase 3: Progress bar + hint ──────────────────────────────────────────
+        if (ribbonProgress) {
+          ribbonProgress.style.width = `${ribbonPhase * 100}%`;
+        }
+        if (scrollHint) {
+          if (ribbonPhase >= 0.95) {
+            scrollHint.classList.add("hidden");
+          } else {
+            scrollHint.classList.remove("hidden");
+          }
+        }
       },
-    },
-  });
+      { passive: true },
+    );
+  }
 
-  // Home Page Testimonial Swiper
-  const testimonialSwiper = new Swiper(".testimonial-swiper", {
-    loop: true,
-    speed: 1200,
-    spaceBetween: 30,
-    autoplay: { delay: 5000, disableOnInteraction: false },
-    navigation: { nextEl: ".test-next", prevEl: ".test-prev" },
-    pagination: {
-      el: ".test-pagination-dots",
-      clickable: true,
-      type: "bullets",
-    },
-  });
-
-  // NEW: Purpose Page Nested Belief Swipers
-  document.querySelectorAll(".belief-story-swiper").forEach((swiperEl) => {
-    const nextEl = swiperEl.querySelector(".b-next");
-    const prevEl = swiperEl.querySelector(".b-prev");
-
-    new Swiper(swiperEl, {
-      speed: 800,
-      loop: true,
-      observer: true,
-      observeParents: true,
-      navigation: {
-        nextEl,
-        prevEl,
-      },
-    });
-  });
-
-  // --- 6. IMAGE FLASH GALLERY LOGIC (Purpose Page) ---
-  const galleries = document.querySelectorAll(".flash-gallery");
-  galleries.forEach((gallery) => {
-    const images = gallery.querySelectorAll(".flash-img");
-    if (images.length <= 1) return;
-
-    let currentIndex = 0;
-    setInterval(() => {
-      images[currentIndex].classList.remove("active");
-      currentIndex = (currentIndex + 1) % images.length;
-      images[currentIndex].classList.add("active");
-    }, 4000); // Change image every 4 seconds
-  });
-
-  // --- 7. PARTNERS LOGO LOOP ---
-  const partnersSwiper = new Swiper(".partners-swiper", {
-    loop: true,
-    slidesPerView: "auto",
-    spaceBetween: 0,
-    speed: 10000,
-    allowTouchMove: false,
-    freeMode: true,
-    autoplay: { delay: 0, disableOnInteraction: false },
-  });
-
-  // --- 8. MODAL LOGIC ---
+  // --- 6. MODALS & REVEALS ---
   const partnerModal = document.getElementById("partnerModal");
   const openModalBtn = document.getElementById("openPartnerModal");
   const openModalBtnFinal = document.getElementById("openPartnerModalFinal");
@@ -334,11 +231,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalOverlay = document.getElementById("closeModalOverlay");
 
   const toggleModal = (show) => {
-    if (!partnerModal) return;
-    partnerModal.classList.toggle("active", show);
-    document.body.style.overflow = show ? "hidden" : "auto";
+    if (partnerModal) {
+      partnerModal.classList.toggle("active", show);
+      document.body.style.overflow = show ? "hidden" : "auto";
+    }
   };
-
   if (openModalBtn)
     openModalBtn.addEventListener("click", () => toggleModal(true));
   if (openModalBtnFinal)
@@ -351,7 +248,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (modalOverlay)
     modalOverlay.addEventListener("click", () => toggleModal(false));
 
-  // --- 9. SCROLL REVEAL (Intersection Observer) ---
   const revealItems = document.querySelectorAll(
     ".proof-reveal-item, .founder-card, .multiplier-card",
   );
@@ -367,9 +263,9 @@ document.addEventListener("DOMContentLoaded", () => {
     { threshold: 0.1 },
   );
   revealItems.forEach((item) => observer.observe(item));
-}); // END DOMCONTENTLOADED
+});
 
-// --- GLOBAL FUNCTIONS (Outside DOMContentLoaded) ---
+// --- GLOBAL FUNCTIONS ---
 function openVideoModal(videoSource) {
   const modal = document.getElementById("videoModal");
   const iframe = document.getElementById("videoPlayer");
@@ -380,16 +276,13 @@ function openVideoModal(videoSource) {
     videoSource.includes(".") || videoSource.startsWith("videos/");
   if (isLocal) {
     iframe.style.display = "none";
-    iframe.src = "";
     localVideo.style.display = "block";
     localVideo.src = videoSource;
     localVideo.play();
   } else {
     localVideo.style.display = "none";
-    localVideo.pause();
-    localVideo.removeAttribute("src");
     iframe.style.display = "block";
-    iframe.src = `https://www.youtube.com/embed/${videoSource}?autoplay=1&rel=0`;
+    iframe.src = `https://www.youtube.com/embed/${videoSource}?autoplay=1&rel=0`; // FIXED TYPO HERE
   }
   modal.classList.add("active");
   document.body.style.overflow = "hidden";
@@ -403,8 +296,6 @@ function closeVideoModal() {
     modal.classList.remove("active");
     iframe.src = "";
     localVideo.pause();
-    localVideo.removeAttribute("src");
-    localVideo.load();
     document.body.style.overflow = "auto";
   }
 }

@@ -1,0 +1,184 @@
+<!-- SECTION: YOUR LEARNING JOURNEY -->
+<section class="journey-section">
+  <div class="container">
+    <div class="journey-main-header">
+      <h2 class="section-title">Your Learning <em>Journey.</em></h2>
+    </div>
+
+    <!-- MOVEMENT 1: THE ASCENDING HELIX -->
+    <div class="learning-cycle-area">
+      <div class="cycle-intro">
+        <p class="bright-tag">The Methodology</p>
+        <h3>How You'll Learn</h3>
+      </div>
+
+      <div class="helix-container">
+        <!-- The Core Center -->
+        <div class="business-core">
+          <div class="core-inner">
+            <span>Your<br />Business</span>
+          </div>
+          <div class="core-pulse"></div>
+        </div>
+
+        <!-- The Cycle Nodes -->
+        <div class="helix-node node-learn" style="--i: 1">
+          <div class="node-content">
+            <h4>Learn</h4>
+            <p>Gain practical new ideas you can use immediately</p>
+          </div>
+        </div>
+
+        <div class="helix-node node-apply" style="--i: 2">
+          <div class="node-content">
+            <h4>Apply</h4>
+            <p>Apply every lesson to your business</p>
+          </div>
+        </div>
+
+        <div class="helix-node node-reflect" style="--i: 3">
+          <div class="node-content">
+            <h4>Reflect</h4>
+            <p>Evaluate what worked, what didn't and why</p>
+          </div>
+        </div>
+
+        <div class="helix-node node-grow" style="--i: 4">
+          <div class="node-content">
+            <h4>Grow</h4>
+            <p>Strengthen your leadership and improve your business</p>
+          </div>
+        </div>
+
+        <!-- SVG Connector Path -->
+        <svg class="helix-svg" viewBox="0 0 500 500">
+          <path
+            id="curve"
+            d="M250,400 Q450,250 250,100 Q50,250 250,400"
+            fill="none"
+            stroke="url(#gradient)"
+            stroke-width="2"
+            stroke-dasharray="10 5"
+          />
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color: var(--aeh-blue)" />
+              <stop offset="100%" style="stop-color: var(--aeh-green)" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+
+    <!-- MOVEMENT 2: THE MASTERY RIBBON -->
+    <div class="mastery-roadmap-area">
+      <div class="roadmap-header">
+        <p class="blue-tag">The Outcomes</p>
+        <h3>What You'll Master</h3>
+      </div>
+
+      <div class="roadmap-horizontal-scroll">
+        <div class="roadmap-ribbon">
+          <div class="roadmap-step">
+            <span class="step-outline-num">01</span>
+            <h4>Become the Leader Your Business Needs</h4>
+            <div class="step-connector"></div>
+          </div>
+
+          <div class="roadmap-step">
+            <span class="step-outline-num">02</span>
+            <h4>Build Something People Want</h4>
+            <div class="step-connector"></div>
+          </div>
+
+          <div class="roadmap-step">
+            <span class="step-outline-num">03</span>
+            <h4>Find and Keep Customers</h4>
+            <div class="step-connector"></div>
+          </div>
+
+          <div class="roadmap-step">
+            <span class="step-outline-num">04</span>
+            <h4>Manage Your Business Finances</h4>
+            <div class="step-connector"></div>
+          </div>
+
+          <div class="roadmap-step">
+            <span class="step-outline-num">05</span>
+            <h4>Compete Differently</h4>
+            <div class="step-connector"></div>
+          </div>
+
+          <div class="roadmap-step">
+            <span class="step-outline-num">06</span>
+            <h4>Build a Great Team</h4>
+            <div class="step-connector"></div>
+          </div>
+
+          <div class="roadmap-step">
+            <span class="step-outline-num">07</span>
+            <h4>Build Systems That Scale</h4>
+            <div class="step-connector"></div>
+          </div>
+
+          <div class="roadmap-step">
+            <span class="step-outline-num">08</span>
+            <h4>Use Technology To Grow</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+css: /* ============================================= YOUR LEARNING JOURNEY -
+ROADMAP DESIGN ============================================= */ .journey-section
+{ padding: clamp(60px, 15vh, 60px) 0; background-color: #fcfcfc; overflow-x:
+hidden; } .journey-main-header { text-align: center; margin-bottom: 120px; }
+.section-title { font-family: "Playfair Display", serif; font-size: clamp(3rem,
+6vw, 5rem); font-weight: 800; color: var(--aeh-navy); } .section-title em {
+font-family: "EB Garamond", serif; font-style: italic; color: var(--aeh-blue); }
+/* --- MOVEMENT 1: THE HELIX --- */ .learning-cycle-area { position: relative;
+margin-bottom: 150px; } .cycle-intro { margin-bottom: 80px; } .cycle-intro h3 {
+font-family: "Playfair Display", serif; font-size: 2.5rem; color:
+var(--aeh-navy); } .helix-container { position: relative; height: 600px;
+max-width: 900px; margin: 0 auto; display: flex; align-items: center;
+justify-content: center; } .business-core { position: relative; z-index: 10;
+width: 160px; height: 160px; background: var(--aeh-navy); border-radius: 50%;
+display: flex; align-items: center; justify-content: center; color: white;
+text-align: center; font-family: "Inter", sans-serif; font-weight: 800;
+text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; box-shadow:
+0 20px 50px rgba(13, 44, 79, 0.3); } .core-pulse { position: absolute; inset:
+-10px; border: 1px solid var(--aeh-green); border-radius: 50%; animation:
+corePulse 3s infinite ease-out; opacity: 0; } @keyframes corePulse { 0% {
+transform: scale(1); opacity: 0.5; } 100% { transform: scale(1.4); opacity: 0; }
+} .helix-node { position: absolute; z-index: 20; max-width: 240px; }
+.node-content h4 { font-family: "Playfair Display", serif; font-size: 1.6rem;
+color: var(--aeh-navy); margin-bottom: 10px; } .node-content p { font-family:
+"Merriweather", serif; font-size: 0.95rem; line-height: 1.6; color: #64748b;
+font-weight: 300; } /* Positioning nodes in a 3D-feeling spiral */ .node-learn {
+top: 0; left: 50%; transform: translateX(-50%); } .node-apply { right: 0; top:
+40%; } .node-reflect { bottom: 0; left: 50%; transform: translateX(-50%); }
+.node-grow { left: 0; top: 40%; } .helix-svg { position: absolute; width: 100%;
+height: 100%; top: 0; left: 0; z-index: 1; opacity: 0.3; } /* --- MOVEMENT 2:
+THE MASTERY RIBBON --- */ .mastery-roadmap-area { padding-top: 80px; border-top:
+1px solid #eee; } .roadmap-horizontal-scroll { width: 100%; overflow-x: auto;
+padding: 60px 0; scrollbar-width: none; /* Hide scrollbar for premium look */ }
+.roadmap-horizontal-scroll::-webkit-scrollbar { display: none; } .roadmap-ribbon
+{ display: flex; gap: 0; /* Connected items */ width: max-content; }
+.roadmap-step { width: 320px; padding: 0 40px; position: relative; display:
+flex; flex-direction: column; } .step-outline-num { font-family: "Inter",
+sans-serif; font-size: 5rem; font-weight: 900; line-height: 1; color:
+transparent; -webkit-text-stroke: 1px rgba(57, 152, 189, 0.3); /* AEH Blue
+Outline */ margin-bottom: 20px; transition: all 0.5s ease; } .roadmap-step h4 {
+font-family: "Playfair Display", serif; font-size: 1.35rem; color:
+var(--aeh-navy); line-height: 1.3; font-weight: 700; min-height: 3.9em; }
+.step-connector { position: absolute; top: 2.5rem; right: -30px; width: 60px;
+height: 1px; background: linear-gradient(to right, rgba(57, 152, 189, 0.3),
+transparent); } .roadmap-step:hover .step-outline-num { -webkit-text-stroke: 1px
+var(--aeh-green); transform: translateY(-10px); } /* --- RESPONSIVE --- */
+@media (max-width: 1024px) { .helix-container { height: auto; display: flex;
+flex-direction: column; gap: 40px; } .helix-node { position: static; transform:
+none; max-width: 100%; text-align: center; } .helix-svg, .business-core,
+.core-pulse { display: none; } .roadmap-step { width: 280px; padding: 0 20px; }
+.step-outline-num { font-size: 3.5rem; } }
