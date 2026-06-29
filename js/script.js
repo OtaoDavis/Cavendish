@@ -299,3 +299,19 @@ function closeVideoModal() {
     document.body.style.overflow = "auto";
   }
 }
+
+function openApplicationModal() {
+  const modal = document.getElementById("applicationModal");
+  if (modal) {
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+}
+
+function closeApplicationModal() {
+  const modal = document.getElementById("applicationModal");
+  if (modal) {
+    modal.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+}

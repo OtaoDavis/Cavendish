@@ -248,7 +248,7 @@ section .container {
    CABS DEFINITION SECTION (EDITORIAL SPLIT)
    ============================================= */
 .cabs-definition {
-  padding: clamp(80px, 12vh, 140px) 0;
+  padding: clamp(40px, 12vh, 40px) 0;
   background-color: var(--aeh-white);
   position: relative;
   overflow: hidden; /* Clips the massive watermark */
@@ -274,6 +274,17 @@ section .container {
 .relative-z {
   position: relative;
   z-index: 10;
+}
+
+.cabs-definition-heading {
+  margin: 0 0 clamp(32px, 5vh, 56px);
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--aeh-green);
 }
 
 .umbrella-grid {
@@ -477,7 +488,7 @@ section .container {
    ============================================= */
 .cabs-canvas-section {
   position: relative;
-  padding: clamp(100px, 15vh, 180px) 0 0 0;
+  padding: clamp(40px, 15vh, 80px) 0 0 0;
   background-color: var(--aeh-white);
   overflow: hidden;
 }
@@ -515,6 +526,27 @@ section .container {
 .relative-z {
   position: relative;
   z-index: 10;
+}
+
+.canvas-header-minimal {
+  text-align: center;
+  margin-bottom: clamp(64px, 10vh, 120px);
+  position: relative;
+  z-index: 15;
+}
+
+.canvas-header-minimal .eyebrow-accent {
+  margin-bottom: 18px;
+  font-size: clamp(0.72rem, 1vw, 0.88rem);
+  letter-spacing: 3px;
+}
+
+.header-line {
+  width: 72px;
+  height: 2px;
+  margin: 0 auto;
+  background: var(--aeh-green);
+  opacity: 0.85;
 }
 
 /* --- TYPOGRAPHY --- */
@@ -740,6 +772,30 @@ section .container {
 }
 
 /* Babson Specific Styling */
+.cred-muted-detail {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(13, 44, 79, 0.08);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.cred-muted-detail i {
+  font-size: 0.85rem;
+  color: var(--aeh-green);
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+.cred-muted-detail p {
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem !important; /* Smaller, secondary size */
+  line-height: 1.6 !important;
+  color: #64748b !important; /* Muted Slate Gray */
+  font-weight: 500 !important;
+  margin: 0 !important;
+}
 .babson-highlight {
   background: rgba(57, 152, 189, 0.02);
   margin: 0 -40px;
@@ -761,6 +817,13 @@ section .container {
 }
 
 /* --- RESPONSIVE --- */
+
+@media (max-width: 768px) {
+  .cred-muted-detail {
+    flex-direction: row;
+    text-align: left;
+  }
+}
 
 @media (max-width: 1024px) {
   .why-grid {
@@ -2034,6 +2097,601 @@ section .container {
   .promise-divider {
     display: none;
   }
+}
+
+/* =============================================
+   SECTION 11: INVESTMENT & ENROLLMENT SLATE
+   ============================================= */
+.cabs-investment-section {
+  padding: clamp(80px, 12vh, 140px) 0;
+  background-color: var(--aeh-light-back);
+}
+
+.investment-master-card {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr; /* Favors the detail grid */
+  background: white;
+  box-shadow: 0 40px 100px rgba(13, 44, 79, 0.1);
+  overflow: hidden;
+  border: 1px solid rgba(13, 44, 79, 0.05);
+}
+
+/* --- LEFT SIDE: THE OFFER --- */
+.investment-offer-side {
+  background-color: var(--aeh-navy);
+  color: white;
+  padding: clamp(40px, 6vh, 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.investment-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1.1;
+  color: white !important;
+  margin-bottom: 40px;
+}
+
+.investment-title em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-blue);
+}
+
+.product-anchor {
+  margin-bottom: 40px;
+}
+
+.product-name {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  color: var(--aeh-green);
+}
+
+.price-block {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.price-block .currency {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.price-block .amount {
+  font-family: "Playfair Display", serif;
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.payment-term {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.6;
+}
+
+.investment-note {
+  font-family: "Merriweather", serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 30px;
+}
+
+/* --- RIGHT SIDE: DETAILS --- */
+.investment-details-side {
+  padding: clamp(40px, 6vh, 80px);
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  justify-content: center;
+}
+
+.group-label {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: #94a3b8;
+  margin-bottom: 20px;
+}
+
+/* Features Grid */
+.features-check-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 40px;
+  list-style: none;
+  padding: 0;
+}
+
+.features-check-grid li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--aeh-navy);
+}
+
+.features-check-grid i {
+  color: var(--aeh-green);
+  font-size: 1rem;
+}
+
+/* Logistics Split */
+.details-row-split {
+  display: flex;
+  gap: 60px;
+  border-top: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f1f5f9;
+  padding: 30px 0;
+}
+
+.details-item h4 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
+  margin: 0 0 5px;
+}
+
+.details-item .sub-label {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Payment Methods */
+.payment-methods {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.method-tag {
+  background: var(--aeh-light-back);
+  padding: 8px 16px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--aeh-navy);
+  border-radius: 2px;
+}
+
+.text-blue {
+  color: var(--aeh-blue) !important;
+}
+
+/* --- RESPONSIVE --- */
+
+@media (max-width: 1100px) {
+  .investment-master-card {
+    grid-template-columns: 1fr;
+  }
+  .investment-offer-side {
+    padding: 60px 40px;
+    text-align: center;
+  }
+  .price-block {
+    justify-content: center;
+  }
+  .investment-details-side {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .features-check-grid {
+    grid-template-columns: 1fr;
+  }
+  .details-row-split {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .payment-methods {
+    flex-direction: column;
+  }
+}
+
+/* =============================================
+   SECTION 12: JOURNEY MAP & APPLICATION
+   ============================================= */
+.cabs-journey-map {
+  padding: clamp(80px, 12vh, 140px) 0;
+  background-color: var(--aeh-white);
+  text-align: center;
+}
+
+/* --- THE PROCESS FLOW --- */
+.process-flow-wrapper {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto 20px;
+  padding: 40px 0;
+}
+
+.flow-line {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #eee;
+  z-index: 1;
+}
+
+.flow-grid {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 180px;
+}
+
+.step-circle {
+  width: 40px;
+  height: 40px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 0.7rem;
+  color: #94a3b8;
+  transition: 0.4s ease;
+}
+
+.flow-step p {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase !important;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+/* Hover/Active states */
+.flow-step:hover .step-circle,
+.flow-step.highlight .step-circle {
+  border-color: var(--aeh-green);
+  color: var(--aeh-green);
+  transform: scale(1.2);
+  box-shadow: 0 0 20px rgba(142, 200, 111, 0.2);
+}
+
+.flow-step.highlight p {
+  color: var(--aeh-navy);
+}
+
+/* --- ACTION CARD --- */
+.journey-action-card {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px;
+  background: var(--aeh-light-back);
+  border-radius: 2px;
+  position: relative;
+}
+
+.deadline-badge {
+  display: inline-block;
+  background: var(--aeh-navy);
+  color: white;
+  padding: 8px 20px;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase !important;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+}
+
+.journey-action-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: var(--aeh-navy);
+}
+
+.journey-support-links {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.journey-support-links p {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+.journey-support-links a {
+  color: var(--aeh-blue);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: 0.3s;
+}
+.journey-support-links a:hover {
+  border-bottom-color: var(--aeh-blue);
+}
+
+/* --- MODAL CATEGORIES --- */
+.application-large {
+  max-width: 950px !important;
+  height: 90vh; /* Fixed height for long form */
+}
+
+.modal-content-wrapper.application-large .contact-form-wrapper {
+  height: 100%;
+  overflow-y: auto;
+  padding: 60px 80px;
+}
+
+.form-category {
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.form-category:last-of-type {
+  border-bottom: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .flow-grid {
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-start;
+  }
+  .flow-step {
+    flex-direction: row;
+    width: 100%;
+    text-align: left;
+  }
+  .flow-line {
+    width: 1px;
+    height: 100%;
+    left: 20px;
+    top: 0;
+  }
+  .application-large {
+    width: 95%;
+  }
+  .modal-content-wrapper.application-large .contact-form-wrapper {
+    padding: 40px 25px;
+  }
+}
+
+/* =============================================
+   SECTION 13: FOUNDERS FAQ - WHITE CARD VERSION
+   ============================================= */
+.cabs-faq-section {
+  position: relative;
+  padding: clamp(100px, 15vh, 180px) 0;
+  /* Using the requested dark blue background */
+  background-color: var(--aeh-dark-blue);
+  overflow: hidden;
+}
+
+/* --- THE DIALOGUE WATERMARK --- */
+.faq-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(15rem, 30vw, 40rem);
+  font-weight: 900;
+  /* Extremely subtle white ghosting for the "High Look" */
+  color: rgba(255, 255, 255, 0.03);
+  line-height: 1;
+  pointer-events: none;
+  z-index: 1;
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+}
+
+.relative-z {
+  position: relative;
+  z-index: 10;
+}
+
+.faq-grid {
+  display: grid;
+  /* 1fr for header, 1.8fr for the cards to allow breathing room */
+  grid-template-columns: 1fr 1.8fr;
+  gap: clamp(40px, 6vw, 100px);
+  align-items: flex-start;
+}
+
+/* --- LEFT SIDE: INTRO --- */
+.faq-main-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+  line-height: 1;
+  color: white !important;
+  margin-bottom: 25px;
+  letter-spacing: -1px;
+}
+
+.faq-main-title em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-green); /* Green contrast on blue background */
+}
+
+.faq-lead-muted {
+  font-family: "Merriweather", serif;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 300;
+  max-width: 400px;
+}
+
+/* --- RIGHT SIDE: THE CARDS --- */
+.faq-accordion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Creates the spacing between white cards */
+}
+
+.faq-item {
+  background: white; /* THE FIX: White card base */
+  border-radius: 4px; /* Minimalist rounding */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.faq-q {
+  width: 100%;
+  padding: clamp(25px, 4vh, 35px) 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  gap: 30px;
+  outline: none;
+}
+
+/* THE FIX: Dark text for the question inside the white card */
+.faq-q span {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.1rem, 1.3vw, 1.25rem);
+  font-weight: 700;
+  color: var(--aeh-navy); /* Dark Navy text */
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.faq-icon-box {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--aeh-blue); /* Matches your screenshot icon color */
+  font-size: 1rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  flex-shrink: 0;
+}
+
+/* Answer Area */
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-a p {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #4a5568; /* Slate gray for readability */
+  padding: 0 40px 35px 40px;
+  margin: 0;
+}
+
+/* --- HOVER & ACTIVE STATES --- */
+.faq-item:hover {
+  transform: translateX(10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.faq-item.faq-open {
+  border-left: 5px solid var(--aeh-green); /* Brand green marker */
+}
+
+.faq-item.faq-open .faq-q span {
+  color: var(--aeh-blue);
+}
+
+.faq-item.faq-open .faq-icon-box {
+  transform: rotate(45deg); /* Plus turns into an X */
+  color: var(--aeh-green);
+}
+
+.faq-item.faq-open .faq-a {
+  max-height: 500px; /* Expands to show the answer */
+}
+
+/* --- RESPONSIVE FIXES --- */
+
+@media (max-width: 1100px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .faq-intro {
+    text-align: center;
+  }
+  .faq-lead-muted {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  .faq-watermark {
+    display: none;
+  }
+
+  .faq-q {
+    padding: 25px 30px;
+  }
+  .faq-a p {
+    padding: 0 30px 25px 30px;
+  }
+
+  .faq-item:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-main-title {
+    font-size: 2.5rem;
+  }
+  .faq-q span {
+    font-size: 1.1rem;
+  }
+}
+
+.bright-tag {
+  color: var(--aeh-green);
 }
 /* =============================================
    CABS VIDEOS
