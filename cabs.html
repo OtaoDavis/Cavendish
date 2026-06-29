@@ -945,7 +945,7 @@
     </section>
 
     <!-- SECTION 11: INVESTMENT & ENROLLMENT -->
-    <section class="cabs-investment-section" id="enroll">
+    <section class="cabs-investment-section" id="invest">
       <div class="container">
         <div class="investment-master-card">
           <!-- LEFT: THE OFFER -->
@@ -1018,7 +1018,15 @@
             </div>
 
             <div class="investment-cta-area">
-              <button class="btn-solid" onclick="toggleModal(true)">
+              <button
+                class="btn-solid"
+                type="button"
+                onclick="
+                  document
+                    .querySelector('.cabs-journey-map')
+                    .scrollIntoView({ behavior: 'smooth', block: 'start' })
+                "
+              >
                 Initiate Enrollment
               </button>
             </div>
@@ -1028,7 +1036,7 @@
     </section>
 
     <!-- SECTION 12: START YOUR JOURNEY (PROCESS MAP) -->
-    <section class="cabs-journey-map">
+    <section class="cabs-journey-map" id="enroll">
       <div class="container">
         <div class="journey-header-centered">
           <p class="eyebrow-accent">Enrollment Process</p>
