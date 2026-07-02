@@ -1,93 +1,14 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Cavendish Africa Business School empowers founders and executives with practical, application-based entrepreneurship and leadership programs built for African markets."
-    />
-    <title>CABS | Cavendish Africa</title>
+<?php
+/* Template Name: Front Page */
+get_header();
+?>
 
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/cabs.css" />
-    <link rel="icon" href="images/favicon.ico" sizes="any" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="images/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="images/favicon-16x16.png"
-    />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-
-    <script src="js/script.js" defer></script>
-  </head>
-
-  <body class="bg-gray-50">
-    <div id="aeh-loader" class="aeh-loader-overlay">
-      <div class="loader-content">
-        <img
-          src="images/logo.png"
-          alt="Cavendish Africa"
-          class="loader-logo-pulse"
-        />
-      </div>
-    </div>
-
-    <nav class="sticky-nav">
-      <div class="nav-container">
-        <a href="index.html" class="logo">
-          <img src="images/logo.png" alt="Cavendish Africa" class="logo-img" />
-        </a>
-        <button class="hamburger" aria-label="Toggle menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </button>
-        <div class="nav-links">
-          <a href="purpose.html">Purpose</a>
-          <a href="network.html">Universities</a>
-          <a href="cabs.html">Business School</a>
-          <a href="team.html">Team</a>
-          <div class="nav-dropdown">
-            <a href="#" class="nav-btn nav-btn-dropdown"
-              >Explore our programs <i class="fa-solid fa-chevron-down"></i
-            ></a>
-            <div class="nav-dropdown-menu">
-              <a href="network.html#zambia-faculties">Cavendish Zambia</a>
-              <a href="network.html#uganda-faculties">Cavendish Uganda</a>
-              <a href="cabs.html#enroll">Cavendish Business</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
     <!-- CABS HERO: CINEMATIC EDITORIAL -->
     <header class="cabs-hero-cinematic">
       <!-- Background with Ken Burns Effect -->
       <div
         class="cabs-hero-bg"
-        style="background-image: url(&quot;images/business.jpg&quot;)"
+        style="background-image: url(&quot;<?php echo get_template_directory_uri(); ?>/assets/images/business.jpg&quot;)"
       ></div>
       <div class="cabs-hero-overlay"></div>
 
@@ -156,10 +77,7 @@
         </div>
 
         <!-- THE BRAND SIGNATURE STRIP -->
-        <div
-          class="cabs-identity-strip"
-          style="color: var(--aeh-green); font-weight: 600"
-        >
+        <div class="cabs-identity-strip">
           <p>
             Built in Africa <span>&bull;</span> Built for Impact
             <span>&bull;</span> Built with Integrity
@@ -250,7 +168,7 @@
           <!-- PILLAR 01: DOING -->
           <div class="step-item step-high">
             <div class="step-visual">
-              <img src="images/learn.jpg" alt="Applied Learning" />
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/learn.jpg" alt="Applied Learning" />
             </div>
             <div class="step-content">
               <h3>
@@ -284,14 +202,14 @@
               </div>
             </div>
             <div class="step-visual">
-              <img src="images/shared-learning.jpg" alt="Community" />
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/shared-learning.jpg" alt="Community" />
             </div>
           </div>
 
           <!-- PILLAR 03: TIME -->
           <div class="step-item step-low">
             <div class="step-visual">
-              <img src="images/doing.jpg" alt="Transformation" />
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/doing.jpg" alt="Transformation" />
             </div>
             <div class="step-content">
               <h3>
@@ -769,7 +687,7 @@
         <!-- LEFT: THE VISUAL ANCHOR (With Arrow Crop) -->
         <div class="logistics-visual-side">
           <div class="arrow-image-wrapper">
-            <img src="images/busy.jpg " alt="Focus and Growth" />
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/busy.jpg" alt="Focus and Growth" />
             <div class="arrow-overlay"></div>
             <div class="arrow-tip"></div>
             <!-- CSS handles the point -->
@@ -1356,163 +1274,6 @@
       </div>
     </div>
 
-    <!-- SECTION 12.5: SCHOLARSHIP (INVESTING IN AFRICA'S ENTREPRENEURS) -->
-    <section class="cabs-scholarship-section">
-      <div class="section-watermark">Access</div>
-      <div class="container relative-z">
-        <div class="scholarship-grid">
-          <!-- Left: The Commitment -->
-          <div class="scholarship-content">
-            <p class="eyebrow-accent">Scholarship Support</p>
-            <h2 class="scholarship-title">
-              Investing In Africa’s <br /><em>Entrepreneurs.</em>
-            </h2>
-            <p class="scholarship-lead">
-              We believe the future of Africa depends on entrepreneurs who
-              create jobs, solve meaningful problems, and strengthen their
-              communities. That’s why we are committed to making CABS accessible
-              through a limited number of scholarships available to
-              entrepreneurs who demonstrate exceptional potential, commitment,
-              and financial need.
-            </p>
-
-            <div class="scholarship-consideration-box">
-              <h4>Scholarship Consideration:</h4>
-              <p>
-                If the investment required to enroll would prevent you from
-                participating, you may submit a separate scholarship application
-                after completing your CABS application.
-              </p>
-              <button class="pillar-link" onclick="openScholarshipModal()">
-                Apply For Scholarship
-                <i class="fa-solid fa-arrow-right-long"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- Right: Visual of Community -->
-          <div class="scholarship-visual">
-            <div class="scholarship-frame">
-              <img src="images/pl1.jpg" alt="Empowered African Entrepreneurs" />
-              <div class="scholarship-tag">Community Access</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- THE SCHOLARSHIP APPLICATION MODAL -->
-    <div id="scholarshipModal" class="aeh-modal">
-      <div class="modal-overlay" onclick="closeScholarshipModal()"></div>
-      <div class="modal-content-wrapper application-large">
-        <button class="modal-close-btn" onclick="closeScholarshipModal()">
-          &times;
-        </button>
-
-        <div class="contact-form-wrapper">
-          <div class="form-decorative-element"></div>
-          <h3 class="modal-form-title">Scholarship Application</h3>
-
-          <form class="aeh-premium-form" id="cabsScholarshipForm">
-            <!-- SAME AS APPLICATION: PERSONAL -->
-            <div class="form-category">
-              <p class="group-label">Personal Information</p>
-              <div class="form-row split">
-                <div class="field-group">
-                  <label>Full Name</label><input type="text" required />
-                </div>
-                <div class="field-group">
-                  <label>Email Address</label><input type="email" required />
-                </div>
-              </div>
-              <div class="form-row split">
-                <div class="field-group">
-                  <label>Phone Number</label><input type="tel" required />
-                </div>
-                <div class="field-group">
-                  <label>Country</label><input type="text" required />
-                </div>
-              </div>
-            </div>
-
-            <!-- SAME AS APPLICATION: BUSINESS -->
-            <div class="form-category">
-              <p class="group-label">Business Information</p>
-              <div class="form-row split">
-                <div class="field-group">
-                  <label>Business Name</label><input type="text" required />
-                </div>
-                <div class="field-group">
-                  <label>Industry</label><input type="text" required />
-                </div>
-              </div>
-              <div class="form-row split">
-                <div class="field-group">
-                  <label>Annual Revenue</label>
-                  <select required>
-                    <option>$0 – $50K</option>
-                    <option>$50K – $150K</option>
-                    <option>$150K+</option>
-                  </select>
-                </div>
-                <div class="field-group">
-                  <label>Team Size</label>
-                  <select required>
-                    <option>0-5</option>
-                    <option>5-15</option>
-                    <option>15+</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <!-- THE 5 IMPACT QUESTIONS -->
-            <div class="form-category">
-              <p class="group-label">Impact & Financial Need</p>
-              <div class="field-group">
-                <label
-                  >What problem does your business solve for your
-                  customer?</label
-                >
-                <textarea rows="3" required></textarea>
-              </div>
-              <div class="field-group">
-                <label
-                  >How does your business create positive impact for your
-                  customers, employees, and community?</label
-                >
-                <textarea rows="3" required></textarea>
-              </div>
-              <div class="field-group">
-                <label
-                  >How will CABS help you increase that positive impact?</label
-                >
-                <textarea rows="3" required></textarea>
-              </div>
-              <div class="field-group">
-                <label
-                  >Why do you need financial assistance and how much can you
-                  contribute?</label
-                >
-                <textarea rows="3" required></textarea>
-              </div>
-              <div class="field-group">
-                <label
-                  >If you are selected, how will you contribute to the CABS
-                  community?</label
-                >
-                <textarea rows="3" required></textarea>
-              </div>
-            </div>
-
-            <button type="submit" class="btn-initiate">
-              Submit Scholarship Request
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-
     <!-- SECTION 13: FOUNDERS FAQ (DARK BLUE INSTITUTIONAL) -->
     <section class="cabs-faq-section" id="faq">
       <!-- Subtle Ghost Watermark -->
@@ -1629,325 +1390,5 @@
         </div>
       </div>
     </section>
-    <!-- SECTION: CABS VIDEOS -->
-    <!-- WILL add -->
 
-    <!-- ============================================================
-     10. FAQ ACCORDION
-     ============================================================ -->
-    <!-- <section class="cabs-faq" id="faq">
-      <div class="container">
-        <div
-          class="cabs-section-header"
-          style="text-align: center; margin-bottom: 60px"
-        >
-          <p class="cabs-eyebrow-dark">Common Questions</p>
-          <h2 class="cabs-section-title">Founders <em>FAQ</em></h2>
-        </div>
-        <div class="faq-list" id="faqList">
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>Is this programme theoretical or practical?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                CABS is application-based. Every concept is designed to be
-                applied directly within your business. The objective is
-                measurable improvement, not academic completion.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span
-                >Why begin with Entrepreneurial Mindset &amp; Ethical
-                Leadership?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                Because scale begins with the founder. Strategic clarity,
-                financial discipline, delegation, and culture all reflect
-                leadership maturity. Module 1 establishes the foundation
-                required for all future modules.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>How much time will this realistically require?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                Approximately 5 hours per week for 8 weeks, including recorded
-                content, live discussions, and practical application exercises.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>What role do university students play?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                Students provide structured implementation support on selected
-                modules — research, financial analysis, market mapping, process
-                documentation, and project execution support under supervision.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>Is my business information confidential?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                Yes. Confidentiality expectations are clearly communicated to
-                students and participants. Professional standards apply
-                throughout.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>Is this like an MBA?</span><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                No. An MBA is broad and academic. CABS is focused, modular, and
-                execution-driven — designed specifically for operating founders
-                in African markets.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>What if I miss a live session?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                Sessions are recorded. However, participation is encouraged as
-                peer discussion significantly enhances the learning experience.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>What stage must my business be at?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                Ideal participants are revenue-generating founders with 5–100
-                employees and clear decision-making authority. Not suited for
-                idea-stage ventures.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>Is this sector-specific?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                No. The programme is sector-agnostic but designed specifically
-                around African market realities.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>What happens after one module?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                Founders may continue to additional modules, enrol in two-module
-                bundles, and progress along the full recommended pathway while
-                deepening access to the CABS entrepreneur community.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>Why is there a fee?</span><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                Commitment matters. The fee reflects programme design,
-                practitioner-led facilitation, student support structure, and
-                ecosystem access.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span
-                >What makes CABS different from incubators or
-                accelerators?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                CABS strengthens the founder and operating systems — not just
-                the pitch deck. It improves profitability, management
-                discipline, leadership maturity, and sustainable scale.
-              </p>
-            </div>
-          </div>
-        </div>
-        <p class="section-tagline">
-          Built in Africa. Built with Integrity. Built for Impact.
-        </p>
-      </div>
-    </section> -->
-
-    <footer class="site-footer">
-      <div class="container mx-auto px-6 py-12">
-        <div class="footer-grid">
-          <div class="footer-col">
-            <img
-              src="images/logo_trans.png"
-              alt="Cavendish Africa Logo"
-              class="footer-logo mb-4"
-            />
-            <p class="text-gray-400">
-              Expanding access to transformative education and opportunity to
-              unlock Africa's potential
-            </p>
-          </div>
-
-          <div class="footer-col">
-            <h3 class="footer-title">Quick Links</h3>
-            <ul class="footer-links">
-              <li><a href="purpose.html">Our Purpose</a></li>
-              <li><a href="impact.html">Our Impact</a></li>
-              <li><a href="network.html">Our Network</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h3 class="footer-title">Contact Us</h3>
-            <ul class="contact-info">
-              <li class="contact-item">
-                <i class="fa-solid fa-envelope"></i>
-                <span style="text-transform: none"
-                  >info@maarifaeducation.com</span
-                >
-              </li>
-              <li class="contact-item">
-                <i class="fa-solid fa-phone"></i>
-                <span>(+254) 708021483</span>
-              </li>
-              <li class="contact-item">
-                <i class="fa-solid fa-map-marker-alt"></i>
-                <span>Nairobi, Kenya</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h3 class="footer-title">Network Development</h3>
-            <p class="text-gray-400">
-              Cavendish Africa welcomes partners who are committed to expanding
-              access to education and opportunity in Africa.
-            </p>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p class="copyright-text">
-            &copy; <span id="copyright-year"></span> Cavendish Africa. All
-            Rights Reserved.
-          </p>
-          <div class="social-links">
-            <a href="#" aria-label="Facebook"
-              ><i class="fab fa-facebook-f"></i
-            ></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="LinkedIn"
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
-            <a href="#" aria-label="Instagram"
-              ><i class="fab fa-instagram"></i
-            ></a>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <div id="videoModal" class="aeh-video-modal">
-      <div class="modal-overlay" onclick="closeVideoModal()"></div>
-      <div class="modal-container">
-        <button class="modal-close" onclick="closeVideoModal()">&times;</button>
-
-        <iframe
-          id="videoPlayer"
-          src=""
-          frameborder="0"
-          allow="autoplay; encrypted-media"
-          allowfullscreen
-          style="display: none"
-        ></iframe>
-
-        <video
-          id="localVideoPlayer"
-          controls
-          playsinline
-          style="display: none; width: 100%; max-height: 80vh"
-        ></video>
-      </div>
-    </div>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const videoBox = document.getElementById("cabsVideoBox");
-        const videoIframe = document.getElementById("cabsVideoIframe");
-        const faqList = document.getElementById("faqList");
-        const enrollForm = document.getElementById("enrollForm");
-        const enrollSuccess = document.getElementById("enrollSuccess");
-
-        if (videoBox && videoIframe) {
-          videoBox.addEventListener("click", () => {
-            if (!videoBox.classList.contains("playing")) {
-              videoIframe.src =
-                "https://www.youtube.com/embed/LXb3EKWsInQ?autoplay=1&rel=0";
-              videoBox.classList.add("playing");
-            }
-          });
-        }
-
-        if (faqList) {
-          faqList.querySelectorAll(".faq-q").forEach((button) => {
-            button.addEventListener("click", () => {
-              const item = button.closest(".faq-item");
-              const isOpen = item.classList.contains("faq-open");
-
-              faqList.querySelectorAll(".faq-item").forEach((el) => {
-                el.classList.remove("faq-open");
-              });
-
-              if (!isOpen) {
-                item.classList.add("faq-open");
-              }
-            });
-          });
-        }
-
-        if (enrollForm && enrollSuccess) {
-          enrollForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            enrollSuccess.style.display = "flex";
-            enrollForm.reset();
-          });
-        }
-      });
-    </script>
-  </body>
-</html>
+<?php get_footer(); ?>

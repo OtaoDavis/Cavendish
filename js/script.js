@@ -315,3 +315,19 @@ function closeApplicationModal() {
     document.body.style.overflow = "auto";
   }
 }
+
+function openScholarshipModal() {
+  const modal = document.getElementById("scholarshipModal");
+  if (modal) {
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+}
+
+function closeScholarshipModal() {
+  const modal = document.getElementById("scholarshipModal");
+  if (modal) {
+    modal.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+}

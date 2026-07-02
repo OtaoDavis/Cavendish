@@ -254,6 +254,17 @@ section .container {
   overflow: hidden; /* Clips the massive watermark */
 }
 
+.cabs-identity-strip {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.cabs-identity-strip p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* --- THE CABS WATERMARK --- */
 .section-watermark {
   position: absolute;
@@ -361,10 +372,32 @@ section .container {
 }
 
 /* =============================================
-   CABS STRATEGIC NARRATIVE
+   3. CABS STRATEGIC NARRATIVE
    ============================================= */
+.narrative-transition-intro {
+  max-width: 900px;
+  margin: 0 auto clamp(40px, 6vh, 80px);
+  text-align: center;
+}
+
+.transition-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.2rem, 3.5vw, 3rem);
+  color: var(--aeh-green); /* Highlights the 'Why' */
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+.transition-body {
+  font-family: "Merriweather", serif;
+  font-size: clamp(1.1rem, 1.3vw, 1.3rem);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+}
+
 .cabs-narrative-section.dark-theme {
-  padding: clamp(100px, 12vh, 160px) 0;
+  padding: clamp(60px, 8vh, 80px) 0;
   background-color: var(--aeh-dark-blue); /* #3a5f7d */
   position: relative;
   overflow: hidden;
@@ -401,6 +434,24 @@ section .container {
   display: flex;
   flex-direction: column;
   gap: 30px;
+}
+
+.ribbon-sub-header {
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase !important;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: var(--aeh-green);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.ribbon-lead-text {
+  font-family: "Merriweather", serif;
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 700px;
+  line-height: 1.6;
 }
 
 /* The Marker - Green pops best on Dark Blue */
@@ -447,9 +498,6 @@ section .container {
 .highlight-card .narrative-card-content p {
   color: #ffffff;
   font-weight: 400;
-  /* Strong Green accent for the 'Solution' */
-  border-left: 3px solid var(--aeh-green);
-  padding-left: 25px;
 }
 
 /* --- RESPONSIVE SCALING --- */
@@ -483,9 +531,6 @@ section .container {
 /* ============================================================
    4. CABS DIFFERENTIATION 
    ============================================================ */
-/* =============================================
-   CABS DIFFERENTIATION - WITH EDITORIAL TEXTURE
-   ============================================= */
 .cabs-canvas-section {
   position: relative;
   padding: clamp(40px, 15vh, 80px) 0 0 0;
@@ -1237,7 +1282,7 @@ section .container {
 }
 
 .ribbon-item {
-  width: 380px;
+  width: 450px;
   padding: 40px 50px 40px 0;
   position: relative;
   display: flex;
@@ -1272,22 +1317,21 @@ section .container {
   color: white !important;
   line-height: 1.3;
   margin-bottom: 12px;
-  min-height: 2em;
+  min-height: auto;
 }
 
 /* Ribbon description text under each heading */
 .ribbon-desc {
-  font-family: "Merriweather", serif;
-  font-size: 0.88rem;
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.55);
-  font-weight: 300;
-  max-width: 280px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
 }
 
 .ribbon-line {
   position: absolute;
-  top: 50%;
+  top: 3.5rem;
   right: 0;
   width: 50px;
   height: 1px;
@@ -1340,6 +1384,13 @@ section .container {
 
 .ribbon-scroll-hint i {
   animation: hintPulse 2s infinite ease-in-out;
+}
+
+.ribbon-item:hover h4 {
+  color: var(--aeh-green) !important;
+}
+.ribbon-item:hover .ribbon-desc {
+  color: white;
 }
 
 @keyframes hintPulse {
@@ -1436,12 +1487,97 @@ section .container {
   }
 }
 
+@media (max-width: 1024px) {
+  .ribbon-item {
+    width: 320px;
+    padding-right: 40px;
+  }
+  .ribbon-desc {
+    font-size: 0.85rem;
+  }
+}
+
+/* =============================================
+   SECTION 7.5: DIGITAL & AI SKILLS
+   ============================================= */
+.cabs-digital-skills {
+  padding: clamp(80px, 12vh, 140px) 0;
+  border-top: 1px solid #eee;
+  background-color: var(--aeh-white);
+}
+
+.digital-intro-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(40px, 5vw, 100px);
+  align-items: center;
+}
+
+.digital-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.2rem, 3.5vw, 3rem);
+  line-height: 1.1;
+  color: var(--aeh-navy);
+  margin-bottom: 25px;
+}
+
+.digital-title em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-blue);
+}
+
+.digital-lead {
+  font-family: "Merriweather", serif;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--aeh-navy);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Icons Grid */
+.skills-horizontal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.skill-item {
+  text-align: center;
+  padding: 30px 20px;
+  background: white;
+  border: 1px solid #eee;
+  box-shadow: 0 10px 30px rgba(57, 152, 189, 0.05);
+  transition: all 0.4s ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--aeh-green);
+}
+
+.skill-icon {
+  font-size: 2rem;
+  color: var(--aeh-blue);
+  margin-bottom: 15px;
+}
+
+.skill-item p {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase !important;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  color: var(--aeh-navy);
+}
+
 /* =============================================
    SECTION 8: CABS EXPERIENCE - HORIZONTAL ROW
    ============================================= */
 .cabs-experience-row {
   padding: clamp(80px, 12vh, 140px) 0;
-  background-color: var(--aeh-white);
+  background-color: var(--aeh-light-back);
   border-top: 1px solid rgba(13, 44, 79, 0.05);
 }
 
@@ -1469,8 +1605,8 @@ section .container {
 .experience-horizontal-grid {
   display: grid;
   /* 5 columns on desktop */
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
   align-items: start;
 }
 
@@ -1479,14 +1615,14 @@ section .container {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 20px;
+  padding: 20px 5px;
   transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
   position: relative;
 }
 
 /* Icon Styling */
 .exp-icon-top {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: var(--aeh-blue);
   margin-bottom: 25px;
   transition:
@@ -1502,7 +1638,7 @@ section .container {
 /* Title Styling */
 .exp-row-item h4 {
   font-family: "Inter", sans-serif;
-  font-size: clamp(0.85rem, 1vw, 1rem);
+  font-size: clamp(0.75rem, 0.85vw, 0.9rem);
   font-weight: 700;
   color: var(--aeh-navy);
   line-height: 1.4;
@@ -1528,21 +1664,19 @@ section .container {
 }
 
 /* --- RESPONSIVE SCALING --- */
-
-/* 13" Thinkpad / Small Laptop Optimization */
-@media (max-width: 1280px) {
+@media (max-width: 1366px) {
   .experience-horizontal-grid {
-    gap: 10px;
+    gap: 5px;
   }
-  .exp-row-item {
-    padding: 10px;
+  .exp-row-item h4 {
+    font-size: 0.72rem; /* Ensure it stays on one/two lines at 1280px width */
   }
 }
 
 /* Tablet / Portrait Stack */
 @media (max-width: 1024px) {
   .experience-horizontal-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 on top, 2 below */
+    grid-template-columns: repeat(3, 1fr);
     gap: 40px 20px;
   }
 
@@ -1561,7 +1695,7 @@ section .container {
 @media (max-width: 768px) {
   .experience-horizontal-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 30px;
   }
   .exp-row-item:nth-child(4),
   .exp-row-item:nth-child(5) {
@@ -2195,6 +2329,43 @@ section .container {
   padding-top: 30px;
 }
 
+.value-comparison {
+  margin-bottom: 25px;
+}
+
+.value-row {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.v-label {
+  font-family: "Inter", sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase !important;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 1px;
+}
+
+.v-amount.strike-through {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: line-through;
+  text-decoration-color: var(--aeh-green);
+}
+
+.price-block .currency {
+  font-size: 0.8rem !important; /* Smaller text for the label */
+  max-width: 120px;
+  line-height: 1.2;
+}
+
+.price-block .amount {
+  color: var(--aeh-green) !important;
+}
+
 /* --- RIGHT SIDE: DETAILS --- */
 .investment-details-side {
   padding: clamp(40px, 6vh, 80px);
@@ -2298,6 +2469,14 @@ section .container {
   .investment-details-side {
     padding: 40px;
   }
+  .digital-intro-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .skills-horizontal-grid {
+    max-width: 600px;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 600px) {
@@ -2310,6 +2489,12 @@ section .container {
   }
   .payment-methods {
     flex-direction: column;
+  }
+  .skills-horizontal-grid {
+    grid-template-columns: 1fr;
+  }
+  .value-row {
+    justify-content: center;
   }
 }
 
@@ -2490,6 +2675,133 @@ section .container {
   }
   .modal-content-wrapper.application-large .contact-form-wrapper {
     padding: 40px 25px;
+  }
+}
+
+/* =============================================
+   SECTION 12.5: SCHOLARSHIP INSET
+   ============================================= */
+.cabs-scholarship-section {
+  position: relative;
+  padding: clamp(100px, 12vh, 160px) 0;
+  /* Soft brand-tint background */
+  background-color: rgba(142, 200, 111, 0.03);
+  border-top: 1px solid rgba(142, 200, 111, 0.1);
+  overflow: hidden;
+}
+
+.scholarship-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(60px, 8vw, 120px);
+  align-items: center;
+}
+
+.scholarship-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  color: var(--aeh-navy);
+  margin-bottom: 30px;
+}
+
+.scholarship-title em {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  color: var(--aeh-green);
+}
+
+.scholarship-lead {
+  font-family: "Merriweather", serif;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #4a5568;
+  font-weight: 300;
+  margin-bottom: 50px;
+}
+
+/* Consideration Box Styling */
+.scholarship-consideration-box {
+  background: white;
+  padding: 40px;
+  border-left: 4px solid var(--aeh-green);
+  box-shadow: 0 20px 50px rgba(13, 44, 79, 0.05);
+}
+
+.scholarship-consideration-box h4 {
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase !important;
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--aeh-navy);
+  margin-bottom: 15px;
+}
+
+.scholarship-consideration-box p {
+  font-size: 1rem;
+  color: #64748b;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.scholarship-consideration-box .pillar-link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--aeh-blue);
+  border-bottom: 2px solid var(--aeh-green);
+  padding-bottom: 5px;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase !important;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+/* Visual side */
+.scholarship-frame {
+  position: relative;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.12);
+}
+
+.scholarship-frame img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+}
+
+.scholarship-tag {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: var(--aeh-green);
+  color: white;
+  padding: 15px 25px;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase !important;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .scholarship-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  .scholarship-content {
+    text-align: center;
+  }
+  .scholarship-consideration-box {
+    text-align: left;
+  }
+  .scholarship-visual {
+    max-width: 500px;
+    margin: 0 auto;
   }
 }
 
