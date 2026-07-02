@@ -594,7 +594,7 @@ get_header();
             <div class="skills-horizontal-grid">
               <div class="skill-item">
                 <div class="skill-icon">
-                  <i class="fa-solid fa-brain-circuit"></i>
+                  <i class="fa-solid fa-robot"></i>
                 </div>
                 <p>AI Literacy</p>
               </div>
