@@ -174,53 +174,54 @@ document.addEventListener("DOMContentLoaded", () => {
   const scrollHint = document.querySelector(".ribbon-scroll-hint");
 
   if (journeyWrap && ribbonFlow) {
-    window.addEventListener(
-      "scroll",
-      () => {
-        const rect = journeyWrap.getBoundingClientRect();
+    const updateJourneyScroll = () => {
+      const rect = journeyWrap.getBoundingClientRect();
 
-        // scrollDist = how many px of the section have scrolled past the top of the viewport
-        const scrollDist = -rect.top;
-        const viewHeight = window.innerHeight;
+      // scrollDist = how many px of the section have scrolled past the top of the viewport
+      const scrollDist = -rect.top;
+      const viewHeight = window.innerHeight;
+      const activeHeight = Math.max(viewHeight - 90, 1);
 
-        // ── Phase 1: Background + visibility toggle ──────────────────────────────
-        // Swap to dark once the user has scrolled 20% of a viewport height into the section.
-        if (scrollDist > viewHeight * 0.2) {
-          journeyWrap.classList.add("bg-dark");
+      // ── Phase 1: Background + visibility toggle ──────────────────────────────
+      if (scrollDist > activeHeight * 0.2) {
+        journeyWrap.classList.add("bg-dark");
+      } else {
+        journeyWrap.classList.remove("bg-dark");
+      }
+
+      // ── Phase 2: Horizontal ribbon movement + progress ───────────────────────
+      // Start this phase earlier so progress visibly fills while mastery is on screen.
+      const ribbonStart = activeHeight * 0.35;
+      const ribbonRange = activeHeight * 1.6;
+
+      const ribbonPhase = Math.min(
+        Math.max((scrollDist - ribbonStart) / ribbonRange, 0),
+        1,
+      );
+
+      const leftPad = window.innerWidth * 0.08;
+      const maxScroll = ribbonFlow.scrollWidth - window.innerWidth + leftPad;
+
+      if (maxScroll > 0) {
+        ribbonFlow.style.transform = `translateX(-${ribbonPhase * maxScroll}px)`;
+      }
+
+      if (ribbonProgress) {
+        ribbonProgress.style.width = `${Math.round(ribbonPhase * 100)}%`;
+      }
+
+      if (scrollHint) {
+        if (ribbonPhase >= 0.95) {
+          scrollHint.classList.add("hidden");
         } else {
-          journeyWrap.classList.remove("bg-dark");
+          scrollHint.classList.remove("hidden");
         }
+      }
+    };
 
-        // ── Phase 2: Horizontal ribbon movement ──────────────────────────────────
-        const ribbonStart = viewHeight;
-        const ribbonRange = viewHeight * 2;
-
-        const ribbonPhase = Math.min(
-          Math.max((scrollDist - ribbonStart) / ribbonRange, 0),
-          1,
-        );
-
-        const leftPad = window.innerWidth * 0.08;
-        const maxScroll = ribbonFlow.scrollWidth - window.innerWidth + leftPad;
-
-        if (maxScroll > 0) {
-          ribbonFlow.style.transform = `translateX(-${ribbonPhase * maxScroll}px)`;
-        }
-
-        // ── Phase 3: Progress bar + hint ──────────────────────────────────────────
-        if (ribbonProgress) {
-          ribbonProgress.style.width = `${ribbonPhase * 100}%`;
-        }
-        if (scrollHint) {
-          if (ribbonPhase >= 0.95) {
-            scrollHint.classList.add("hidden");
-          } else {
-            scrollHint.classList.remove("hidden");
-          }
-        }
-      },
-      { passive: true },
-    );
+    window.addEventListener("scroll", updateJourneyScroll, { passive: true });
+    window.addEventListener("resize", updateJourneyScroll, { passive: true });
+    updateJourneyScroll();
   }
 
   // --- 6. MODALS & REVEALS ---
@@ -326,6 +327,23 @@ function openScholarshipModal() {
 
 function closeScholarshipModal() {
   const modal = document.getElementById("scholarshipModal");
+  if (modal) {
+    modal.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+}
+
+// Newsletter Modal Logic
+function openNewsletterModal() {
+  const modal = document.getElementById("newsletterModal");
+  if (modal) {
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+}
+
+function closeNewsletterModal() {
+  const modal = document.getElementById("newsletterModal");
   if (modal) {
     modal.classList.remove("active");
     document.body.style.overflow = "auto";

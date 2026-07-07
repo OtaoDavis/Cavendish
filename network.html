@@ -642,6 +642,63 @@
       </div>
     </div>
 
+    <!-- SECTION: GLOBAL NEWSLETTER STRIP -->
+    <section class="global-newsletter-horizon">
+      <!-- Subtle background watermark -->
+      <div class="horizon-ghost-text">Updates</div>
+
+      <div class="container relative-z">
+        <div class="horizon-flex">
+          <div class="horizon-text">
+            <div class="horizon-accent-line"></div>
+            <p>
+              You can sign up for our newsletter to receive updates on the
+              programs we offer.
+            </p>
+          </div>
+
+          <div class="horizon-action">
+            <!-- THE MORPHING LINK -->
+            <button
+              class="newsletter-morph-link"
+              onclick="openNewsletterModal()"
+            >
+              <span class="link-label">Subscribe Now</span>
+              <div class="icon-circle">
+                <i class="fa-solid fa-envelope-open-text icon-default"></i>
+                <i class="fa-solid fa-arrow-right icon-hover"></i>
+              </div>
+              <div class="expanding-underline"></div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER MODAL -->
+    <div id="newsletterModal" class="aeh-modal">
+      <div class="modal-overlay" onclick="closeNewsletterModal()"></div>
+      <div class="modal-content-wrapper newsletter-small">
+        <button class="modal-close-btn" onclick="closeNewsletterModal()">
+          &times;
+        </button>
+        <div class="contact-form-wrapper">
+          <h3 class="modal-form-title">Stay Informed</h3>
+          <p class="muted-p">
+            Join our community of entrepreneurs and receive the latest insights
+            and program updates.
+          </p>
+          <form class="aeh-premium-form">
+            <div class="field-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="name@company.com" required />
+            </div>
+            <button type="submit" class="btn-initiate">Sign Up</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <!-- START: Footer Section -->
     <footer class="site-footer">
       <div class="container mx-auto px-6 py-12">

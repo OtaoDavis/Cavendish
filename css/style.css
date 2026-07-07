@@ -800,6 +800,176 @@ em,
   }
 }
 
+/* NEWSLETTER STYLING */
+/* =============================================
+   GLOBAL NEWSLETTER STRIP - THE HORIZON
+   ============================================= */
+.global-newsletter-horizon {
+  position: relative;
+  padding: clamp(50px, 8vh, 80px) 0;
+  background: linear-gradient(
+    135deg,
+    var(--aeh-navy) 0%,
+    var(--aeh-dark-blue) 100%
+  );
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Subtle background texture */
+.horizon-ghost-text {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(8rem, 15vw, 15rem);
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.02);
+  letter-spacing: -5px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.horizon-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Left Side Text */
+.horizon-text {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.horizon-accent-line {
+  width: 4px;
+  height: 40px;
+  background-color: var(--aeh-green);
+  flex-shrink: 0;
+}
+
+.horizon-text p {
+  font-family: "Merriweather", serif;
+  font-size: clamp(1rem, 1.1vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 500px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* --- THE MORPHING ACTION --- */
+.newsletter-morph-link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 0;
+  outline: none;
+}
+
+.link-label {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase !important;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.icon-circle {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Icon Toggling */
+.icon-circle i {
+  position: absolute;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 1.1rem;
+}
+
+.icon-default {
+  color: #fff;
+}
+.icon-hover {
+  color: var(--aeh-navy);
+  transform: translateX(-40px); /* Hidden to the left */
+}
+
+/* Expanding Underline */
+.expanding-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--aeh-green);
+  transition: width 0.4s ease;
+}
+
+/* --- HOVER STATES --- */
+.newsletter-morph-link:hover .icon-circle {
+  background-color: var(--aeh-green);
+  border-color: var(--aeh-green);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(142, 200, 111, 0.4);
+}
+
+.newsletter-morph-link:hover .icon-default {
+  transform: translateX(40px); /* Slide out to the right */
+  opacity: 0;
+}
+
+.newsletter-morph-link:hover .icon-hover {
+  transform: translateX(0); /* Slide in from left to center */
+}
+
+.newsletter-morph-link:hover .link-label {
+  color: var(--aeh-green);
+}
+
+.newsletter-morph-link:hover .expanding-underline {
+  width: 100%;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .horizon-ghost-text {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .horizon-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+  .horizon-text {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .horizon-accent-line {
+    width: 40px;
+    height: 3px;
+  }
+}
 /* --- START: Footer Section Styles --- */
 
 .site-footer {

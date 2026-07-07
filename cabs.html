@@ -169,22 +169,10 @@
     </section>
 
     <!-- ============================================================
-     3. Problem / Solution Narrative
+     SECTION 3: THE STRATEGIC NARRATIVE
      ============================================================ -->
     <section class="cabs-narrative-section dark-theme">
       <div class="container">
-        <!-- NEW TRANSITION STATEMENT -->
-        <div class="narrative-transition-intro">
-          <h2 class="transition-title">That’s Why We built CABS</h2>
-          <p class="transition-body">
-            We believe entrepreneurs deserve a different kind of business
-            education. We created CABS to help ambitious entrepreneurs become
-            better leaders, build stronger business, and create greater impact.
-            Everything we do is built on three guiding principles that shape how
-            entrepreneurs learn and grow.
-          </p>
-        </div>
-
         <div class="cabs-narrative-grid">
           <!-- Card 1: Growth -->
           <div class="cabs-narrative-card">
@@ -199,7 +187,6 @@
               </p>
             </div>
           </div>
-
           <!-- Card 2: Challenge -->
           <div class="cabs-narrative-card">
             <div class="narrative-marker"></div>
@@ -213,7 +200,6 @@
               </p>
             </div>
           </div>
-
           <!-- Card 3: Leadership -->
           <div class="cabs-narrative-card highlight-card">
             <div class="narrative-marker"></div>
@@ -227,6 +213,18 @@
               </p>
             </div>
           </div>
+        </div>
+
+        <!-- MOVED TRANSITION BLOCK: Sitting between Problem and Approach -->
+        <div class="narrative-transition-bridge">
+          <h2 class="transition-title">That’s Why We built CABS</h2>
+          <p class="transition-body">
+            We believe entrepreneurs deserve a different kind of business
+            education. We created CABS to help ambitious entrepreneurs become
+            better leaders, build stronger business, and create greater impact.
+            Everything we do is built on three guiding principles that shape how
+            entrepreneurs learn and grow.
+          </p>
         </div>
       </div>
     </section>
@@ -306,37 +304,6 @@
               </p>
               <div class="belief-bar">
                 Entrepreneurs transform through consistent practice
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- THE RESULT SLATE -->
-      <div class="cabs-result-slate">
-        <!-- Subtle Watermark for the dark section -->
-        <div class="slate-ghost-text">Impact</div>
-
-        <div class="container relative-z">
-          <div class="result-slate-grid">
-            <div class="result-label">
-              <p class="bright-tag" style="color: var(--aeh-green)">
-                The CABS Result
-              </p>
-              <h2>Leadership Architecture <br />for Institutional Scale.</h2>
-            </div>
-            <div class="result-items">
-              <div class="res-point">
-                <span style="color: var(--aeh-green)">01</span>
-                <p>You Become a Better Leader</p>
-              </div>
-              <div class="res-point">
-                <span style="color: var(--aeh-green)">02</span>
-                <p>You Build a Stronger Business</p>
-              </div>
-              <div class="res-point">
-                <span style="color: var(--aeh-green)">03</span>
-                <p>You Create Opportunities and Lasting Impact</p>
               </div>
             </div>
           </div>
@@ -642,6 +609,15 @@
                   grow your business.
                 </p>
               </div>
+            </div>
+          </div>
+
+          <div class="ribbon-progress-wrap">
+            <div class="ribbon-progress-track">
+              <div class="ribbon-progress-fill" id="ribbonProgress"></div>
+            </div>
+            <div class="ribbon-scroll-hint">
+              Scroll to explore <i class="fa-solid fa-arrow-right"></i>
             </div>
           </div>
         </div>
@@ -1194,9 +1170,18 @@
 
           <div class="journey-support-links">
             <p>
-              Have questions? <a href="#faq">Please see FAQ below.</a> If you do
-              not find the answer, please
-              <a href="mailto:info@maarifaeducation.com">email us here.</a>
+              Have questions? <a href="#faq">Please see FAQ below.</a> Not
+              finding an answer?
+              <a href="mailto:info@maarifaeducation.com">Email us</a> or
+              <a
+                href="#"
+                onclick="
+                  openNewsletterModal();
+                  return false;
+                "
+                >Subscribe</a
+              >
+              for future updates.
             </p>
           </div>
         </div>
@@ -1472,7 +1457,7 @@
               <div class="field-group">
                 <label
                   >What problem does your business solve for your
-                  customer?</label
+                  customer(s)?</label
                 >
                 <textarea rows="3" required></textarea>
               </div>
@@ -1566,9 +1551,19 @@
                 <p>
                   Entrepreneurial leadership is designed for entrepreneurs who
                   are already building a business. If you are planning to start
-                  a business, we’d love to hear from you as launch and as we
-                  develop future programs. You can sign up for our newsletter to
-                  receive updates on the programs we offer.
+                  a business, we’d love to hear from you as we launch and
+                  develop future programs. You can sign up for our
+                  <a
+                    href="#"
+                    class="stair-popup-link"
+                    onclick="
+                      openNewsletterModal();
+                      return false;
+                    "
+                    >newsletter
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i
+                  ></a>
+                  to receive updates on the programs we offer.
                 </p>
               </div>
             </div>
@@ -1583,9 +1578,9 @@
               </button>
               <div class="faq-a">
                 <p>
-                  Yes, you can, but we recommend not more than two a time to
-                  give you time to learn, apply and reflect as you improve your
-                  business.
+                  Yes, you can, but we do not recommend more than two at a time
+                  to give you time to learn, apply and reflect as you improve
+                  your business.
                 </p>
               </div>
             </div>
@@ -1629,184 +1624,30 @@
         </div>
       </div>
     </section>
-    <!-- SECTION: CABS VIDEOS -->
-    <!-- WILL add -->
 
-    <!-- ============================================================
-     10. FAQ ACCORDION
-     ============================================================ -->
-    <!-- <section class="cabs-faq" id="faq">
-      <div class="container">
-        <div
-          class="cabs-section-header"
-          style="text-align: center; margin-bottom: 60px"
-        >
-          <p class="cabs-eyebrow-dark">Common Questions</p>
-          <h2 class="cabs-section-title">Founders <em>FAQ</em></h2>
+    <!-- NEWSLETTER MODAL -->
+    <div id="newsletterModal" class="aeh-modal">
+      <div class="modal-overlay" onclick="closeNewsletterModal()"></div>
+      <div class="modal-content-wrapper newsletter-small">
+        <button class="modal-close-btn" onclick="closeNewsletterModal()">
+          &times;
+        </button>
+        <div class="contact-form-wrapper">
+          <h3 class="modal-form-title">Stay Informed</h3>
+          <p class="muted-p">
+            Join our community of entrepreneurs and receive the latest insights
+            and program updates.
+          </p>
+          <form class="aeh-premium-form">
+            <div class="field-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="name@company.com" required />
+            </div>
+            <button type="submit" class="btn-initiate">Sign Up</button>
+          </form>
         </div>
-        <div class="faq-list" id="faqList">
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>Is this programme theoretical or practical?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                CABS is application-based. Every concept is designed to be
-                applied directly within your business. The objective is
-                measurable improvement, not academic completion.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span
-                >Why begin with Entrepreneurial Mindset &amp; Ethical
-                Leadership?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                Because scale begins with the founder. Strategic clarity,
-                financial discipline, delegation, and culture all reflect
-                leadership maturity. Module 1 establishes the foundation
-                required for all future modules.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>How much time will this realistically require?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                Approximately 5 hours per week for 8 weeks, including recorded
-                content, live discussions, and practical application exercises.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>What role do university students play?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                Students provide structured implementation support on selected
-                modules — research, financial analysis, market mapping, process
-                documentation, and project execution support under supervision.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>Is my business information confidential?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                Yes. Confidentiality expectations are clearly communicated to
-                students and participants. Professional standards apply
-                throughout.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>Is this like an MBA?</span><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                No. An MBA is broad and academic. CABS is focused, modular, and
-                execution-driven — designed specifically for operating founders
-                in African markets.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>What if I miss a live session?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                Sessions are recorded. However, participation is encouraged as
-                peer discussion significantly enhances the learning experience.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>What stage must my business be at?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                Ideal participants are revenue-generating founders with 5–100
-                employees and clear decision-making authority. Not suited for
-                idea-stage ventures.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>Is this sector-specific?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                No. The programme is sector-agnostic but designed specifically
-                around African market realities.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>What happens after one module?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                Founders may continue to additional modules, enrol in two-module
-                bundles, and progress along the full recommended pathway while
-                deepening access to the CABS entrepreneur community.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span>Why is there a fee?</span><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                Commitment matters. The fee reflects programme design,
-                practitioner-led facilitation, student support structure, and
-                ecosystem access.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q">
-              <span
-                >What makes CABS different from incubators or
-                accelerators?</span
-              ><i class="fa-solid fa-plus"></i>
-            </button>
-            <div class="faq-a">
-              <p>
-                CABS strengthens the founder and operating systems — not just
-                the pitch deck. It improves profitability, management
-                discipline, leadership maturity, and sustainable scale.
-              </p>
-            </div>
-          </div>
-        </div>
-        <p class="section-tagline">
-          Built in Africa. Built with Integrity. Built for Impact.
-        </p>
       </div>
-    </section> -->
+    </div>
 
     <footer class="site-footer">
       <div class="container mx-auto px-6 py-12">
