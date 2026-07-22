@@ -660,6 +660,55 @@ get_header();
       </div>
     </section>
 
+    <?php
+    $home_news_query = new WP_Query(
+      array(
+        'post_type'      => 'post',
+        'post_status'    => 'publish',
+        'posts_per_page' => 12,
+      )
+    );
+
+    $home_news_items = array();
+
+    if ( $home_news_query->have_posts() ) {
+      while ( $home_news_query->have_posts() ) {
+        $home_news_query->the_post();
+
+        $post_categories = get_the_category();
+        $primary_category = null;
+
+        if ( ! empty( $post_categories ) ) {
+          foreach ( $post_categories as $cat ) {
+            if ( 'uncategorized' !== $cat->slug ) {
+              $primary_category = $cat;
+              break;
+            }
+          }
+
+          if ( ! $primary_category ) {
+            $primary_category = $post_categories[0];
+          }
+        }
+
+        $excerpt_text = has_excerpt() ? get_the_excerpt() : wp_trim_words( wp_strip_all_tags( get_the_content() ), 26 );
+        $featured_image = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+
+        $home_news_items[] = array(
+          'id'           => get_the_ID(),
+          'title'        => wp_strip_all_tags( get_the_title() ),
+          'summary'      => wp_strip_all_tags( $excerpt_text ),
+          'date'         => get_the_date( 'F j, Y' ),
+          'category'     => $primary_category ? wp_strip_all_tags( $primary_category->name ) : 'News',
+          'categorySlug' => $primary_category ? $primary_category->slug : 'news',
+          'url'          => esc_url( get_permalink() ),
+          'image'        => $featured_image ? esc_url( $featured_image ) : esc_url( get_template_directory_uri() . '/assets/images/home1.jpg' ),
+        );
+      }
+      wp_reset_postdata();
+    }
+    ?>
+
     <!-- SECTION: CAVENDISH AFRICA NEWS ROOM -->
     <section class="aeh-news-room">
       <div class="container">
@@ -787,4 +836,179 @@ get_header();
       </div>
     </section>
   
+    <!-- SECTION: GLOBAL NEWSLETTER STRIP -->
+    <section class="global-newsletter-horizon">
+      <!-- Subtle background watermark -->
+      <div class="horizon-ghost-text">Updates</div>
+
+      <div class="container relative-z">
+        <div class="horizon-flex">
+          <div class="horizon-text">
+            <div class="horizon-accent-line"></div>
+            <p>
+              You can sign up for our newsletter to receive updates on the
+              programs we offer.
+            </p>
+          </div>
+
+          <div class="horizon-action">
+            <!-- THE MORPHING LINK -->
+            <button
+              class="newsletter-morph-link"
+              onclick="openNewsletterModal()"
+            >
+              <span class="link-label">Subscribe Now</span>
+              <div class="icon-circle">
+                <i class="fa-solid fa-envelope-open-text icon-default"></i>
+                <i class="fa-solid fa-arrow-right icon-hover"></i>
+              </div>
+              <div class="expanding-underline"></div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER MODAL -->
+    <div id="newsletterModal" class="aeh-modal">
+      <div class="modal-overlay" onclick="closeNewsletterModal()"></div>
+      <div class="modal-content-wrapper newsletter-small">
+        <button class="modal-close-btn" onclick="closeNewsletterModal()">
+          &times;
+        </button>
+        <div class="contact-form-wrapper">
+          <h3 class="modal-form-title">Stay Informed</h3>
+          <p class="muted-p">
+            Join our community of entrepreneurs and receive the latest insights
+            and program updates.
+          </p>
+          <form class="aeh-premium-form">
+            <div class="field-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="name@company.com" required />
+            </div>
+            <button type="submit" class="btn-initiate">Sign Up</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const newsContainer = document.getElementById("homeNewsContainer");
+        const filterBar = document.getElementById("newsFilterBar");
+        const allNews = <?php echo wp_json_encode( $home_news_items ); ?>;
+
+        if (!newsContainer || !filterBar) {
+          return;
+        }
+
+        if (!Array.isArray(allNews) || allNews.length === 0) {
+          newsContainer.innerHTML = `
+            <div class="news-featured fade-in">
+              <div class="news-content">
+                <h3>No newsroom articles have been published yet.</h3>
+              </div>
+            </div>
+          `;
+          return;
+        }
+
+        const categoryLabelBySlug = {};
+        allNews.forEach((item) => {
+          if (!item || !item.categorySlug) return;
+          categoryLabelBySlug[item.categorySlug.toLowerCase()] = item.category || item.categorySlug;
+        });
+
+        const categories = [
+          "all",
+          ...new Set(allNews.map((item) => (item.categorySlug || "news").toLowerCase())),
+        ];
+
+        filterBar.innerHTML = categories
+          .map((cat) => {
+            const label = cat === "all" ? "all" : categoryLabelBySlug[cat] || cat;
+            return `
+              <button class="cat-btn ${cat === "all" ? "active" : ""}" data-filter="${cat}">
+                ${label}
+              </button>
+            `;
+          })
+          .join("");
+
+        const getTagColor = (cat) => {
+          const c = (cat || "").toLowerCase();
+          if (c.includes("education")) return "blue";
+          if (c.includes("employment")) return "green";
+          if (c.includes("entrepreneurship")) return "navy";
+          return "navy";
+        };
+
+        const renderNews = (filter = "all") => {
+          const filtered =
+            filter === "all"
+              ? allNews
+              : allNews.filter((item) => (item.categorySlug || "").toLowerCase() === filter);
+
+          if (filtered.length === 0) {
+            newsContainer.innerHTML = `
+              <div class="news-featured fade-in">
+                <div class="news-content">
+                  <h3>No articles found for this category.</h3>
+                </div>
+              </div>
+            `;
+            return;
+          }
+
+          const featured = filtered[0];
+          const sidebar = filtered.slice(1, 4);
+
+          const sidebarHTML = sidebar
+            .map(
+              (item) => `
+                <article class="sidebar-item fade-in">
+                  <div class="sidebar-text">
+                    <p class="category-tag ${getTagColor(item.category)}">${item.category}</p>
+                    <h4><a href="${item.url}">${item.title}</a></h4>
+                    <p class="news-date">${item.date}</p>
+                  </div>
+                  <div class="sidebar-thumb">
+                    <img src="${item.image}" alt="${item.title}">
+                  </div>
+                </article>
+              `,
+            )
+            .join("");
+
+          newsContainer.innerHTML = `
+            <div class="news-featured fade-in">
+              <div class="news-img-wrap">
+                <img src="${featured.image}" alt="${featured.title}">
+              </div>
+              <div class="news-content">
+                <p class="category-tag ${getTagColor(featured.category)}">${featured.category}</p>
+                <h3><a href="${featured.url}">${featured.title}</a></h3>
+                <p class="news-snippet">${featured.summary}</p>
+                <p class="news-date">${featured.date}</p>
+              </div>
+            </div>
+            <div class="news-sidebar">${sidebarHTML}</div>
+          `;
+        };
+
+        renderNews();
+
+        filterBar.addEventListener("click", (e) => {
+          if (!e.target.classList.contains("cat-btn")) return;
+
+          document
+            .querySelectorAll("#newsFilterBar .cat-btn")
+            .forEach((btn) => btn.classList.remove("active"));
+
+          e.target.classList.add("active");
+          renderNews(e.target.dataset.filter || "all");
+        });
+      });
+    </script>
 <?php get_footer(); ?>

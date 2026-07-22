@@ -77,7 +77,10 @@ get_header();
         </div>
 
         <!-- THE BRAND SIGNATURE STRIP -->
-        <div class="cabs-identity-strip">
+        <div
+          class="cabs-identity-strip"
+          style="color: var(--aeh-green); font-weight: 600"
+        >
           <p>
             Built in Africa <span>&bull;</span> Built for Impact
             <span>&bull;</span> Built with Integrity
@@ -87,22 +90,10 @@ get_header();
     </section>
 
     <!-- ============================================================
-     3. Problem / Solution Narrative
+     SECTION 3: THE STRATEGIC NARRATIVE
      ============================================================ -->
     <section class="cabs-narrative-section dark-theme">
       <div class="container">
-        <!-- NEW TRANSITION STATEMENT -->
-        <div class="narrative-transition-intro">
-          <h2 class="transition-title">That’s Why We built CABS</h2>
-          <p class="transition-body">
-            We believe entrepreneurs deserve a different kind of business
-            education. We created CABS to help ambitious entrepreneurs become
-            better leaders, build stronger business, and create greater impact.
-            Everything we do is built on three guiding principles that shape how
-            entrepreneurs learn and grow.
-          </p>
-        </div>
-
         <div class="cabs-narrative-grid">
           <!-- Card 1: Growth -->
           <div class="cabs-narrative-card">
@@ -145,6 +136,18 @@ get_header();
               </p>
             </div>
           </div>
+        </div>
+
+        <!-- MOVED TRANSITION BLOCK: Sitting between Problem and Approach -->
+        <div class="narrative-transition-bridge">
+          <h2 class="transition-title">That’s Why We built CABS</h2>
+          <p class="transition-body">
+            We believe entrepreneurs deserve a different kind of business
+            education. We created CABS to help ambitious entrepreneurs become
+            better leaders, build stronger business, and create greater impact.
+            Everything we do is built on three guiding principles that shape how
+            entrepreneurs learn and grow.
+          </p>
         </div>
       </div>
     </section>
@@ -230,36 +233,6 @@ get_header();
         </div>
       </div>
 
-      <!-- THE RESULT SLATE -->
-      <div class="cabs-result-slate">
-        <!-- Subtle Watermark for the dark section -->
-        <div class="slate-ghost-text">Impact</div>
-
-        <div class="container relative-z">
-          <div class="result-slate-grid">
-            <div class="result-label">
-              <p class="bright-tag" style="color: var(--aeh-green)">
-                The CABS Result
-              </p>
-              <h2>Leadership Architecture <br />for Institutional Scale.</h2>
-            </div>
-            <div class="result-items">
-              <div class="res-point">
-                <span style="color: var(--aeh-green)">01</span>
-                <p>You Become a Better Leader</p>
-              </div>
-              <div class="res-point">
-                <span style="color: var(--aeh-green)">02</span>
-                <p>You Build a Stronger Business</p>
-              </div>
-              <div class="res-point">
-                <span style="color: var(--aeh-green)">03</span>
-                <p>You Create Opportunities and Lasting Impact</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- ============================================================
@@ -560,6 +533,15 @@ get_header();
                   grow your business.
                 </p>
               </div>
+            </div>
+          </div>
+
+          <div class="ribbon-progress-wrap">
+            <div class="ribbon-progress-track">
+              <div class="ribbon-progress-fill" id="ribbonProgress"></div>
+            </div>
+            <div class="ribbon-scroll-hint">
+              Scroll to explore <i class="fa-solid fa-arrow-right"></i>
             </div>
           </div>
         </div>
@@ -1034,7 +1016,7 @@ get_header();
               </div>
               <div class="details-item">
                 <p class="group-label">Learning Starts</p>
-                <h4 class="text-blue">September 14th</h4>
+                <h4 class="text-blue">September 21st</h4>
                 <p class="sub-label">Q3 Cohort</p>
               </div>
             </div>
@@ -1104,7 +1086,7 @@ get_header();
 
         <!-- ACTION AREA -->
         <div class="journey-action-card">
-          <div class="deadline-badge">Enrolment closes on August 15th</div>
+          <div class="deadline-badge">Enrolment closes on September 4th</div>
           <h3>Reserve Your Space Now</h3>
           <button class="btn-solid" onclick="openApplicationModal()">
             Apply Now <i class="fa-solid fa-pen-to-square"></i>
@@ -1112,9 +1094,18 @@ get_header();
 
           <div class="journey-support-links">
             <p>
-              Have questions? <a href="#faq">Please see FAQ below.</a> If you do
-              not find the answer, please
-              <a href="mailto:info@maarifaeducation.com">email us here.</a>
+              Have questions? <a href="#faq">Please see FAQ below.</a> Not
+              finding an answer?
+              <a href="mailto:info@maarifaeducation.com">Email us</a> or
+              <a
+                href="#"
+                onclick="
+                  openNewsletterModal();
+                  return false;
+                "
+                >Subscribe</a
+              >
+              for future updates.
             </p>
           </div>
         </div>
@@ -1274,6 +1265,163 @@ get_header();
       </div>
     </div>
 
+    <!-- SECTION 12.5: SCHOLARSHIP (INVESTING IN AFRICA'S ENTREPRENEURS) -->
+    <section class="cabs-scholarship-section">
+      <div class="section-watermark">Access</div>
+      <div class="container relative-z">
+        <div class="scholarship-grid">
+          <!-- Left: The Commitment -->
+          <div class="scholarship-content">
+            <p class="eyebrow-accent">Scholarship Support</p>
+            <h2 class="scholarship-title">
+              Investing In Africa’s <br /><em>Entrepreneurs.</em>
+            </h2>
+            <p class="scholarship-lead">
+              We believe the future of Africa depends on entrepreneurs who
+              create jobs, solve meaningful problems, and strengthen their
+              communities. That’s why we are committed to making CABS accessible
+              through a limited number of scholarships available to
+              entrepreneurs who demonstrate exceptional potential, commitment,
+              and financial need.
+            </p>
+
+            <div class="scholarship-consideration-box">
+              <h4>Scholarship Consideration:</h4>
+              <p>
+                If the investment required to enroll would prevent you from
+                participating, you may submit a separate scholarship application
+                after completing your CABS application.
+              </p>
+              <button class="pillar-link" onclick="openScholarshipModal()">
+                Apply For Scholarship
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: Visual of Community -->
+          <div class="scholarship-visual">
+            <div class="scholarship-frame">
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/pl1.jpg" alt="Empowered African Entrepreneurs" />
+              <div class="scholarship-tag">Community Access</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE SCHOLARSHIP APPLICATION MODAL -->
+    <div id="scholarshipModal" class="aeh-modal">
+      <div class="modal-overlay" onclick="closeScholarshipModal()"></div>
+      <div class="modal-content-wrapper application-large">
+        <button class="modal-close-btn" onclick="closeScholarshipModal()">
+          &times;
+        </button>
+
+        <div class="contact-form-wrapper">
+          <div class="form-decorative-element"></div>
+          <h3 class="modal-form-title">Scholarship Application</h3>
+
+          <form class="aeh-premium-form" id="cabsScholarshipForm">
+            <!-- SAME AS APPLICATION: PERSONAL -->
+            <div class="form-category">
+              <p class="group-label">Personal Information</p>
+              <div class="form-row split">
+                <div class="field-group">
+                  <label>Full Name</label><input type="text" required />
+                </div>
+                <div class="field-group">
+                  <label>Email Address</label><input type="email" required />
+                </div>
+              </div>
+              <div class="form-row split">
+                <div class="field-group">
+                  <label>Phone Number</label><input type="tel" required />
+                </div>
+                <div class="field-group">
+                  <label>Country</label><input type="text" required />
+                </div>
+              </div>
+            </div>
+
+            <!-- SAME AS APPLICATION: BUSINESS -->
+            <div class="form-category">
+              <p class="group-label">Business Information</p>
+              <div class="form-row split">
+                <div class="field-group">
+                  <label>Business Name</label><input type="text" required />
+                </div>
+                <div class="field-group">
+                  <label>Industry</label><input type="text" required />
+                </div>
+              </div>
+              <div class="form-row split">
+                <div class="field-group">
+                  <label>Annual Revenue</label>
+                  <select required>
+                    <option>$0 – $50K</option>
+                    <option>$50K – $150K</option>
+                    <option>$150K+</option>
+                  </select>
+                </div>
+                <div class="field-group">
+                  <label>Team Size</label>
+                  <select required>
+                    <option>0-5</option>
+                    <option>5-15</option>
+                    <option>15+</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- THE 5 IMPACT QUESTIONS -->
+            <div class="form-category">
+              <p class="group-label">Impact & Financial Need</p>
+              <div class="field-group">
+                <label
+                  >What problem does your business solve for your
+                  customer(s)?</label
+                >
+                <textarea rows="3" required></textarea>
+              </div>
+              <div class="field-group">
+                <label
+                  >How does your business create positive impact for your
+                  customers, employees, and community?</label
+                >
+                <textarea rows="3" required></textarea>
+              </div>
+              <div class="field-group">
+                <label
+                  >How will CABS help you increase that positive impact?</label
+                >
+                <textarea rows="3" required></textarea>
+              </div>
+              <div class="field-group">
+                <label
+                  >Why do you need financial assistance and how much can you
+                  contribute?</label
+                >
+                <textarea rows="3" required></textarea>
+              </div>
+              <div class="field-group">
+                <label
+                  >If you are selected, how will you contribute to the CABS
+                  community?</label
+                >
+                <textarea rows="3" required></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-initiate">
+              Submit Scholarship Request
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <!-- SECTION 13: FOUNDERS FAQ (DARK BLUE INSTITUTIONAL) -->
     <section class="cabs-faq-section" id="faq">
       <!-- Subtle Ghost Watermark -->
@@ -1327,9 +1475,19 @@ get_header();
                 <p>
                   Entrepreneurial leadership is designed for entrepreneurs who
                   are already building a business. If you are planning to start
-                  a business, we’d love to hear from you as launch and as we
-                  develop future programs. You can sign up for our newsletter to
-                  receive updates on the programs we offer.
+                  a business, we’d love to hear from you as we launch and
+                  develop future programs. You can sign up for our
+                  <a
+                    href="#"
+                    class="stair-popup-link"
+                    onclick="
+                      openNewsletterModal();
+                      return false;
+                    "
+                    >newsletter
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i
+                  ></a>
+                  to receive updates on the programs we offer.
                 </p>
               </div>
             </div>
@@ -1344,7 +1502,7 @@ get_header();
               </button>
               <div class="faq-a">
                 <p>
-                  Yes, you can, but we recommend not more than two a time to
+                  Yes, you can, but we do not recommend more than two at a time
                   give you time to learn, apply and reflect as you improve your
                   business.
                 </p>
@@ -1390,5 +1548,29 @@ get_header();
         </div>
       </div>
     </section>
+
+    <!-- NEWSLETTER MODAL -->
+    <div id="newsletterModal" class="aeh-modal">
+      <div class="modal-overlay" onclick="closeNewsletterModal()"></div>
+      <div class="modal-content-wrapper newsletter-small">
+        <button class="modal-close-btn" onclick="closeNewsletterModal()">
+          &times;
+        </button>
+        <div class="contact-form-wrapper">
+          <h3 class="modal-form-title">Stay Informed</h3>
+          <p class="muted-p">
+            Join our community of entrepreneurs and receive the latest insights
+            and program updates.
+          </p>
+          <form class="aeh-premium-form">
+            <div class="field-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="name@company.com" required />
+            </div>
+            <button type="submit" class="btn-initiate">Sign Up</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
 <?php get_footer(); ?>

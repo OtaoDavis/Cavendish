@@ -603,7 +603,7 @@ get_header();
             <div class="entry-overlay"></div>
             <div class="entry-content">
               <h3>Interested in a <br />strategic collaboration?</h3>
-              <a href="<?php echo home_url('/partnerships'); ?>" class="pillar-link white"
+              <a href="#" class="pillar-link white" id="openPartnerModalFinal"
                 >Partner With Us <i class="fa-solid fa-arrow-right"></i
               ></a>
             </div>
@@ -619,9 +619,12 @@ get_header();
             <div class="entry-content">
               <h3>Have questions about <br />our mission?</h3>
               <a
-                href="#contact"
+                href="#"
                 class="pillar-link white"
-                id="openPartnerModalFinal"
+                onclick="
+                  openPurposeContactModal();
+                  return false;
+                "
                 >Contact Our Team <i class="fa-solid fa-arrow-right"></i
               ></a>
             </div>
@@ -629,5 +632,161 @@ get_header();
         </div>
       </div>
     </section>
+
+    <!-- PURPOSE CONTACT MODAL -->
+    <div id="purposeContactModal" class="aeh-modal">
+      <div class="modal-overlay" onclick="closePurposeContactModal()"></div>
+      <div class="modal-content-wrapper newsletter-small">
+        <button class="modal-close-btn" onclick="closePurposeContactModal()">
+          &times;
+        </button>
+        <div class="contact-form-wrapper">
+          <h3 class="modal-form-title">Contact Our Team</h3>
+          <p class="muted-p">
+            Share a few details and our team will reach out shortly.
+          </p>
+          <form class="aeh-premium-form">
+            <div class="field-group">
+              <label>Full Name</label>
+              <input type="text" placeholder="Your full name" required />
+            </div>
+            <div class="field-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="name@company.com" required />
+            </div>
+            <div class="field-group">
+              <label>Your Message</label>
+              <textarea
+                rows="4"
+                placeholder="How can we help?"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-initiate">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- THE PARTNERSHIP MODAL -->
+    <div id="partnerModal" class="aeh-modal">
+      <div class="modal-overlay" id="closeModalOverlay"></div>
+      <div class="modal-content-wrapper">
+        <button class="modal-close-btn" id="closePartnerModal">&times;</button>
+
+        <div class="contact-form-wrapper">
+          <div class="form-decorative-element"></div>
+          <h3 class="modal-form-title">Partner With Us</h3>
+          <form class="aeh-premium-form">
+            <div class="form-row split">
+              <div class="field-group">
+                <label>Full Name</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Jean-Pierre Mensah"
+                  required
+                />
+              </div>
+              <div class="field-group">
+                <label>Phone Number</label>
+                <input type="text" placeholder="+000 000 000 000" required />
+              </div>
+            </div>
+
+            <div class="form-row split">
+              <div class="field-group">
+                <label>Organization</label>
+                <input
+                  type="text"
+                  placeholder="Institutional / Private Equity"
+                  required
+                />
+              </div>
+              <div class="field-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="name@company.com" required />
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label>Nature of Inquiry</label>
+              <select>
+                <option>Network Partnership</option>
+                <option>Investment Inquiry</option>
+                <option>University Collaboration</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label>Message</label>
+              <textarea
+                rows="4"
+                placeholder="How can we align our missions?"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-initiate">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION: GLOBAL NEWSLETTER STRIP -->
+    <section class="global-newsletter-horizon">
+      <!-- Subtle background watermark -->
+      <div class="horizon-ghost-text">Updates</div>
+
+      <div class="container relative-z">
+        <div class="horizon-flex">
+          <div class="horizon-text">
+            <div class="horizon-accent-line"></div>
+            <p>
+              You can sign up for our newsletter to receive updates on the
+              programs we offer.
+            </p>
+          </div>
+
+          <div class="horizon-action">
+            <!-- THE MORPHING LINK -->
+            <button
+              class="newsletter-morph-link"
+              onclick="openNewsletterModal()"
+            >
+              <span class="link-label">Subscribe Now</span>
+              <div class="icon-circle">
+                <i class="fa-solid fa-envelope-open-text icon-default"></i>
+                <i class="fa-solid fa-arrow-right icon-hover"></i>
+              </div>
+              <div class="expanding-underline"></div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER MODAL -->
+    <div id="newsletterModal" class="aeh-modal">
+      <div class="modal-overlay" onclick="closeNewsletterModal()"></div>
+      <div class="modal-content-wrapper newsletter-small">
+        <button class="modal-close-btn" onclick="closeNewsletterModal()">
+          &times;
+        </button>
+        <div class="contact-form-wrapper">
+          <h3 class="modal-form-title">Stay Informed</h3>
+          <p class="muted-p">
+            Join our community of entrepreneurs and receive the latest insights
+            and program updates.
+          </p>
+          <form class="aeh-premium-form">
+            <div class="field-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="name@company.com" required />
+            </div>
+            <button type="submit" class="btn-initiate">Sign Up</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
 <?php get_footer(); ?>
