@@ -70,6 +70,10 @@ body {
   }
 }
 
+img {
+  overflow-clip-margin: unset;
+}
+
 body.content-hidden {
   opacity: 0;
 }

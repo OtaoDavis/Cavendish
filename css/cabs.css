@@ -2231,6 +2231,123 @@ section .container {
   background-color: rgba(13, 44, 79, 0.1);
 }
 
+/* --- SCALE READINESS ASSESSMENT INVITE --- */
+.cabs-assessment-invite {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(55px, 7vw, 85px) 0;
+  background:
+    radial-gradient(
+      circle at 88% 20%,
+      rgba(57, 152, 189, 0.12),
+      transparent 35%
+    ),
+    #ffffff;
+  border-bottom: 1px solid rgba(13, 44, 79, 0.1);
+}
+
+.assessment-invite-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  gap: clamp(40px, 7vw, 100px);
+  align-items: center;
+  padding: clamp(30px, 5vw, 55px);
+  background: #f7fafc;
+  border: 1px solid rgba(13, 44, 79, 0.1);
+  border-left: 5px solid var(--aeh-green);
+  box-shadow: 0 24px 65px rgba(13, 44, 79, 0.08);
+}
+
+.assessment-invite-copy {
+  max-width: 760px;
+}
+
+.assessment-invite-eyebrow {
+  margin-bottom: 14px;
+  color: #4f8e32;
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase !important;
+}
+
+.assessment-invite-copy h2 {
+  margin-bottom: 18px;
+  color: var(--aeh-navy);
+  font-family: "Inter", sans-serif;
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.assessment-invite-copy > p:last-child {
+  max-width: 680px;
+  color: #5f6f80;
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+.assessment-invite-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.assessment-invite-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  padding: 18px 22px;
+  color: #ffffff;
+  background: var(--aeh-blue);
+  border-radius: 4px;
+  box-shadow: 0 12px 28px rgba(57, 152, 189, 0.22);
+  font-family: "Inter", sans-serif;
+  font-size: 0.76rem;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.assessment-invite-button:hover {
+  color: #ffffff;
+  background: var(--aeh-navy);
+  box-shadow: 0 16px 34px rgba(13, 44, 79, 0.2);
+  transform: translateY(-3px);
+}
+
+.assessment-invite-button i {
+  transition: transform 0.25s ease;
+}
+
+.assessment-invite-button:hover i {
+  transform: translateX(4px);
+}
+
+.assessment-invite-action span {
+  align-self: center;
+  color: #718096;
+  font-family: "Inter", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.assessment-invite-action span i {
+  margin-right: 5px;
+  color: #4f8e32;
+}
+
 /* --- RESPONSIVE SCALING --- */
 
 /* Tablet / Large Phone */
@@ -2264,6 +2381,26 @@ section .container {
   }
   .promise-divider {
     display: none;
+  }
+
+  .assessment-invite-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .assessment-invite-action {
+    width: min(100%, 440px);
+  }
+}
+
+@media (max-width: 600px) {
+  .assessment-invite-inner {
+    padding: 28px 22px;
+    border-left-width: 4px;
+  }
+
+  .assessment-invite-button {
+    padding: 16px 18px;
   }
 }
 
