@@ -167,6 +167,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // --- CABS HERO MESSAGE ROTATION ---
+  const cabsHeroSlides = document.querySelectorAll(".cabs-hero-slide");
+  const cabsHeroBackgrounds = document.querySelectorAll(".cabs-hero-bg");
+  if (cabsHeroSlides.length > 1) {
+    let activeCabsHeroSlide = 0;
+
+    const showCabsHeroSlide = (index) => {
+      cabsHeroSlides.forEach((slide, slideIndex) => {
+        const isActive = slideIndex === index;
+        slide.classList.toggle("is-active", isActive);
+        slide.setAttribute("aria-hidden", String(!isActive));
+        slide.inert = !isActive;
+      });
+
+      cabsHeroBackgrounds.forEach((background, backgroundIndex) => {
+        background.classList.toggle("is-active", backgroundIndex === index);
+      });
+    };
+
+    window.setInterval(() => {
+      activeCabsHeroSlide =
+        (activeCabsHeroSlide + 1) % cabsHeroSlides.length;
+      showCabsHeroSlide(activeCabsHeroSlide);
+    }, 7000);
+  }
+
   // --- 5. CINEMATIC JOURNEY: HORIZONTAL SCROLL LOCK ---
   // --- CINEMATIC JOURNEY: SCROLL, BACKGROUND & PAGING LOGIC ---
   const journeyWrap = document.getElementById("journeySection");

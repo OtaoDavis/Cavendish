@@ -40,7 +40,13 @@ section .container {
   background-size: cover;
   background-position: center 30%;
   z-index: 1;
+  opacity: 0;
   animation: kenBurnsZoom 25s infinite alternate ease-in-out;
+  transition: opacity 0.9s ease;
+}
+
+.cabs-hero-bg.is-active {
+  opacity: 1;
 }
 
 @keyframes kenBurnsZoom {
@@ -79,9 +85,34 @@ section .container {
   box-sizing: border-box;
 }
 
-.cabs-hero-content {
+.cabs-hero-content-frame {
   max-width: 950px; /* Slightly wider to accommodate the longer subheadline */
+  width: 100%;
+  display: grid;
+}
+
+.cabs-hero-content {
+  grid-area: 1 / 1;
   text-align: left;
+}
+
+.cabs-hero-slide {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(18px);
+  pointer-events: none;
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease,
+    visibility 0s linear 0.9s;
+}
+
+.cabs-hero-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition-delay: 0s;
 }
 
 .cabs-hero-content .hero-eyebrow {
@@ -120,6 +151,12 @@ section .container {
   line-height: 1.7;
   font-weight: 300;
   margin-bottom: 40px;
+}
+
+.cabs-hero-content .hero-callout {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  font-weight: 700;
 }
 
 /* --- ACTIONS --- */
@@ -340,6 +377,26 @@ section .container {
 }
 
 /* --- RIGHT SIDE --- */
+.umbrella-description-heading {
+  max-width: 620px;
+  margin: 0 0 28px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
+  line-height: 1.12;
+  color: var(--aeh-navy);
+  letter-spacing: -0.6px;
+}
+
+.umbrella-description-heading .small-is {
+  display: inline-block;
+  margin-right: 0.15em;
+  font-size: 0.56em;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--aeh-blue);
+  vertical-align: 0.18em;
+}
+
 .umbrella-description p {
   font-family: "Merriweather", serif;
   font-size: clamp(1rem, 1.1vw, 1.15rem);
@@ -2390,6 +2447,13 @@ section .container {
 
   .assessment-invite-action {
     width: min(100%, 440px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cabs-hero-slide {
+    transform: none;
+    transition-duration: 0.01ms;
   }
 }
 
